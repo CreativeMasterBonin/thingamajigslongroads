@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "thingamajigslongroads:block/sidewalk_new_sectioned",
+    "up": "thingamajigslongroads:block/sidewalk_new_sectioned",
+    "north": "thingamajigslongroads:block/slabs/sidewalk_slab_side",
+    "south": "thingamajigslongroads:block/slabs/sidewalk_slab_side",
+    "east": "thingamajigslongroads:block/slabs/sidewalk_slab_side",
+    "west": "thingamajigslongroads:block/slabs/sidewalk_slab_side",
+    "particle": "thingamajigslongroads:block/sidewalk_new_sectioned"
+  }
+}

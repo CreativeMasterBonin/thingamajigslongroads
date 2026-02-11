@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "thingamajigslongroads:block/sidewalk_new_sectioned"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "thingamajigslongroads:block/old_asphalt",
+    "side": "thingamajigslongroads:block/old_asphalt",
+    "top": "thingamajigslongroads:block/old_asphalt"
+  }
+}

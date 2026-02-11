@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigslongroads:bases/base_marked_asphalt_slab_bottom",
+  "textures": {
+    "marking": "thingamajigslongroads:block/marked_road/mediocre_pw",
+    "age": "thingamajigslongroads:block/mediocre_asphalt"
+  }
+}

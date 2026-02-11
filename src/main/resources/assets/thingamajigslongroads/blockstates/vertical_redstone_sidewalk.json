@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "thingamajigslongroads:block/vertical_redstone_sidewalk"
+    },
+    "powered=true": {
+      "model": "thingamajigslongroads:block/vertical_redstone_sidewalk_on"
+    }
+  }
+}

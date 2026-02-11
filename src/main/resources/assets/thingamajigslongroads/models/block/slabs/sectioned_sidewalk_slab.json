@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "thingamajigslongroads:block/sidewalk_new_sectioned",
+    "side": "thingamajigslongroads:block/slabs/sidewalk_slab_side",
+    "top": "thingamajigslongroads:block/sidewalk_new_sectioned"
+  }
+}

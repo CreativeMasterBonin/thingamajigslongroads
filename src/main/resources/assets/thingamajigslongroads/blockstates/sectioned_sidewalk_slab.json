@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "thingamajigslongroads:block/slabs/sectioned_sidewalk_slab"
+    },
+    "type=double": {
+      "model": "thingamajigslongroads:block/slabs/full_sectioned_sidewalk_slab"
+    },
+    "type=top": {
+      "model": "thingamajigslongroads:block/slabs/sectioned_sidewalk_slab_top"
+    }
+  }
+}

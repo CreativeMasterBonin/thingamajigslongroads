@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "thingamajigslongroads:block/mediocre_asphalt",
+    "side": "thingamajigslongroads:block/mediocre_asphalt",
+    "top": "thingamajigslongroads:block/mediocre_asphalt"
+  }
+}

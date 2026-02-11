@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigslongroads:bases/road_marking",
+  "textures": {
+    "all": "thingamajigslongroads:block/pavement_markings/arrows/arrow_left_up",
+    "particle": "thingamajigslongroads:block/pavement_markings/white/all_white"
+  }
+}

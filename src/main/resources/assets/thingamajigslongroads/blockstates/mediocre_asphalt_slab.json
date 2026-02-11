@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "thingamajigslongroads:block/slabs/road/mediocre_asphalt_slab"
+    },
+    "type=double": {
+      "model": "thingamajigslongroads:block/mediocre_asphalt"
+    },
+    "type=top": {
+      "model": "thingamajigslongroads:block/slabs/road/mediocre_asphalt_slab_top"
+    }
+  }
+}

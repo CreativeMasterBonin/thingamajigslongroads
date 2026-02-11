@@ -1,0 +1,9 @@
+{
+  "parent": "thingamajigslongroads:bases/base_marked_curve_asphalt",
+  "textures": {
+    "2": "thingamajigslongroads:block/marked_road/ok_dy",
+    "marking": "thingamajigslongroads:block/marked_road/ok_dcy",
+    "age": "thingamajigslongroads:block/ok_asphalt"
+  }
+}
+

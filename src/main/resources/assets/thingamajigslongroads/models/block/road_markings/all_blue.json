@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigslongroads:bases/road_marking",
+  "textures": {
+    "all": "minecraft:block/blue_concrete",
+    "particle": "minecraft:block/blue_concrete"
+  }
+}

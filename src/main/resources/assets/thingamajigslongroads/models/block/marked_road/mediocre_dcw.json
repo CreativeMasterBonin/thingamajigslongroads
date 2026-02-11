@@ -1,0 +1,9 @@
+{
+  "parent": "thingamajigslongroads:bases/base_marked_curve_asphalt",
+  "textures": {
+    "2": "thingamajigslongroads:block/marked_road/mediocre_dw",
+    "marking": "thingamajigslongroads:block/marked_road/mediocre_dcw",
+    "age": "thingamajigslongroads:block/mediocre_asphalt"
+  }
+}
+
