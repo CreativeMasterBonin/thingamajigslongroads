@@ -1,13 +1,24 @@
 package net.rk.longroads.util;
 
+import com.mojang.blaze3d.platform.Lighting;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.fml.loading.FMLPaths;
+import net.rk.longroads.registries.TLRRegistries;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
+import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -119,91 +130,57 @@ public class Utilities{
     );
     public static final WoodType BROWN_ROADWAY_WOOD = new WoodType("brown_roadway_wood", BROWN_ROADWAY_TYPE);
 
-
-    // road sign custom loading support
-
+    // sign type related stuff
+    public static final boolean verboseLogging = false;
     public static final String missingLocation = "thingamajigslongroads:textures/entity/signs/sign_error.png";
+    public static final String missingLocationBig = "thingamajigslongroads:textures/entity/signs/big_sign_error.png";
+    public static final String missingLocationRect = "thingamajigslongroads:textures/entity/signs/rect_sign_error.png";
 
-    /*private static final Path ROAD_SIGNS_DIR_PATH = FMLPaths.getOrCreateGameRelativePath(Path.of("thingamajigs_road_signs"));
+    // Sign Model Types are hardcoded because models CANNOT be generated on the fly
+    // these can be picked by specifying the type in the SignType definition file
+    public enum SignModelTypes{
+        SQUARE("square",0),
+        DOUBLE_SQUARE("double_square",1),
+        RECTANGLE("rectangle",2),
+        CUSTOM("custom",3);
 
-    public static List<String> signTextureLocs;
+        private final String modelTypeName;
+        private final int id;
 
-    public static List<ResourceLocation> allSignResources;
-
-    public static String getRoadSignsDirPathAsString(){
-        return ROAD_SIGNS_DIR_PATH.toString();
-    }
-
-    public static void findAndApplySignTextures() throws IOException{
-        ArrayList<String> arrTempFileNameList = new ArrayList<>();
-        ArrayList<ResourceLocation> arrTempResourceList = new ArrayList<>();
-
-        if(DEBUG_ONLY){
-            UTILITY_LOGGER.info("TLong Roads dir sign path: {}", ROAD_SIGNS_DIR_PATH.toString());
+        SignModelTypes(String modelTypeName, int id) {
+            this.modelTypeName = modelTypeName;
+            this.id = id;
         }
 
-        if(ROAD_SIGNS_DIR_PATH == null){
-            UTILITY_LOGGER.info("TLong Roads directory is missing! Cannot continue with custom sign texture loading.");
-            return;
+        public String getModelTypeName() {
+            return modelTypeName;
         }
-        else{
-            Set<String> imgFileStrs = Stream.of(new File(ROAD_SIGNS_DIR_PATH.toUri()).listFiles())
-                    .filter(file -> !file.isDirectory())
-                    .map(File::getName)
-                    .collect(Collectors.toSet());
-            Object[] finFilStrArr = imgFileStrs.toArray();
 
-            List<Object> strImgFileList = Arrays.stream(finFilStrArr).toList();
-
-            for(int i = 0; i < imgFileStrs.size(); i++) {
-                UTILITY_LOGGER.info("TLong Roads img file at {} is: File String: {}", i, strImgFileList.get(i).toString());
-                String newLocationName = strImgFileList.get(i).toString();
-                if(strImgFileList.get(i).toString().equals(".ds_store")
-                        || strImgFileList.get(i).toString().equals(".DS_Store")
-                        || strImgFileList.get(i).toString().equals("Thumbs.db")
-                        || strImgFileList.get(i).toString().equals("thumbs.db")){
-                    UTILITY_LOGGER.info("Skipping file system file: {} as it has no purpose for TLong Roads.", strImgFileList.get(i).toString());
-                }
-                else if(!strImgFileList.get(i).toString().contains(".png")){
-                    UTILITY_LOGGER.info("Skipping unsupported file type for TLong Roads. Supported formats: .png");
-                }
-                else{
-                    arrTempFileNameList.add(newLocationName);
-                }
-            }
-
-            signTextureLocs = arrTempFileNameList.stream().toList();
-
-            if(DEBUG_ONLY){
-                for(int j = 0; j < signTextureLocs.size(); j++){
-                    UTILITY_LOGGER.info("signTextureLoc index: {} -> File Location: {}", j, signTextureLocs.get(j));
-                }
-            }
-
-            ArrayList<String> tempResourceStringyArr = new ArrayList<>();
-
-            for(int j = 0; j < signTextureLocs.size(); j++){
-                arrTempResourceList.add(ResourceLocation.parse("thingamajigslongroads:textures/custom_signs/" + signTextureLocs.get(j)));
-                tempResourceStringyArr.add("thingamajigslongroads:textures/custom_signs/" + signTextureLocs.get(j));
-                if(DEBUG_ONLY){
-                    UTILITY_LOGGER.info("all Sign Res index: {} -> File: {}", j, arrTempResourceList.get(j));
-                }
-            }
-
-            allSignResources = arrTempResourceList.stream().toList();
-
-            Path configfile = Path.of(ROAD_SIGNS_DIR_PATH.toString(),"/loaded_signs.txt");
-            if(!Files.exists(configfile)){
-                Files.write(configfile, tempResourceStringyArr, StandardCharsets.UTF_8);
-            }
-            UTILITY_LOGGER.info("TLong Roads generated new list of sign texture locations from directory.");
+        public int getId() {
+            return id;
         }
     }
 
-    public static String loadLocationString(int signID){
-        ResourceLocation allSignRSTemp = allSignResources.get(signID);
-        return allSignRSTemp.toString();
-    }
+    // render generic entity
+    public static void renderNonLivingEntity(GuiGraphics guiGraphics, float x, float y, float scale, Vector3f translate, Quaternionf pose, @Nullable Quaternionf cameraOrientation, Entity entity){
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().translate((double)x, (double)y, 50.0);
+        guiGraphics.pose().scale(scale, scale, -scale);
+        guiGraphics.pose().translate(translate.x, translate.y, translate.z);
+        guiGraphics.pose().mulPose(pose);
+        Lighting.setupForEntityInInventory();
+        EntityRenderDispatcher entityrenderdispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+        if (cameraOrientation != null) {
+            entityrenderdispatcher.overrideCameraOrientation(cameraOrientation.conjugate(new Quaternionf()).rotateY(3.1415927F));
+        }
 
-     */
+        entityrenderdispatcher.setRenderShadow(false);
+        RenderSystem.runAsFancy(() -> {
+            entityrenderdispatcher.render(entity, 0.0, 0.0, 0.0, 0.0F, 1.0F, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880);
+        });
+        guiGraphics.flush();
+        entityrenderdispatcher.setRenderShadow(true);
+        guiGraphics.pose().popPose();
+        Lighting.setupFor3DItems();
+    }
 }

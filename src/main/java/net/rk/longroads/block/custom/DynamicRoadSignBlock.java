@@ -1,13 +1,18 @@
 package net.rk.longroads.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import io.netty.buffer.Unpooled;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -19,15 +24,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.rk.longroads.ThingamajigsLongRoads;
 import net.rk.longroads.entity.blockentity.TLRBlockEntity;
 import net.rk.longroads.entity.blockentity.custom.DynamicRoadSignBE;
+import net.rk.longroads.menu.DynamicSignMenu;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import java.util.logging.Logger;
 
 public class DynamicRoadSignBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -42,11 +48,29 @@ public class DynamicRoadSignBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("block.thingamajigslongroads.road_sign.desc")
-                .withStyle(ChatFormatting.GRAY));
-        tooltipComponents.add(Component.translatable("block.thingamajigslongroads.road_sign.desc_xtra")
-                .withStyle(ChatFormatting.GREEN));
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        try{
+            if(player instanceof ServerPlayer){
+                player.openMenu(new MenuProvider(){
+                    @Override
+                    public Component getDisplayName() {
+                        return Component.translatable("title.thingamajigslongroads.dynamic_road_sign")
+                                .withStyle(ChatFormatting.WHITE);
+                    }
+                    @Override
+                    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                        return new DynamicSignMenu(id, inventory,
+                                new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+                    }
+                },pos);
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+        catch (Exception e){
+            Logger.getAnonymousLogger().warning("Long Roads' Exception caught in Dynamic Road Sign! Err: " + e.getMessage());
+            return InteractionResult.FAIL;
+        }
+        return InteractionResult.PASS;
     }
 
     @Override
@@ -66,14 +90,7 @@ public class DynamicRoadSignBlock extends BaseEntityBlock {
 
     @Override
     protected RenderShape getRenderShape(BlockState state) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
-    }
-
-    @Override
-    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-        if (ThingamajigsLongRoads.badFileAccessFlag) {
-            level.removeBlock(pos, false);
-        }
+        return RenderShape.MODEL;
     }
 
     @Override

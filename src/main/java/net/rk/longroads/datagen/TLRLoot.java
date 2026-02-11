@@ -27,6 +27,9 @@ public class TLRLoot extends VanillaBlockLoot{
     @Override
     protected void generate() {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        this.dropSelf(TLRBlocks.ROAD_SIGN.get());
+
         this.dropSelf(TLRBlocks.ASPHALT.get());
         this.dropSelf(TLRBlocks.ASPHALT_OK.get());
         this.dropSelf(TLRBlocks.ASPHALT_MEDIOCRE.get());

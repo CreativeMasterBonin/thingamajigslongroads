@@ -22,6 +22,8 @@ public class DataGenerators{
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
+        generator.addProvider(event.includeClient(),new TLRLanguage(packOutput,"en_us"));
+
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(TLRLoot::new,LootContextParamSets.BLOCK)),lookupProvider));
 
