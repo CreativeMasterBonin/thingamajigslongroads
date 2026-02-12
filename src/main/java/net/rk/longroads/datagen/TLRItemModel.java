@@ -1,5 +1,7 @@
 package net.rk.longroads.datagen;
 
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -8,11 +10,17 @@ import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.rk.longroads.ThingamajigsLongRoads;
+import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.item.TLRItems;
 
 public class TLRItemModel extends ItemModelProvider{
     public TLRItemModel(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, ThingamajigsLongRoads.MODID, existingFileHelper);
+    }
+
+    @Override
+    public String getName() {
+        return "TLRItemModel Provider";
     }
 
     @Override
@@ -27,6 +35,29 @@ public class TLRItemModel extends ItemModelProvider{
         this.customSimpleItem(TLRItems.BLUE_ROADWAY_SIGN_ITEM.asItem(),"blue_roadway_sign");
         this.customSimpleItem(TLRItems.BROWN_ROADWAY_SIGN_ITEM.asItem(),"brown_roadway_sign");
         this.customSimpleItem(TLRItems.GREEN_HANGING_ROADWAY_SIGN_ITEM.asItem(),"green_hanging_roadway_sign");
+
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.ASPHALT_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.OK_ASPHALT_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.MEDIOCRE_ASPHALT_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.OLD_ASPHALT_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SIDEWALK_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SIDEWALK_LAYER_LEFT.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SIDEWALK_LAYER_RIGHT.get());
+    }
+
+    // builtin anything isn't recognized with any namespace
+    public ItemModelBuilder builtinEntityWithLighting(Item blockEntityBlockItem, BlockModel.GuiLight lightingType, String renderType){
+        return withExistingParent(blockEntityBlockItem.toString(),
+                ResourceLocation.parse("builtin/entity"))
+                .guiLight(lightingType)
+                .renderType(renderType);
+    }
+
+    // exclusively for use with layered rotatable block items
+    private ItemModelBuilder rotatableLayeredBlockItemModelFromMod(Block layeredBlock){
+        String source = layeredBlock.asItem().getDescriptionId().replaceAll("block.thingamajigslongroads.","");
+        return withExistingParent(layeredBlock.asItem().toString(),
+               ResourceLocation.fromNamespaceAndPath("thingamajigslongroads","block/" + source + "_2"));
     }
 
     private ItemModelBuilder defaultCustomSimpleItem(Block block1, String source){

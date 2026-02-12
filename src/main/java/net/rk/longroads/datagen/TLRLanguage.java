@@ -21,13 +21,16 @@ public class TLRLanguage extends LanguageProvider {
     @Override
     protected void addTranslations() {
         this.add("itemGroup.thingamajigslongroads","Thingamajigs Long Roads");
-        this.add("item.paint_brush.data.pattern_type", "Type: %s");
+        this.add("item.paint_brush.data.pattern_type", "Type: %s / %s");
         this.add("item.thingamajigslongroads.scrape_tool.desc", "Scrapes paint off of asphalt and other blocks");
         this.add("container.thingamajigslongroads.dynamic_sign.sign_type", "Type: ");
         this.add("editbox.thingamajigslongroads.hint.dynamic_sign", "Type Resource Here");
         this.add("title.thingamajigslongroads.dynamic_road_sign","Dynamic Sign");
         this.add("button.thingamajigslongroads.rotation_left","<- Rotation");
         this.add("button.thingamajigslongroads.rotation_right","Rotation ->");
+        this.add("button.thingamajigslongroads.round_rotation","Round ↺");
+        this.add("tooltip.thingamajigs.length","Length: %s");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.undefined","No Pattern Selected");
 
         this.addSignType(SignTypeKeys.PlACEHOLDER,"Placeholder For Fun!");
         // asphalt
@@ -39,6 +42,10 @@ public class TLRLanguage extends LanguageProvider {
         this.addBlock(TLRBlocks.ASPHALT_OK_SLAB,"Ok Asphalt Slab");
         this.addBlock(TLRBlocks.ASPHALT_MEDIOCRE_SLAB,"Mediocre Asphalt Slab");
         this.addBlock(TLRBlocks.ASPHALT_OLD_SLAB,"Old Asphalt Slab");
+        this.addBlock(TLRBlocks.ASPHALT_LAYER,"Asphalt Layer");
+        this.addBlock(TLRBlocks.OK_ASPHALT_LAYER,"Ok Asphalt Layer");
+        this.addBlock(TLRBlocks.MEDIOCRE_ASPHALT_LAYER,"Mediocre Asphalt Layer");
+        this.addBlock(TLRBlocks.OLD_ASPHALT_LAYER,"Old Asphalt Layer");
         // sidewalk
         this.addBlock(TLRBlocks.SIDEWALK,"Sidewalk");
         this.addBlock(TLRBlocks.SIDEWALK_CRACKED,"Cracked Sidewalk");
@@ -48,6 +55,9 @@ public class TLRLanguage extends LanguageProvider {
         this.addBlock(TLRBlocks.CRACKED_SIDEWALK_SLAB,"Cracked Sidewalk Slab");
         this.addBlock(TLRBlocks.BLOCKED_SIDEWALK_SLAB,"Blocked Sidewalk Slab");
         this.addBlock(TLRBlocks.SECTIONED_SIDEWALK_SLAB,"Sectioned Sidewalk Slab");
+        this.addBlock(TLRBlocks.SIDEWALK_LAYER,"Sidewalk Layer");
+        this.addBlock(TLRBlocks.SIDEWALK_LAYER_LEFT,"Sidewalk Layer Left");
+        this.addBlock(TLRBlocks.SIDEWALK_LAYER_RIGHT,"Sidewalk Layer Right");
         // painted asphalt
         this.addBlock(TLRBlocks.DOUBLE_WHITE_ASPHALT,"Double White Asphalt");
         this.addBlock(TLRBlocks.DOUBLE_CORNER_WHITE_ASPHALT,"Double Corner White Asphalt");
@@ -93,7 +103,10 @@ public class TLRLanguage extends LanguageProvider {
         this.addBlock(TLRBlocks.WHITE_D_OLD_ASPHALT_SLAB,"Old Asphalt Slab (Double White)");
 
         this.addBlock(TLRBlocks.VERTICAL_REDSTONE_SIDEWALK,"Vertical Redstone Sidewalk");
-        this.addBlock(TLRBlocks.ROAD_SIGN,"Road Sign");
+        this.addBlock(TLRBlocks.ROAD_SIGN,"Road Sign (Plus)");
+        this.addBlock(TLRBlocks.STRAIGHT_ROAD_SIGN,"Road Sign (Vertical Straight)");
+        this.addBlock(TLRBlocks.THREE_WAY_ROAD_SIGN,"Road Sign (Three-way)");
+        this.addBlock(TLRBlocks.VERTICAL_REDSTONE_ROAD_SIGN,"Road Sign (Vertical Redstone)");
 
 
         this.addItem(TLRItems.SCRAPE_TOOL,"Scrape Tool");

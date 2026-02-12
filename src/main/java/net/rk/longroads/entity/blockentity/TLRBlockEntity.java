@@ -52,7 +52,8 @@ public class TLRBlockEntity {
     public static final Supplier<BlockEntityType<DynamicRoadSignBE>> DYNAMIC_ROAD_SIGN_BE =
             BLOCK_ENTITIES.register("dynamic_road_sign_be",
                     () -> BlockEntityType.Builder.of(DynamicRoadSignBE::new,
-                            TLRBlocks.ROAD_SIGN.get()
+                            TLRBlocks.ROAD_SIGN.get(),TLRBlocks.STRAIGHT_ROAD_SIGN.get(),
+                            TLRBlocks.THREE_WAY_ROAD_SIGN.get(),TLRBlocks.VERTICAL_REDSTONE_ROAD_SIGN.get()
                     ).build(null));
 
 

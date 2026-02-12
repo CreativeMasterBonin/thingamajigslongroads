@@ -6,7 +6,7 @@ import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 @EventBusSubscriber(modid = ThingamajigsLongRoads.MODID, bus = EventBusSubscriber.Bus.MOD)
-public class TRRConfig {
+public class TLRConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     @SubscribeEvent

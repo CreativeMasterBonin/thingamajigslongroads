@@ -35,6 +35,10 @@ public class DynamicRectangleSignModel extends Model{
         return LayerDefinition.create(meshdefinition, 64, 32);
     }
 
+    public ModelPart getMain() {
+        return main;
+    }
+
     public void setupAnim(DynamicRoadSignBE be){
         main.yRot = be.yAngle;
         main.zRot = 0;

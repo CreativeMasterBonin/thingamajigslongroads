@@ -18,13 +18,19 @@ public class TLRItems{
             () -> new Paintbrush(new Item.Properties()));
 
     public static final DeferredItem<Item> WHITE_PAINT_BRUSH = ITEMS.register("white_paint_brush",
-            () -> new WhitePaintBrush(new Item.Properties()));
+            () -> new WhitePaintBrush(new Item.Properties()
+                    .component(TLRDataComponents.ROAD_MARKING_PATTERN,0)
+                    .component(TLRDataComponents.LENGTH,1)));
 
     public static final DeferredItem<Item> YELLOW_PAINT_BRUSH = ITEMS.register("yellow_paint_brush",
-            () -> new YellowPaintBrush(new Item.Properties()));
+            () -> new YellowPaintBrush(new Item.Properties()
+                    .component(TLRDataComponents.ROAD_MARKING_PATTERN,0)
+                    .component(TLRDataComponents.LENGTH,1)));
 
     public static final DeferredItem<Item> BLUE_PAINT_BRUSH = ITEMS.register("blue_paint_brush",
-            () -> new BluePaintBrush(new Item.Properties()));
+            () -> new BluePaintBrush(new Item.Properties()
+                    .component(TLRDataComponents.ROAD_MARKING_PATTERN,0)
+                    .component(TLRDataComponents.LENGTH,1)));
 
     public static final DeferredItem<Item> SCRAPE_TOOL = ITEMS.register("scrape_tool",
             () -> new ScrapeTool(new Item.Properties()));
@@ -59,4 +65,13 @@ public class TLRItems{
 
     public static final DeferredItem<Item> DYNAMIC_ROAD_SIGN = ITEMS.register("dynamic_road_sign",
             () -> new DynamicRoadSignItem(TLRBlocks.ROAD_SIGN.get(),new Item.Properties().fireResistant()));
+
+    public static final DeferredItem<Item> DYNAMIC_STRAIGHT_ROAD_SIGN = ITEMS.registerItem("dynamic_straight_road_sign",
+            (properties) -> new DynamicRoadSignItem(TLRBlocks.STRAIGHT_ROAD_SIGN.get(),properties));
+
+    public static final DeferredItem<Item> DYNAMIC_THREE_WAY_ROAD_SIGN = ITEMS.registerItem("dynamic_three_way_road_sign",
+            (properties) -> new DynamicRoadSignItem(TLRBlocks.THREE_WAY_ROAD_SIGN.get(),properties));
+
+    public static final DeferredItem<Item> DYNAMIC_VERTICAL_REDSTONE_ROAD_SIGN = ITEMS.registerItem("dynamic_vertical_redstone_road_sign",
+            (properties) -> new DynamicRoadSignItem(TLRBlocks.VERTICAL_REDSTONE_ROAD_SIGN.get(),properties));
 }

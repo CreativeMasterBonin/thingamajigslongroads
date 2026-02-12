@@ -18,15 +18,16 @@ import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.block.custom.WhiteRoadMarking;
 import net.rk.longroads.item.TLRDataComponents;
 
-@SuppressWarnings("deprecated,unused")
-public class ChangeTypeFirst{
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type) {
+@Deprecated
+public class ChangeTypeWhite{
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type, int length) {
         double variable = 0;
         BlockPos pos = new BlockPos((int)x,(int)y,(int)z);
 
         if(stack.getComponents().has(TLRDataComponents.ROAD_MARKING_PATTERN.get())){
             variable = marking_type;
         }
+
         if (entity == null)
             return;
         if (entity.isShiftKeyDown()) {

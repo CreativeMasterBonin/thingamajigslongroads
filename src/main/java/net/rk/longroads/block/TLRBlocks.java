@@ -539,6 +539,30 @@ public class TLRBlocks {
     public static final DeferredBlock<Block> ROAD_SIGN = registerBlockWithoutItem("road_sign",
             () -> new DynamicRoadSignBlock(BlockBehaviour.Properties.of()));
 
+    public static final DeferredBlock<Block> STRAIGHT_ROAD_SIGN = registerBlockWithoutItem("straight_road_sign",
+            () -> new DynamicRoadSignBlock(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<Block> THREE_WAY_ROAD_SIGN = registerBlockWithoutItem("three_way_road_sign",
+            () -> new DynamicRoadSignBlock(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<Block> VERTICAL_REDSTONE_ROAD_SIGN = registerBlockWithoutItem("vertical_redstone_road_sign",
+            () -> new DynamicVerticalRedstoneSignBlock(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<Block> ASPHALT_LAYER = register("asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().friction(0.4F).strength(2f)));
+    public static final DeferredBlock<Block> OK_ASPHALT_LAYER = register("ok_asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().friction(0.45F).strength(1.9f)));
+    public static final DeferredBlock<Block> MEDIOCRE_ASPHALT_LAYER = register("mediocre_asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().friction(0.5F).strength(1.5f)));
+    public static final DeferredBlock<Block> OLD_ASPHALT_LAYER = register("old_asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().strength(1.2f)));
+
+    public static final DeferredBlock<Block> SIDEWALK_LAYER = register("sidewalk_layer",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> SIDEWALK_LAYER_LEFT = register("sidewalk_layer_left",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> SIDEWALK_LAYER_RIGHT = register("sidewalk_layer_right",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
 
 
 

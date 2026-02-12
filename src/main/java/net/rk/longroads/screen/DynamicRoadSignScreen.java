@@ -36,6 +36,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
 
     private RevertedButton decreaseRotation;
     private RevertedButton increaseRotation;
+    private RevertedButton roundRotation;
 
     private EditBox customTextureEdit;
 
@@ -68,6 +69,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         setup();
         addRenderableWidget(decreaseRotation);
         addRenderableWidget(increaseRotation);
+        addRenderableWidget(roundRotation);
     }
 
     @Override
@@ -246,6 +248,16 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
             ));
             Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.ITEM_PICKUP,normalPitch));
         }){};
+
+        roundRotation = new RevertedButton(horzLeftButtonPos,topRowButtonY + 72,64,16,
+                Component.translatable("button.thingamajigslongroads.round_rotation"),(handler)->{
+            PacketDistributor.sendToServer(new DynamicSignPayload(
+                    this.menu.pos,
+                    Math.round(this.menu.be.yAngle),
+                    this.menu.be.indexId,
+                    false
+            ));
+        });
     }
 
 

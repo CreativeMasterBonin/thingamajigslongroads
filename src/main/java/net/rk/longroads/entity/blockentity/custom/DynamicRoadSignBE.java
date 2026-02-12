@@ -10,6 +10,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.entity.blockentity.TLRBlockEntity;
 import net.rk.longroads.registries.SignType;
 import net.rk.longroads.registries.TLRRegistries;
@@ -58,6 +59,16 @@ public class DynamicRoadSignBE extends BlockEntity{
     public DynamicRoadSignBE(BlockPos pos, BlockState blockState){
         super(TLRBlockEntity.DYNAMIC_ROAD_SIGN_BE.get(), pos, blockState);
         bp = pos;
+    }
+
+    /**
+     * A public constructor used for rendering dynamic road signs as items or in guis
+     * @param modelType The type of model to load when rendering the dynamic road sign
+     */
+    public DynamicRoadSignBE(String modelType){
+        super(TLRBlockEntity.DYNAMIC_ROAD_SIGN_BE.get(), new BlockPos(0,0,0), TLRBlocks.ROAD_SIGN.get().defaultBlockState());
+        this.bp = new BlockPos(0,0,0);
+        this.modelType = modelType;
     }
 
     @Override

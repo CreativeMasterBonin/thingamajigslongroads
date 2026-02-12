@@ -2,14 +2,10 @@ package net.rk.longroads.item.custom;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
@@ -23,12 +19,11 @@ import net.minecraft.world.level.block.state.properties.SlabType;
 import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.block.custom.*;
 import net.rk.longroads.item.TLRDataComponents;
-import net.rk.longroads.item.legacyruns.ChangeTypeYellow;
 
 import java.util.List;
 
-public class YellowPaintBrush extends Item{
-    public String currentName = "No Pattern Selected";
+public class YellowPaintBrush extends AbstractPaintbrush{
+    public String currentName = "tooltip.thingamajigs.paintbrush.pattern.undefined";
 
     public void typeToName(int type){
         switch(type){
@@ -68,11 +63,13 @@ public class YellowPaintBrush extends Item{
             LevelAccessor levelAccessor = pContext.getLevel();
             Level level = pContext.getLevel();
             BlockPos positionClicked = pContext.getClickedPos();
+            BlockState blockState = level.getBlockState(positionClicked);
             Block blockClicked = level.getBlockState(positionClicked).getBlock();
             ItemStack stack = pContext.getItemInHand();
             Block marking = TLRBlocks.YELLOW_ROAD_MARKING.get();
             Player ply = pContext.getPlayer();
             int marking_type = 0;
+            int length = 1;
 
             // direct painting of asphalt slabs
             if (blockClicked instanceof AsphaltSlab && !ply.isShiftKeyDown()) {
@@ -180,7 +177,7 @@ public class YellowPaintBrush extends Item{
             }
 
             // direct painting of asphalt blocks
-            if (blockClicked instanceof Asphalt && !ply.isShiftKeyDown()) {
+            if ((blockClicked instanceof Asphalt || blockClicked instanceof AsphaltLayer) && !ply.isShiftKeyDown()) {
                 BlockState paintAsp = TLRBlocks.YELLOW_PARKING_ASPHALT.get().defaultBlockState();
                 if (ply.getItemInHand(ply.getUsedItemHand()).has(TLRDataComponents.ROAD_MARKING_PATTERN.get())) {
                     int type = ply.getItemInHand(ply.getUsedItemHand()).get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue();
@@ -200,7 +197,41 @@ public class YellowPaintBrush extends Item{
                         age = 3;
                     }
                     else{
-                        notValid = true;
+                        if(blockClicked == TLRBlocks.ASPHALT_LAYER.get()){
+                            if(blockState.getValue(LayeredBlock.LAYERS).intValue() > 7){
+                                age = 0;
+                            }
+                            else{
+                                notValid = true;
+                            }
+                        }
+                        else if(blockClicked == TLRBlocks.OK_ASPHALT_LAYER.get()){
+                            if(blockState.getValue(LayeredBlock.LAYERS).intValue() > 7){
+                                age = 1;
+                            }
+                            else{
+                                notValid = true;
+                            }
+                        }
+                        else if(blockClicked == TLRBlocks.MEDIOCRE_ASPHALT_LAYER.get()){
+                            if(blockState.getValue(LayeredBlock.LAYERS).intValue() > 7){
+                                age = 2;
+                            }
+                            else{
+                                notValid = true;
+                            }
+                        }
+                        else if(blockClicked == TLRBlocks.OLD_ASPHALT_LAYER.get()){
+                            if(blockState.getValue(LayeredBlock.LAYERS).intValue() > 7){
+                                age = 3;
+                            }
+                            else{
+                                notValid = true;
+                            }
+                        }
+                        else{
+                            notValid = true;
+                        }
                     }
 
                     if(notValid == false){
@@ -228,24 +259,34 @@ public class YellowPaintBrush extends Item{
 
 
             if(pContext.getHand() == InteractionHand.MAIN_HAND) {
-                CompoundTag tag = new CompoundTag();
-
                 if(pContext.getPlayer().isShiftKeyDown()){
-                    if(stack.has(TLRDataComponents.ROAD_MARKING_PATTERN.get())) {
+                    if(!stack.getComponents().has(TLRDataComponents.LENGTH.get())){
+                        stack.set(TLRDataComponents.LENGTH.get(),1);
+                    }
+                    if(stack.getComponents().has(TLRDataComponents.ROAD_MARKING_PATTERN.get())) {
                         increaseType(stack);
                         marking_type = stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue();
-                        level.playSound(null,positionClicked, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS,1F,1F);
+                        AbstractPaintbrush.placeMarkingSound(level,positionClicked);
                     }
                     else {
                         stack.set(TLRDataComponents.ROAD_MARKING_PATTERN.get(),0);
-                        level.playSound(null,positionClicked,SoundEvents.AXE_STRIP,SoundSource.BLOCKS,1F,1F);
+                        AbstractPaintbrush.setupMarkingBrush(level,positionClicked);
                     }
                 }
                 else{
-                    if(stack.has(TLRDataComponents.ROAD_MARKING_PATTERN.get())){
+                    if(stack.getComponents().has(TLRDataComponents.ROAD_MARKING_PATTERN.get())){
                         marking_type = stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue();
                     }
-                    ChangeTypeYellow.execute(levelAccessor,pContext.getClickedPos().getX(),pContext.getClickedPos().getY(),pContext.getClickedPos().getZ(),pContext.getPlayer(), stack, marking_type);
+                    if(stack.getComponents().has(TLRDataComponents.LENGTH.get())){
+                        length = stack.get(TLRDataComponents.LENGTH.get()).intValue();
+                    }
+                    AbstractPaintbrush.newPaintLogic(levelAccessor,
+                            positionClicked.getX(),
+                            positionClicked.getY(),
+                            positionClicked.getZ(),
+                            ply,stack,
+                            marking_type,length,
+                            TLRBlocks.YELLOW_ROAD_MARKING.get());
                 }
                 return InteractionResult.SUCCESS;
             }
@@ -260,6 +301,9 @@ public class YellowPaintBrush extends Item{
     }
 
     private void increaseType(ItemStack stack) {
+        if(!stack.getComponents().has(TLRDataComponents.LENGTH.get())){
+            stack.set(TLRDataComponents.LENGTH.get(),1);
+        }
         if (stack.has(TLRDataComponents.ROAD_MARKING_PATTERN.get())){
             stack.set(TLRDataComponents.ROAD_MARKING_PATTERN.get(),stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue() + 1);
             if(stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue() >= YellowRoadMarking.getMaxTypes()){
@@ -270,10 +314,11 @@ public class YellowPaintBrush extends Item{
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack,context,tooltipComponents,tooltipFlag);
         if(stack.has(TLRDataComponents.ROAD_MARKING_PATTERN.get())) {
             typeToName(stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue());
-            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type", stack.getComponents().get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue()));
-            tooltipComponents.add(Component.literal(currentName).withStyle(ChatFormatting.GREEN));
+            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type", stack.getComponents().get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue(),YellowRoadMarking.getMaxTypes()));
+            tooltipComponents.add(Component.translatable(currentName).withStyle(ChatFormatting.GREEN));
         }
     }
 }

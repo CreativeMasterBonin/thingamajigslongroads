@@ -29,6 +29,9 @@ public class TLRLoot extends VanillaBlockLoot{
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
         this.dropSelf(TLRBlocks.ROAD_SIGN.get());
+        this.dropSelf(TLRBlocks.STRAIGHT_ROAD_SIGN.get());
+        this.dropSelf(TLRBlocks.VERTICAL_REDSTONE_ROAD_SIGN.get());
+        this.dropSelf(TLRBlocks.THREE_WAY_ROAD_SIGN.get());
 
         this.dropSelf(TLRBlocks.ASPHALT.get());
         this.dropSelf(TLRBlocks.ASPHALT_OK.get());
@@ -342,6 +345,13 @@ public class TLRLoot extends VanillaBlockLoot{
         this.add(TLRBlocks.WHITE_ROAD_MARKING.get(),noDrop());
         this.add(TLRBlocks.YELLOW_ROAD_MARKING.get(),noDrop());
         this.add(TLRBlocks.BLUE_ROAD_MARKING.get(),noDrop());
+        this.add(TLRBlocks.ASPHALT_LAYER.get(),noDrop());
+        this.add(TLRBlocks.OK_ASPHALT_LAYER.get(),noDrop());
+        this.add(TLRBlocks.MEDIOCRE_ASPHALT_LAYER.get(),noDrop());
+        this.add(TLRBlocks.OLD_ASPHALT_LAYER.get(),noDrop());
+        this.add(TLRBlocks.SIDEWALK_LAYER.get(),noDrop());
+        this.add(TLRBlocks.SIDEWALK_LAYER_LEFT.get(),noDrop());
+        this.add(TLRBlocks.SIDEWALK_LAYER_RIGHT.get(),noDrop());
     }
 
     @Override

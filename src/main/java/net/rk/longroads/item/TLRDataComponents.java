@@ -15,4 +15,9 @@ public class TLRDataComponents{
             COMPONENTS.register("road_marking_pattern",
                     () -> DataComponentType.<Integer>builder()
                             .persistent(Codec.INT).networkSynchronized(ByteBufCodecs.VAR_INT).build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> LENGTH =
+            COMPONENTS.register("length",
+                    () -> DataComponentType.<Integer>builder()
+                            .persistent(Codec.INT).networkSynchronized(ByteBufCodecs.VAR_INT).build());
 }
