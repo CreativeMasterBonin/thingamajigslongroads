@@ -9,6 +9,8 @@ The sounds and textures and model files in this mod are copyright CreativeMaster
 You can download this mod as many times as you want, without charge. If anyone charges money for this download other than CreativeMasterBonin (and team, if applicable) DEMAND YOUR MONEY BACK, as YOU HAVE BEEN SCAMMED! The MC EULA and MUG mention not charging for mods, so don't get scammed.
 If you contribute to the mod, you will gain credit in some form, either text or a thank you in the mod (depending on contribution amount).
 
+Note: Some code is under a different license, and comments have been added to areas where this applies with the license type, author, and source.
+
 The code is public, and you can rename methods and their layout (their logic)[please try and redo the logic, so it is original to you] when using them in your own mods IF YOU GIVE CREDIT BACK TO THIS MOD AND CREATIVEMASTERBONIN.
 Failure to credit the proper persons (when using programming from this repository) will result in a C&D or other applicable punishment by law.
 
