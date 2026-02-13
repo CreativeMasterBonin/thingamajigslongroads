@@ -24,18 +24,18 @@ public class DataGenerators{
 
         generator.addProvider(event.includeClient(),new TLRLanguage(packOutput,"en_us"));
 
-        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
+        generator.addProvider(event.includeServer(),new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(TLRLoot::new,LootContextParamSets.BLOCK)),lookupProvider));
 
         event.getGenerator().addProvider(event.includeClient(),new TLRBlockModel(packOutput,event.getExistingFileHelper()));
-        event.getGenerator().addProvider(event.includeClient(), new TLRItemModel(packOutput,event.getExistingFileHelper()));
+        event.getGenerator().addProvider(event.includeClient(),new TLRItemModel(packOutput,event.getExistingFileHelper()));
         event.getGenerator().addProvider(event.includeClient(),new TLRBlockState(packOutput,event.getExistingFileHelper()));
 
         TLRBlockTag blockTags = new TLRBlockTag(packOutput, lookupProvider, event.getExistingFileHelper());
         generator.addProvider(event.includeServer(), blockTags);
 
-        event.getGenerator().addProvider(event.includeServer(),
-                new TLRItemTag(packOutput, lookupProvider, blockTags.contentsGetter(),event.getExistingFileHelper()));
+        event.getGenerator().addProvider(event.includeServer(),new TLRItemTag(packOutput,lookupProvider,blockTags.contentsGetter(),
+                event.getExistingFileHelper()));
 
         generator.addProvider(event.includeServer(),new TLRRecipe(packOutput,lookupProvider));
     }

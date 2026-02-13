@@ -31,6 +31,14 @@ public class TLRLanguage extends LanguageProvider {
         this.add("button.thingamajigslongroads.round_rotation","Round ↺");
         this.add("tooltip.thingamajigs.length","Length: %s");
         this.add("tooltip.thingamajigs.paintbrush.pattern.undefined","No Pattern Selected");
+        this.add("thingamajigslongroads.configuration.title","Thingamajigs Long Roads Config");
+        this.add("thingamajigslongroads.configuration.section.thingamajigslongroads.server.toml","Server Config");
+        this.add("thingamajigslongroads.configuration.section.thingamajigslongroads.server.toml.title","Thingamajigs Long Roads Server Config");
+        this.add("config.thingamajigs.max_amount_marking_per_paint","Paintbrush Max Markings Per Action");
+        this.add("title.thingamajigs.options","Options");
+        this.add("title.thingamajigs.options.button","Edit");
+        this.add("config.thingamajigs.max_amount_marking_per_paint.tooltip","The maximum amount of patterns placeable in one action");
+        this.add("title.thingamajigs.options.tooltip","Edit config");
 
         this.addSignType(SignTypeKeys.PlACEHOLDER,"Placeholder For Fun!");
         // asphalt
@@ -51,13 +59,27 @@ public class TLRLanguage extends LanguageProvider {
         this.addBlock(TLRBlocks.SIDEWALK_CRACKED,"Cracked Sidewalk");
         this.addBlock(TLRBlocks.SIDEWALK_BLOCKED,"Blocked Sidewalk");
         this.addBlock(TLRBlocks.SIDEWALK_SECTIONED,"Sectioned Sidewalk");
+
         this.addBlock(TLRBlocks.SIDEWALK_SLAB,"Sidewalk Slab");
         this.addBlock(TLRBlocks.CRACKED_SIDEWALK_SLAB,"Cracked Sidewalk Slab");
         this.addBlock(TLRBlocks.BLOCKED_SIDEWALK_SLAB,"Blocked Sidewalk Slab");
         this.addBlock(TLRBlocks.SECTIONED_SIDEWALK_SLAB,"Sectioned Sidewalk Slab");
+
         this.addBlock(TLRBlocks.SIDEWALK_LAYER,"Sidewalk Layer");
         this.addBlock(TLRBlocks.SIDEWALK_LAYER_LEFT,"Sidewalk Layer Left");
         this.addBlock(TLRBlocks.SIDEWALK_LAYER_RIGHT,"Sidewalk Layer Right");
+
+        this.addBlock(TLRBlocks.BLOCKED_SIDEWALK_LAYER,"Blocked Sidewalk Layer");
+        this.addBlock(TLRBlocks.BLOCKED_SIDEWALK_LAYER_LEFT,"Blocked Sidewalk Layer Left");
+        this.addBlock(TLRBlocks.BLOCKED_SIDEWALK_LAYER_RIGHT,"Blocked Sidewalk Layer Right");
+
+        this.addBlock(TLRBlocks.SECTIONED_SIDEWALK_LAYER,"Sectioned Sidewalk Layer");
+        this.addBlock(TLRBlocks.SECTIONED_SIDEWALK_LAYER_LEFT,"Sectioned Sidewalk Layer Left");
+        this.addBlock(TLRBlocks.SECTIONED_SIDEWALK_LAYER_RIGHT,"Sectioned Sidewalk Layer Right");
+
+        this.addBlock(TLRBlocks.CRACKED_SIDEWALK_LAYER,"Cracked Sidewalk Layer");
+        this.addBlock(TLRBlocks.CRACKED_SIDEWALK_LAYER_LEFT,"Cracked Sidewalk Layer Left");
+        this.addBlock(TLRBlocks.CRACKED_SIDEWALK_LAYER_RIGHT,"Cracked Sidewalk Layer Right");
         // painted asphalt
         this.addBlock(TLRBlocks.DOUBLE_WHITE_ASPHALT,"Double White Asphalt");
         this.addBlock(TLRBlocks.DOUBLE_CORNER_WHITE_ASPHALT,"Double Corner White Asphalt");

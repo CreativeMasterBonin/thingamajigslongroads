@@ -331,6 +331,21 @@ public class TLRRecipe extends RecipeProvider{
                 .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
                         .hasItems(TLRBlocks.SIDEWALK_SLAB.get()))
                 .save(output);
+        layerToLayer(TLRBlocks.BLOCKED_SIDEWALK_LAYER.asItem(),TLRBlocks.SIDEWALK_LAYER.asItem()).save(output);
+        layerToLayer(TLRBlocks.SECTIONED_SIDEWALK_LAYER.asItem(),TLRBlocks.SIDEWALK_LAYER.asItem()).save(output);
+        layerToLayer(TLRBlocks.CRACKED_SIDEWALK_LAYER.asItem(),TLRBlocks.SIDEWALK_LAYER.asItem()).save(output);
+
+        layerToLayer(TLRBlocks.BLOCKED_SIDEWALK_LAYER_LEFT.asItem(),TLRBlocks.SIDEWALK_LAYER_LEFT.asItem()).save(output);
+        layerToLayer(TLRBlocks.SECTIONED_SIDEWALK_LAYER_LEFT.asItem(),TLRBlocks.SIDEWALK_LAYER_LEFT.asItem()).save(output);
+        layerToLayer(TLRBlocks.CRACKED_SIDEWALK_LAYER_LEFT.asItem(),TLRBlocks.SIDEWALK_LAYER_LEFT.asItem()).save(output);
+
+        layerToLayer(TLRBlocks.BLOCKED_SIDEWALK_LAYER_RIGHT.asItem(),TLRBlocks.SIDEWALK_LAYER_RIGHT.asItem()).save(output);
+        layerToLayer(TLRBlocks.SECTIONED_SIDEWALK_LAYER_RIGHT.asItem(),TLRBlocks.SIDEWALK_LAYER_RIGHT.asItem()).save(output);
+        layerToLayer(TLRBlocks.CRACKED_SIDEWALK_LAYER_RIGHT.asItem(),TLRBlocks.SIDEWALK_LAYER_RIGHT.asItem()).save(output);
+    }
+
+    public static RecipeBuilder layerToLayer(Item itemOutput,Item itemInput){
+        return stonecutterAny(itemOutput,Ingredient.of(itemInput),itemOutput,4).unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance.hasItems(itemInput));
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt) {

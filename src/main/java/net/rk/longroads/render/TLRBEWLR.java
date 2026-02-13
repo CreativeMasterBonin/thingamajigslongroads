@@ -80,12 +80,12 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
                                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                                    roadSignModel.getMain().yRot = -1.4f;
+                                    roadSignModel.getMain().yRot = 1.4f;
                                     roadSignModel.getMain().x = -1.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
                                 else{
-                                    roadSignModel.getMain().yRot = 1.4f;
+                                    roadSignModel.getMain().yRot = -1.4f;
                                     roadSignModel.getMain().x = 14.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
@@ -299,16 +299,16 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                        roadSignModel.getMain().yRot = -1.4f;
+                        roadSignModel.getMain().yRot = 1.4f;
                         roadSignModel.getMain().x = -1.0f;
                         roadSignModel.getMain().y = 7.0f;
                     }
                     else{
-                        roadSignModel.getMain().yRot = 1.4f;
+                        roadSignModel.getMain().yRot = -1.4f;
                         roadSignModel.getMain().x = 14.0f;
                         roadSignModel.getMain().y = 8.0f;
                     }
@@ -404,12 +404,12 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
                                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                                    roadSignModel.getMain().yRot = -1.4f;
+                                    roadSignModel.getMain().yRot = 1.4f;
                                     roadSignModel.getMain().x = -1.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
                                 else{
-                                    roadSignModel.getMain().yRot = 1.4f;
+                                    roadSignModel.getMain().yRot = -1.4f;
                                     roadSignModel.getMain().x = 14.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
@@ -623,16 +623,16 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                        roadSignModel.getMain().yRot = -1.4f;
+                        roadSignModel.getMain().yRot = 1.4f;
                         roadSignModel.getMain().x = -1.0f;
                         roadSignModel.getMain().y = 7.0f;
                     }
                     else{
-                        roadSignModel.getMain().yRot = 1.4f;
+                        roadSignModel.getMain().yRot = -1.4f;
                         roadSignModel.getMain().x = 14.0f;
                         roadSignModel.getMain().y = 8.0f;
                     }
@@ -728,12 +728,12 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
                                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                                    roadSignModel.getMain().yRot = -1.4f;
+                                    roadSignModel.getMain().yRot = 1.4f;
                                     roadSignModel.getMain().x = -1.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
                                 else{
-                                    roadSignModel.getMain().yRot = 1.4f;
+                                    roadSignModel.getMain().yRot = -1.4f;
                                     roadSignModel.getMain().x = 14.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
@@ -947,16 +947,16 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                        roadSignModel.getMain().yRot = -1.4f;
+                        roadSignModel.getMain().yRot = 1.4f;
                         roadSignModel.getMain().x = -1.0f;
                         roadSignModel.getMain().y = 7.0f;
                     }
                     else{
-                        roadSignModel.getMain().yRot = 1.4f;
+                        roadSignModel.getMain().yRot = -1.4f;
                         roadSignModel.getMain().x = 14.0f;
                         roadSignModel.getMain().y = 8.0f;
                     }
@@ -1052,12 +1052,12 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
                                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                                    roadSignModel.getMain().yRot = -1.4f;
+                                    roadSignModel.getMain().yRot = 1.4f;
                                     roadSignModel.getMain().x = -1.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
                                 else{
-                                    roadSignModel.getMain().yRot = 1.4f;
+                                    roadSignModel.getMain().yRot = -1.4f;
                                     roadSignModel.getMain().x = 14.0f;
                                     roadSignModel.getMain().y = 8.0f;
                                 }
@@ -1271,16 +1271,16 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                        roadSignModel.getMain().yRot = -1.4f;
+                        roadSignModel.getMain().yRot = 1.4f;
                         roadSignModel.getMain().x = -1.0f;
                         roadSignModel.getMain().y = 7.0f;
                     }
                     else{
-                        roadSignModel.getMain().yRot = 1.4f;
+                        roadSignModel.getMain().yRot = -1.4f;
                         roadSignModel.getMain().x = 14.0f;
                         roadSignModel.getMain().y = 8.0f;
                     }

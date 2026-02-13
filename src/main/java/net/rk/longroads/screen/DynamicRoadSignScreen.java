@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
@@ -82,6 +83,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         guiGraphics.blit(BG_TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         RenderSystem.disableBlend();
 
+        // the list bg in front of the screen bg
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
@@ -94,6 +96,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         guiGraphics.pose().translate(this.leftPos + 132,this.topPos + 20, 0);
         guiGraphics.pose().scale(64,36,0);
 
+        // this is the part that renders the sign preview (very-hacky, but works)
         if(ResourceLocation.tryParse(this.menu.be.signTexture) == null){
             BeaconRenderer.renderBeaconBeam(guiGraphics.pose(), guiGraphics.bufferSource(),ResourceLocation.parse(this.menu.be.fallbackSignTexture),
                     0,2,0,0,1, TColors.getWhite(),1,0);
@@ -104,6 +107,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         }
         guiGraphics.pose().popPose();
 
+        // scrollbar on top of the list bg
         int k = (int)(41.0F * this.scrollOffs);
         ResourceLocation resourcelocation = ResourceLocation.withDefaultNamespace("container/loom/scroller");
         guiGraphics.blitSprite(resourcelocation, this.leftPos + scrollerStartX, this.topPos + scrollerStartY + k, 12, 15);
@@ -113,6 +117,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         int k2 = this.topPos + listButtonStartY;
         List<SignType> list = this.menu.signTypes;
 
+        // sign type preview 'buttons'
         label64:
         for (int l = 0; l < 4; l++) {
             for (int i1 = 0; i1 < 4; i1++) {
@@ -136,6 +141,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
                     resourcelocation1 = RevertedButton.LASER_SPRITES.get(false,false);
                 }
 
+                // where the current 'button' is displayed
                 guiGraphics.blitSprite(resourcelocation1, x, y, buttonSizeX, buttonSizeY);
                 if(DynamicSignMenu.signTypes != null){
                     ResourceLocation res = ResourceLocation.parse(
@@ -146,21 +152,27 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
                         res = ResourceLocation.parse(Utilities.missingLocation);
                     }
                     //
+                    double delta = Math.sin(0.75 * Math.cos(6.32 * Util.getMillis() / 3800.0 / Math.max((double)l * 0.5, 3.0))) / 2.5;
+                    double deltaY = Math.sin(0.75 * Math.cos(6.28 * Util.getMillis() / 3200.0 / Math.max((double)l * 0.5, 3.0))) / 2.5;
+
                     if(DynamicSignMenu.signTypes.get(k1).signModeltype().equals(Utilities.SignModelTypes.SQUARE.getModelTypeName())){
                         guiGraphics.blit(res, x,y,
-                                0,0,
+                                5.75f,1.75f,
                                 14,14,
                                 32,32);
                     }
                     else if(DynamicSignMenu.signTypes.get(k1).signModeltype().equals(Utilities.SignModelTypes.DOUBLE_SQUARE.getModelTypeName())){
+                        double rangeLarge = Mth.lerp(delta,20,90);
+                        double rangeLargeY = Mth.lerp(deltaY,1,48);
                         guiGraphics.blit(res, x,y,
-                                0,0,
+                                (float)rangeLarge + 2f,(float)rangeLargeY + 16f,
                                 14,14,
                                 128,128);
                     }
                     else if(DynamicSignMenu.signTypes.get(k1).signModeltype().equals(Utilities.SignModelTypes.RECTANGLE.getModelTypeName())){
+                        double rangeRect = Mth.lerp(delta,16,64);
                         guiGraphics.blit(res, x,y,
-                                0,0,
+                                (float)rangeRect,0,
                                 14,14,
                                 128,64);
                     }

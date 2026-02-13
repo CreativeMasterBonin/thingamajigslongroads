@@ -32,6 +32,7 @@ import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.block.custom.BlueRoadMarking;
 import net.rk.longroads.block.custom.WhiteRoadMarking;
 import net.rk.longroads.block.custom.YellowRoadMarking;
+import net.rk.longroads.config.TLRServerConfig;
 import net.rk.longroads.item.TLRDataComponents;
 import net.rk.thingamajigs.xtras.TCalcStuff;
 
@@ -70,7 +71,7 @@ public abstract class AbstractPaintbrush extends Item {
             if(stack.getComponents().has(TLRDataComponents.ROAD_MARKING_PATTERN.get()) && stack.getComponents().has(TLRDataComponents.LENGTH.get())){
                 stack.set(TLRDataComponents.LENGTH.get(),stack.get(TLRDataComponents.LENGTH.get()).intValue() + 1);
 
-                if(stack.get(TLRDataComponents.LENGTH.get()).intValue() > 10){
+                if(stack.get(TLRDataComponents.LENGTH.get()).intValue() > TLRServerConfig.SERVER.maxAmountOfRoadMarkingPerPaint.get().intValue()){
                     stack.set(TLRDataComponents.LENGTH.get(),1);
                 }
 
@@ -156,6 +157,14 @@ public abstract class AbstractPaintbrush extends Item {
             return;
         }
 
+        // check if paintbrush length is higher than the config value, and if so, set it to the config value
+        if(stack.getComponents().has(TLRDataComponents.LENGTH.get())){
+            if(stack.get(TLRDataComponents.LENGTH).intValue() > TLRServerConfig.SERVER.maxAmountOfRoadMarkingPerPaint.get().intValue()){
+                stack.set(TLRDataComponents.LENGTH.get(),TLRServerConfig.SERVER.maxAmountOfRoadMarkingPerPaint.get().intValue());
+                length = stack.get(TLRDataComponents.LENGTH.get()).intValue();
+            }
+        }
+
         // check if on server and player is a serverplayer
         if(!world.isClientSide() && entity instanceof ServerPlayer && !badFlag && length > 1){
             int dirX;
@@ -199,21 +208,19 @@ public abstract class AbstractPaintbrush extends Item {
                         stateToManipulate = world.getBlockState(selectedPos).setValue(BlueRoadMarking.TYPE,marking_type);
                     }
 
-                    Direction _dir = ((entity.getDirection()).getOpposite());
-                    BlockState _bs = stateToManipulate;
+                    Direction entityDirection = entity.getDirection().getOpposite();
 
                     // BLECK! This code needs to be de-ugly-ified!
-                    Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
+                    Property<?> _property = stateToManipulate.getBlock().getStateDefinition().getProperty("facing");
 
                     // change block to face player
-                    if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
-                        world.setBlock(selectedPos, _bs.setValue(_dp, _dir), 3);
+                    if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(entityDirection)) {
+                        world.setBlock(selectedPos,stateToManipulate.setValue(_dp, entityDirection), 3);
                     }
                     else {
-                        _property = _bs.getBlock().getStateDefinition().getProperty("axis");
-                        if (_property instanceof EnumProperty _ap && _ap.getPossibleValues().contains(_dir.getAxis()))
-                            world.setBlock(selectedPos, _bs.setValue(_ap, _dir.getAxis()), 3);
-
+                        _property = stateToManipulate.getBlock().getStateDefinition().getProperty("axis");
+                        if (_property instanceof EnumProperty _ap && _ap.getPossibleValues().contains(entityDirection.getAxis()))
+                            world.setBlock(selectedPos,stateToManipulate.setValue(_ap, entityDirection.getAxis()), 3);
                     }
                 }
             }

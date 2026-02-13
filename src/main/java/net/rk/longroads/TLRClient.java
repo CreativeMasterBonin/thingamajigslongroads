@@ -1,15 +1,11 @@
 package net.rk.longroads;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -20,6 +16,8 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.entity.blockentity.TLRBlockEntity;
@@ -32,7 +30,6 @@ import net.rk.longroads.render.DynamicRoadSignBERenderer;
 import net.rk.longroads.render.TLRBEWLR;
 import net.rk.longroads.screen.DynamicRoadSignScreen;
 import net.rk.longroads.util.Utilities;
-import org.jetbrains.annotations.Nullable;
 
 @Mod(value = ThingamajigsLongRoads.MODID,dist = Dist.CLIENT)
 public class TLRClient {
@@ -42,6 +39,7 @@ public class TLRClient {
         modEventBus.addListener(this::setupMenuTypes);
         modEventBus.addListener(this::clientExtensions);
         modEventBus.addListener(this::addCreative);
+        modContainer.registerExtensionPoint(IConfigScreenFactory.class,ConfigurationScreen::new);
     }
 
     public void clientSetup(FMLClientSetupEvent event) {
@@ -157,13 +155,27 @@ public class TLRClient {
             event.accept(TLRBlocks.SIDEWALK_BLOCKED.asItem());
             event.accept(TLRBlocks.SIDEWALK_SECTIONED.asItem());
             event.accept(TLRBlocks.SIDEWALK_CRACKED.asItem());
+
             event.accept(TLRBlocks.SIDEWALK_SLAB.asItem());
             event.accept(TLRBlocks.BLOCKED_SIDEWALK_SLAB.asItem());
             event.accept(TLRBlocks.SECTIONED_SIDEWALK_SLAB.asItem());
             event.accept(TLRBlocks.CRACKED_SIDEWALK_SLAB.asItem());
+
             event.accept(TLRBlocks.SIDEWALK_LAYER.asItem());
             event.accept(TLRBlocks.SIDEWALK_LAYER_LEFT.asItem());
             event.accept(TLRBlocks.SIDEWALK_LAYER_RIGHT.asItem());
+
+            event.accept(TLRBlocks.BLOCKED_SIDEWALK_LAYER.asItem());
+            event.accept(TLRBlocks.BLOCKED_SIDEWALK_LAYER_LEFT.asItem());
+            event.accept(TLRBlocks.BLOCKED_SIDEWALK_LAYER_RIGHT.asItem());
+
+            event.accept(TLRBlocks.SECTIONED_SIDEWALK_LAYER.asItem());
+            event.accept(TLRBlocks.SECTIONED_SIDEWALK_LAYER_LEFT.asItem());
+            event.accept(TLRBlocks.SECTIONED_SIDEWALK_LAYER_RIGHT.asItem());
+
+            event.accept(TLRBlocks.CRACKED_SIDEWALK_LAYER.asItem());
+            event.accept(TLRBlocks.CRACKED_SIDEWALK_LAYER_LEFT.asItem());
+            event.accept(TLRBlocks.CRACKED_SIDEWALK_LAYER_RIGHT.asItem());
         }
     }
 }

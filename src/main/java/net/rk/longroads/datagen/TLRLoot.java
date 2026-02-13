@@ -339,9 +339,6 @@ public class TLRLoot extends VanillaBlockLoot{
 
 
 
-
-
-
         this.add(TLRBlocks.WHITE_ROAD_MARKING.get(),noDrop());
         this.add(TLRBlocks.YELLOW_ROAD_MARKING.get(),noDrop());
         this.add(TLRBlocks.BLUE_ROAD_MARKING.get(),noDrop());
@@ -352,6 +349,15 @@ public class TLRLoot extends VanillaBlockLoot{
         this.add(TLRBlocks.SIDEWALK_LAYER.get(),noDrop());
         this.add(TLRBlocks.SIDEWALK_LAYER_LEFT.get(),noDrop());
         this.add(TLRBlocks.SIDEWALK_LAYER_RIGHT.get(),noDrop());
+        this.add(TLRBlocks.CRACKED_SIDEWALK_LAYER.get(),noDrop());
+        this.add(TLRBlocks.CRACKED_SIDEWALK_LAYER_LEFT.get(),noDrop());
+        this.add(TLRBlocks.CRACKED_SIDEWALK_LAYER_RIGHT.get(),noDrop());
+        this.add(TLRBlocks.BLOCKED_SIDEWALK_LAYER.get(),noDrop());
+        this.add(TLRBlocks.BLOCKED_SIDEWALK_LAYER_LEFT.get(),noDrop());
+        this.add(TLRBlocks.BLOCKED_SIDEWALK_LAYER_RIGHT.get(),noDrop());
+        this.add(TLRBlocks.SECTIONED_SIDEWALK_LAYER.get(),noDrop());
+        this.add(TLRBlocks.SECTIONED_SIDEWALK_LAYER_LEFT.get(),noDrop());
+        this.add(TLRBlocks.SECTIONED_SIDEWALK_LAYER_RIGHT.get(),noDrop());
     }
 
     @Override

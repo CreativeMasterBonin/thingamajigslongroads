@@ -388,7 +388,7 @@ public class WhitePaintBrush extends AbstractPaintbrush{
         super.appendHoverText(stack,context,tooltipComponents,tooltipFlag);
         if(stack.has(TLRDataComponents.ROAD_MARKING_PATTERN.get())) {
             typeToName(stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue());
-            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type",stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue(),WhiteRoadMarking.MAX_TYPES));
+            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type",stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue(),WhiteRoadMarking.MAX_TYPES - 1));
             tooltipComponents.add(Component.translatable(currentName).withStyle(ChatFormatting.GREEN));
         }
     }

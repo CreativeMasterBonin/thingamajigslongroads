@@ -19,6 +19,7 @@ import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.entity.blockentity.custom.DynamicRoadSignBE;
 import net.rk.longroads.entity.blockentity.model.DynamicSignModel;
 
+@Deprecated(forRemoval = true,since = "1.0.0")
 public class TLRBEWithoutLR extends BlockEntityWithoutLevelRenderer{
     private DynamicSignModel dynamicSignModel;
     private DynamicRoadSignBE dynamicRoadSignBE;

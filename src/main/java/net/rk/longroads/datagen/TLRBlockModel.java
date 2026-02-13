@@ -29,17 +29,36 @@ public class TLRBlockModel extends BlockModelProvider {
                 layeredBlockNoLayer(TLRBlocks.ASPHALT_OK,"ok_asphalt",i);
                 layeredBlockNoLayer(TLRBlocks.ASPHALT_MEDIOCRE,"mediocre_asphalt",i);
                 layeredBlockNoLayer(TLRBlocks.ASPHALT_OLD,"old_asphalt",i);
+
                 layeredBlockNoLayer(TLRBlocks.SIDEWALK,"sidewalk_new",i);
                 layeredBlockNoLayerLeft(TLRBlocks.SIDEWALK,"sidewalk_new",i);
                 layeredBlockNoLayerRight(TLRBlocks.SIDEWALK,"sidewalk_new",i);
+
+                layeredBlockNoLayer(TLRBlocks.SIDEWALK_BLOCKED,"sidewalk_block",i);
+                layeredBlockNoLayerLeft(TLRBlocks.SIDEWALK_BLOCKED,"sidewalk_block",i);
+                layeredBlockNoLayerRight(TLRBlocks.SIDEWALK_BLOCKED,"sidewalk_block",i);
+
+                layeredBlockNoLayer(TLRBlocks.SIDEWALK_SECTIONED,"sidewalk_new_sectioned",i);
+                layeredBlockNoLayerLeft(TLRBlocks.SIDEWALK_SECTIONED,"sidewalk_new_sectioned",i);
+                layeredBlockNoLayerRight(TLRBlocks.SIDEWALK_SECTIONED,"sidewalk_new_sectioned",i);
+
+                layeredBlockNoLayer(TLRBlocks.SIDEWALK_CRACKED,"sidewalk_cracked",i);
+                layeredBlockNoLayerLeft(TLRBlocks.SIDEWALK_CRACKED,"sidewalk_cracked",i);
+                layeredBlockNoLayerRight(TLRBlocks.SIDEWALK_CRACKED,"sidewalk_cracked",i);
             }
         }
         layeredLeftFull(TLRBlocks.SIDEWALK,"sidewalk_new");
         layeredRightFull(TLRBlocks.SIDEWALK,"sidewalk_new");
+        layeredLeftFull(TLRBlocks.SIDEWALK_BLOCKED,"sidewalk_block");
+        layeredRightFull(TLRBlocks.SIDEWALK_BLOCKED,"sidewalk_block");
+        layeredLeftFull(TLRBlocks.SIDEWALK_SECTIONED,"sidewalk_new_sectioned");
+        layeredRightFull(TLRBlocks.SIDEWALK_SECTIONED,"sidewalk_new_sectioned");
+        layeredLeftFull(TLRBlocks.SIDEWALK_CRACKED,"sidewalk_cracked");
+        layeredRightFull(TLRBlocks.SIDEWALK_CRACKED,"sidewalk_cracked");
     }
 
     public BlockModelBuilder layeredRightFull(DeferredBlock<Block> block,String texture){
-        String name = block.getRegisteredName().replaceAll("thingamajigslongroads.block.","");
+        String name = block.getId().toString();
         name = name + "_layer_right_full";
         String layerLocationBase = "thingamajigslongroads:bases/base_layer_right_full";
         return withExistingParent(name,
@@ -51,7 +70,7 @@ public class TLRBlockModel extends BlockModelProvider {
     }
 
     public BlockModelBuilder layeredLeftFull(DeferredBlock<Block> block,String texture){
-        String name = block.getRegisteredName().replaceAll("thingamajigslongroads.block.","");
+        String name = block.getId().toString();
         name = name + "_layer_left_full";
         String layerLocationBase = "thingamajigslongroads:bases/base_layer_left_full";
         return withExistingParent(name,
@@ -63,7 +82,7 @@ public class TLRBlockModel extends BlockModelProvider {
     }
 
     public BlockModelBuilder layeredBlockNoLayerLeft(DeferredBlock<Block> block,String texture,int layer){
-        String name = block.getRegisteredName().replaceAll("thingamajigslongroads.block.","");
+        String name = block.getId().toString();
         name = name + "_layer_left_" + layer;
         String layerLocationBase = "thingamajigslongroads:bases/base_layer_left_";
         return withExistingParent(name,
@@ -75,7 +94,7 @@ public class TLRBlockModel extends BlockModelProvider {
     }
 
     public BlockModelBuilder layeredBlockNoLayerRight(DeferredBlock<Block> block,String texture,int layer){
-        String name = block.getRegisteredName().replaceAll("thingamajigslongroads.block.","");
+        String name = block.getId().toString();
         name = name + "_layer_right_" + layer;
         String layerLocationBase = "thingamajigslongroads:bases/base_layer_right_";
         return withExistingParent(name,
@@ -87,7 +106,7 @@ public class TLRBlockModel extends BlockModelProvider {
     }
 
     public BlockModelBuilder layeredBlockNoLayer(DeferredBlock<Block> block,String texture,int layer){
-        String name = block.getRegisteredName().replaceAll("thingamajigslongroads.block.","");
+        String name = block.getId().toString();
         name = name + "_layer_" + layer;
         String layerLocationBase = "thingamajigslongroads:bases/base_layer_";
         return withExistingParent(name,

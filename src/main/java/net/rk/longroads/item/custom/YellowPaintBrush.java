@@ -317,7 +317,7 @@ public class YellowPaintBrush extends AbstractPaintbrush{
         super.appendHoverText(stack,context,tooltipComponents,tooltipFlag);
         if(stack.has(TLRDataComponents.ROAD_MARKING_PATTERN.get())) {
             typeToName(stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue());
-            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type", stack.getComponents().get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue(),YellowRoadMarking.getMaxTypes()));
+            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type", stack.getComponents().get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue(),YellowRoadMarking.getMaxTypes() - 1));
             tooltipComponents.add(Component.translatable(currentName).withStyle(ChatFormatting.GREEN));
         }
     }

@@ -564,6 +564,26 @@ public class TLRBlocks {
     public static final DeferredBlock<Block> SIDEWALK_LAYER_RIGHT = register("sidewalk_layer_right",
             () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
 
+    public static final DeferredBlock<Block> BLOCKED_SIDEWALK_LAYER = register("blocked_sidewalk_layer",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> BLOCKED_SIDEWALK_LAYER_LEFT = register("blocked_sidewalk_layer_left",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> BLOCKED_SIDEWALK_LAYER_RIGHT = register("blocked_sidewalk_layer_right",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<Block> SECTIONED_SIDEWALK_LAYER = register("sectioned_sidewalk_layer",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> SECTIONED_SIDEWALK_LAYER_LEFT = register("sectioned_sidewalk_layer_left",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> SECTIONED_SIDEWALK_LAYER_RIGHT = register("sectioned_sidewalk_layer_right",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<Block> CRACKED_SIDEWALK_LAYER = register("cracked_sidewalk_layer",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> CRACKED_SIDEWALK_LAYER_LEFT = register("cracked_sidewalk_layer_left",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> CRACKED_SIDEWALK_LAYER_RIGHT = register("cracked_sidewalk_layer_right",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
 
 
 

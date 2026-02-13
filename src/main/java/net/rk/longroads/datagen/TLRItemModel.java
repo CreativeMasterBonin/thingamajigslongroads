@@ -43,6 +43,15 @@ public class TLRItemModel extends ItemModelProvider{
         this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SIDEWALK_LAYER.get());
         this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SIDEWALK_LAYER_LEFT.get());
         this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SIDEWALK_LAYER_RIGHT.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.CRACKED_SIDEWALK_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.CRACKED_SIDEWALK_LAYER_LEFT.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.CRACKED_SIDEWALK_LAYER_RIGHT.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SECTIONED_SIDEWALK_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SECTIONED_SIDEWALK_LAYER_LEFT.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.SECTIONED_SIDEWALK_LAYER_RIGHT.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.BLOCKED_SIDEWALK_LAYER.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.BLOCKED_SIDEWALK_LAYER_LEFT.get());
+        this.rotatableLayeredBlockItemModelFromMod(TLRBlocks.BLOCKED_SIDEWALK_LAYER_RIGHT.get());
     }
 
     // builtin anything isn't recognized with any namespace

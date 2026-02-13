@@ -264,7 +264,7 @@ public class BluePaintBrush extends AbstractPaintbrush{
         super.appendHoverText(stack,context,tooltipComponents,tooltipFlag);
         if(stack.has(road_marking)) {
             typeToName(stack.get(road_marking).intValue());
-            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type",stack.get(road_marking).intValue(),BlueRoadMarking.getMaxTypes()));
+            tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type",stack.get(road_marking).intValue(),BlueRoadMarking.getMaxTypes() - 1));
             tooltipComponents.add(Component.translatable(currentname).withStyle(ChatFormatting.GREEN));
         }
     }
