@@ -7,7 +7,6 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.rk.longroads.ThingamajigsLongRoads;
 import net.rk.longroads.block.TLRBlocks;
-import net.rk.longroads.entity.blockentity.TLRBlockEntity;
 import net.rk.longroads.item.custom.*;
 
 @SuppressWarnings("deprecated")

@@ -10,14 +10,14 @@ import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.rk.longroads.block.TLRBlocks;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.rk.longroads.entity.blockentity.custom.DynamicRoadSignBE;
 import net.rk.longroads.entity.blockentity.model.DynamicDoubleTallSignModel;
 import net.rk.longroads.entity.blockentity.model.DynamicRectangleSignModel;
@@ -26,6 +26,7 @@ import net.rk.longroads.item.TLRItems;
 import net.rk.thingamajigs.block.TBlocks;
 import org.joml.Vector3f;
 
+@OnlyIn(Dist.CLIENT)
 public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
     private DynamicRoadSignBE dynamicRoadSignBE;
     private DynamicRoadSignBE dynamicRoadSignBEDoubleTall;

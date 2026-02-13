@@ -1,38 +1,10 @@
 package net.rk.longroads.util;
 
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.neoforged.fml.loading.FMLPaths;
-import net.rk.longroads.registries.TLRRegistries;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-import javax.annotation.Nullable;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.attribute.FileAttribute;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Utilities{
     /* formatting:
@@ -159,28 +131,5 @@ public class Utilities{
         public int getId() {
             return id;
         }
-    }
-
-    // render generic entity
-    public static void renderNonLivingEntity(GuiGraphics guiGraphics, float x, float y, float scale, Vector3f translate, Quaternionf pose, @Nullable Quaternionf cameraOrientation, Entity entity){
-        guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate((double)x, (double)y, 50.0);
-        guiGraphics.pose().scale(scale, scale, -scale);
-        guiGraphics.pose().translate(translate.x, translate.y, translate.z);
-        guiGraphics.pose().mulPose(pose);
-        Lighting.setupForEntityInInventory();
-        EntityRenderDispatcher entityrenderdispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-        if (cameraOrientation != null) {
-            entityrenderdispatcher.overrideCameraOrientation(cameraOrientation.conjugate(new Quaternionf()).rotateY(3.1415927F));
-        }
-
-        entityrenderdispatcher.setRenderShadow(false);
-        RenderSystem.runAsFancy(() -> {
-            entityrenderdispatcher.render(entity, 0.0, 0.0, 0.0, 0.0F, 1.0F, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880);
-        });
-        guiGraphics.flush();
-        entityrenderdispatcher.setRenderShadow(true);
-        guiGraphics.pose().popPose();
-        Lighting.setupFor3DItems();
     }
 }

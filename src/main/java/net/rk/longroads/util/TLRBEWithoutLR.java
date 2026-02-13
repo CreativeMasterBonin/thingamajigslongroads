@@ -15,10 +15,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.entity.blockentity.custom.DynamicRoadSignBE;
 import net.rk.longroads.entity.blockentity.model.DynamicSignModel;
 
+@OnlyIn(Dist.CLIENT)
 @Deprecated(forRemoval = true,since = "1.0.0")
 public class TLRBEWithoutLR extends BlockEntityWithoutLevelRenderer{
     private DynamicSignModel dynamicSignModel;
