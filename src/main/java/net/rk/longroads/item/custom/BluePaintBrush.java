@@ -53,7 +53,7 @@ public class BluePaintBrush extends AbstractPaintbrush{
             case 11: currentname = "Center 'T'";break;
             case 12: currentname = "Long 'T'";break;
             case 13: currentname = "blue marking";break;
-            default: currentname = "undefined";break;
+            default: currentname = "tooltip.thingamajigs.paintbrush.pattern.undefined";break;
         }
     }
 

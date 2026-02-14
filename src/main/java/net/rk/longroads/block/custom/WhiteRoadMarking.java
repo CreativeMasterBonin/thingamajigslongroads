@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class WhiteRoadMarking extends PavementMarking{
     public static final int MIN_TYPES = 0;
-    public static final int MAX_TYPES = 34; // was 28
+    public static final int MAX_TYPES = 40; // was 28
     public static final IntegerProperty TYPE = IntegerProperty.create("type", MIN_TYPES, MAX_TYPES);
     public WhiteRoadMarking(Properties properties) {
         super(properties);
@@ -19,6 +19,11 @@ public class WhiteRoadMarking extends PavementMarking{
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, TYPE);
     }
+
+    public static int getMaxTypes(){
+        return MAX_TYPES;
+    }
+
     public static IntegerProperty getType(){
         return TYPE;
     }

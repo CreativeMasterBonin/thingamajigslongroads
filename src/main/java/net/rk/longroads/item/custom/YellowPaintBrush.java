@@ -43,8 +43,9 @@ public class YellowPaintBrush extends AbstractPaintbrush{
             case 13: currentName = "Square";break;
             case 14: currentName = "Center 'T'";break;
             case 15: currentName = "Long 'T'";break;
-            case 16: currentName = "yellow marking";break;
-            default: currentName = "undefined";break;
+            case 16: currentName = "Right Lane Pass";break;
+            case 17: currentName = "Left Lane Pass";break;
+            default: currentName = "tooltip.thingamajigs.paintbrush.pattern.undefined";break;
         }
     }
 

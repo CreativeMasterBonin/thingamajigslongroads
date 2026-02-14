@@ -40,6 +40,31 @@ public class TLRLanguage extends LanguageProvider {
         this.add("config.thingamajigs.max_amount_marking_per_paint.tooltip","The maximum amount of patterns placeable in one action");
         this.add("title.thingamajigs.options.tooltip","Edit config");
 
+
+
+        this.add("tooltip.thingamajigs.paintbrush.pattern.disabled_symbol","Disabled Symbol");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.ahead","Ahead");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.only","Only");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.parking_p","Parking 'P'");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.stop","Stop");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.school","School");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.shcool","Shcool");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.sidewalk_line","Sidewalk Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.disabled_symbol_alt","Disabled Symbol (Alt)");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.bicycle","Bicycle Symbol");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.short_line","Short Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.short_t","Short 'T'");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.plus","Plus");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.square","Square");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.center_t","Center 'T'");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.long_t","Long 'T'");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.arrow_three_way","Arrow Three-Way");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.uturn_connector","U-Turn/Curved Connect");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.diagonal","Diagonal");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.inverted_n","Inverted N");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.exit_up_arrow","Exit Up Arrow");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.stop_line","Stop Line");
+
         this.addSignType(SignTypeKeys.PlACEHOLDER,"Placeholder For Fun!");
         // asphalt
         this.addBlock(TLRBlocks.ASPHALT,"Asphalt");

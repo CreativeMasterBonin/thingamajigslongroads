@@ -65,6 +65,12 @@ public abstract class AbstractPaintbrush extends Item {
         return itemStack;
     }
 
+    /**
+     * An abstract method that should be used to set currentname to a valid translation key, otherwise should return a 'default' key
+     * @param type The marking ID of the current road pattern
+     */
+    public abstract void typeToName(int type);
+
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access) {
         if(action.equals(ClickAction.SECONDARY)){
@@ -85,11 +91,21 @@ public abstract class AbstractPaintbrush extends Item {
         return false;
     }
 
+    /**
+     * A simple method that takes in a level and position and plays the marking placed sound effect. Can be overwritten to change sound effect.
+     * @param level The level that will play the sound
+     * @param pos The position where the sound will be played
+     */
     public static void placeMarkingSound(Level level, BlockPos pos){
         level.playSound(null,pos,SoundEvents.HONEYCOMB_WAX_ON,
                 SoundSource.BLOCKS,1f, TCalcStuff.nextFloatBetweenInclusive(0.97f,1.0f));
     }
 
+    /**
+     * A simple method that takes in a level and position and plays the marking changed/setup sound effect. Can be overwritten to change sound effect.
+     * @param level The level that will play the sound
+     * @param pos The position where the sound will be played
+     */
     public static void setupMarkingBrush(Level level, BlockPos pos){
         level.playSound(null,pos,SoundEvents.AXE_STRIP,
                 SoundSource.BLOCKS,1f, TCalcStuff.nextFloatBetweenInclusive(0.97f,1.0f));

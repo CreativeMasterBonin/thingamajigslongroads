@@ -35,100 +35,49 @@ public class WhitePaintBrush extends AbstractPaintbrush{
     }
 
     public void typeToName(int type) {
-        switch (type) {
-            case 0:
-                currentName = "Full Cover";
-                break;
-            case 1:
-                currentName = "Thin Corner Dot";
-                break;
-            case 2:
-                currentName = "Center Double Line Turn";
-                break;
-            case 3:
-                currentName = "Center Double Line";
-                break;
-            case 4:
-                currentName = "Center Single Corner";
-                break;
-            case 5:
-                currentName = "Center Single Line";
-                break;
-            case 6:
-                currentName = "Center Dashed Single Line";
-                break;
-            case 7:
-                currentName = "Thick Parking Line";
-                break;
-            case 8:
-                currentName = "Thin Corner";
-                break;
-            case 9:
-                currentName = "Thin Parking Line";
-                break;
-            case 10:
-                currentName = "Left Arrow With Center Line";
-                break;
-            case 11:
-                currentName = "Left Arrow With Center Arrow";
-                break;
-            case 12:
-                currentName = "Left Arrow";
-                break;
-            case 13:
-                currentName = "Right Arrow With Center Line";
-                break;
-            case 14:
-                currentName = "Right Arrow With Center Arrow";
-                break;
-            case 15:
-                currentName = "Right Arrow";
-                break;
-            case 16:
-                currentName = "U-Turn";
-                break;
-            case 17:
-                currentName = "Up Arrow";
-                break;
-            case 18:
-                currentName = "Disabled Symbol";
-                break;
-            case 19:
-                currentName = "Ahead";
-                break;
-            case 20:
-                currentName = "Only";
-                break;
-            case 21:
-                currentName = "Parking 'P'";
-                break;
-            case 22:
-                currentName = "Stop";
-                break;
-            case 23:
-                currentName = "School";
-                break;
-            case 24:
-                currentName = "Shcool";
-                break;
-            case 25:
-                currentName = "Sidewalk Line";
-                break;
-            case 26:
-                currentName = "Disabled Symbol (Alt)";
-                break;
-            case 27:
-                currentName = "Bicycle Symbol";
-                break;
-            case 28: currentName = "Short Line";break;
-            case 29: currentName = "Short 'T'";break;
-            case 30: currentName = "Plus";break;
-            case 31: currentName = "Square";break;
-            case 32: currentName = "Center 'T'";break;
-            case 33: currentName = "Long 'T'";break;
-            case 34: currentName = "white marking";break;
+        switch(type){
+            case 0: currentName = "Full Cover";break;
+            case 1: currentName = "Thin Corner Dot";break;
+            case 2: currentName = "Center Double Line Turn";break;
+            case 3: currentName = "Center Double Line";break;
+            case 4: currentName = "Center Single Corner";break;
+            case 5: currentName = "Center Single Line";break;
+            case 6: currentName = "Center Dashed Single Line";break;
+            case 7: currentName = "Thick Parking Line";break;
+            case 8: currentName = "Thin Corner";break;
+            case 9: currentName = "Thin Parking Line";break;
+            case 10: currentName = "Left Arrow With Center Line";break;
+            case 11: currentName = "Left Arrow With Center Arrow";break;
+            case 12: currentName = "Left Arrow";break;
+            case 13: currentName = "Right Arrow With Center Line";break;
+            case 14: currentName = "Right Arrow With Center Arrow";break;
+            case 15: currentName = "Right Arrow";break;
+            case 16: currentName = "U-Turn";break;
+            case 17: currentName = "Up Arrow";break;
+            case 18: currentName = "tooltip.thingamajigs.paintbrush.pattern.disabled_symbol";break;
+            case 19: currentName = "tooltip.thingamajigs.paintbrush.pattern.ahead";break;
+            case 20: currentName = "tooltip.thingamajigs.paintbrush.pattern.only";break;
+            case 21: currentName = "tooltip.thingamajigs.paintbrush.pattern.parking_p";break;
+            case 22: currentName = "tooltip.thingamajigs.paintbrush.pattern.stop";break;
+            case 23: currentName = "tooltip.thingamajigs.paintbrush.pattern.school";break;
+            case 24: currentName = "tooltip.thingamajigs.paintbrush.pattern.shcool";break;
+            case 25: currentName = "tooltip.thingamajigs.paintbrush.pattern.sidewalk_line";break;
+            case 26: currentName = "tooltip.thingamajigs.paintbrush.pattern.disabled_symbol_alt";break;
+            case 27: currentName = "tooltip.thingamajigs.paintbrush.pattern.bicycle";break;
+            case 28: currentName = "tooltip.thingamajigs.paintbrush.pattern.short_line";break;
+            case 29: currentName = "tooltip.thingamajigs.paintbrush.pattern.short_t";break;
+            case 30: currentName = "tooltip.thingamajigs.paintbrush.pattern.plus";break;
+            case 31: currentName = "tooltip.thingamajigs.paintbrush.pattern.square";break;
+            case 32: currentName = "tooltip.thingamajigs.paintbrush.pattern.center_t";break;
+            case 33: currentName = "tooltip.thingamajigs.paintbrush.pattern.long_t";break;
+            case 34: currentName = "tooltip.thingamajigs.paintbrush.pattern.arrow_three_way";break;
+            case 35: currentName = "tooltip.thingamajigs.paintbrush.pattern.uturn_connector";break;
+            case 36: currentName = "tooltip.thingamajigs.paintbrush.pattern.diagonal";break;
+            case 37: currentName = "tooltip.thingamajigs.paintbrush.pattern.inverted_n";break;
+            case 38: currentName = "tooltip.thingamajigs.paintbrush.pattern.exit_up_arrow";break;
+            case 39: currentName = "tooltip.thingamajigs.paintbrush.pattern.stop_line";break;
             default:
-                currentName = "undefined";
+                currentName = "tooltip.thingamajigs.paintbrush.pattern.undefined";
                 break;
         }
     }
@@ -377,7 +326,7 @@ public class WhitePaintBrush extends AbstractPaintbrush{
         }
         if(stack.getComponents().has(TLRDataComponents.ROAD_MARKING_PATTERN.get())){
             stack.set(TLRDataComponents.ROAD_MARKING_PATTERN.get(),stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue() + 1);
-            if(stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue() >= WhiteRoadMarking.MAX_TYPES){
+            if(stack.get(TLRDataComponents.ROAD_MARKING_PATTERN.get()).intValue() >= WhiteRoadMarking.getMaxTypes()){
                 stack.set(TLRDataComponents.ROAD_MARKING_PATTERN.get(),0);
             }
         }
