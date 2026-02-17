@@ -70,6 +70,12 @@ public class TLRBlocks {
             () -> new BlueRoadMarking(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
     public static final DeferredBlock<Block> YELLOW_ROAD_MARKING = registerBlockWithoutItem("yellow_road_marking",
             () -> new YellowRoadMarking(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final DeferredBlock<Block> PURPLE_ROAD_MARKING = registerBlockWithoutItem("purple_road_marking",
+            () -> new PurpleRoadMarking(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final DeferredBlock<Block> MULTICOLORED_ROAD_MARKING = registerBlockWithoutItem("multicolored_road_marking",
+            () -> new MulticoloredRoadMarking(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+
+
 
     public static final DeferredBlock<Block> DOUBLE_WHITE_ASPHALT = register("double_white_asphalt",
             () -> new MarkedAsphalt(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).requiresCorrectToolForDrops()));

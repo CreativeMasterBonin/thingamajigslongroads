@@ -29,6 +29,8 @@ public class TLRItemModel extends ItemModelProvider{
         this.customSimpleTool(TLRItems.WHITE_PAINT_BRUSH.asItem(),"white_paint_brush");
         this.customSimpleTool(TLRItems.YELLOW_PAINT_BRUSH.asItem(),"yellow_paint_brush");
         this.customSimpleTool(TLRItems.BLUE_PAINT_BRUSH.asItem(),"blue_paint_brush");
+        this.customSimpleTool(TLRItems.PURPLE_PAINT_BRUSH.asItem(),"purple_paint_brush");
+        this.customSimpleTool(TLRItems.MULTICOLOR_PAINT_BRUSH.asItem(),"multicolor_paint_brush");
         this.customSimpleTool(TLRItems.SCRAPE_TOOL.asItem(),"scrape_tool");
         this.customSimpleItem(TLRItems.GREEN_ROADWAY_SIGN_ITEM.asItem(),"green_roadway_sign");
         this.customSimpleItem(TLRItems.RED_ROADWAY_SIGN_ITEM.asItem(),"red_roadway_sign");

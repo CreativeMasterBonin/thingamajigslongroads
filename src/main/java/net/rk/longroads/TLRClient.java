@@ -86,6 +86,8 @@ public class TLRClient {
             event.accept(TLRItems.WHITE_PAINT_BRUSH);
             event.accept(TLRItems.YELLOW_PAINT_BRUSH);
             event.accept(TLRItems.BLUE_PAINT_BRUSH);
+            event.accept(TLRItems.PURPLE_PAINT_BRUSH);
+            event.accept(TLRItems.MULTICOLOR_PAINT_BRUSH);
             event.accept(TLRItems.SCRAPE_TOOL);
             //
             event.accept(TLRItems.DYNAMIC_ROAD_SIGN);

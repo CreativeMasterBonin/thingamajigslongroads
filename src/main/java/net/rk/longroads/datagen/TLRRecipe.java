@@ -59,6 +59,20 @@ public class TLRRecipe extends RecipeProvider{
                 .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
                 .save(output);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.PURPLE_PAINT_BRUSH,1)
+                .requires(TLRItems.PAINT_BRUSH)
+                .requires(Items.PURPLE_DYE)
+                .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
+                .save(output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.MULTICOLOR_PAINT_BRUSH,1)
+                .requires(TLRItems.PAINT_BRUSH)
+                .requires(Items.RED_DYE)
+                .requires(Items.YELLOW_DYE)
+                .requires(Items.BLUE_DYE)
+                .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
+                .save(output);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,TLRItems.SCRAPE_TOOL,1)
                 .define('t',TItems.THINGAMAJIG)
                 .define('f',Items.FLINT)

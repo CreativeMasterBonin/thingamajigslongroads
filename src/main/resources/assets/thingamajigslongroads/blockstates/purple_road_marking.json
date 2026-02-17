@@ -1,0 +1,419 @@
+{
+  "variants": {
+    "facing=east,type=0": {
+      "model": "thingamajigslongroads:block/all_purple",
+      "y": 90
+    },
+    "facing=north,type=0": {
+      "model": "thingamajigslongroads:block/all_purple"
+    },
+    "facing=south,type=0": {
+      "model": "thingamajigslongroads:block/all_purple",
+      "y": 180
+    },
+    "facing=west,type=0": {
+      "model": "thingamajigslongroads:block/all_purple",
+      "y": 270
+    },
+
+    "facing=east,type=1": {
+      "model": "thingamajigslongroads:block/diagonal_left_purple",
+      "y": 90
+    },
+    "facing=north,type=1": {
+      "model": "thingamajigslongroads:block/diagonal_left_purple"
+    },
+    "facing=south,type=1": {
+      "model": "thingamajigslongroads:block/diagonal_left_purple",
+      "y": 180
+    },
+    "facing=west,type=1": {
+      "model": "thingamajigslongroads:block/diagonal_left_purple",
+      "y": 270
+    },
+
+    "facing=east,type=2": {
+      "model": "thingamajigslongroads:block/dot_purple_corner",
+      "y": 90
+    },
+    "facing=north,type=2": {
+      "model": "thingamajigslongroads:block/dot_purple_corner"
+    },
+    "facing=south,type=2": {
+      "model": "thingamajigslongroads:block/dot_purple_corner",
+      "y": 180
+    },
+    "facing=west,type=2": {
+      "model": "thingamajigslongroads:block/dot_purple_corner",
+      "y": 270
+    },
+
+    "facing=east,type=3": {
+      "model": "thingamajigslongroads:block/double_purple_line_corner",
+      "y": 90
+    },
+    "facing=north,type=3": {
+      "model": "thingamajigslongroads:block/double_purple_line_corner"
+    },
+    "facing=south,type=3": {
+      "model": "thingamajigslongroads:block/double_purple_line_corner",
+      "y": 180
+    },
+    "facing=west,type=3": {
+      "model": "thingamajigslongroads:block/double_purple_line_corner",
+      "y": 270
+    },
+
+    "facing=east,type=4": {
+      "model": "thingamajigslongroads:block/double_purple",
+      "y": 90
+    },
+    "facing=north,type=4": {
+      "model": "thingamajigslongroads:block/double_purple"
+    },
+    "facing=south,type=4": {
+      "model": "thingamajigslongroads:block/double_purple",
+      "y": 180
+    },
+    "facing=west,type=4": {
+      "model": "thingamajigslongroads:block/double_purple",
+      "y": 270
+    },
+
+    "facing=east,type=5": {
+      "model": "thingamajigslongroads:block/e_purple",
+      "y": 90
+    },
+    "facing=north,type=5": {
+      "model": "thingamajigslongroads:block/e_purple"
+    },
+    "facing=south,type=5": {
+      "model": "thingamajigslongroads:block/e_purple",
+      "y": 180
+    },
+    "facing=west,type=5": {
+      "model": "thingamajigslongroads:block/e_purple",
+      "y": 270
+    },
+
+    "facing=east,type=6": {
+      "model": "thingamajigslongroads:block/e2_purple",
+      "y": 90
+    },
+    "facing=north,type=6": {
+      "model": "thingamajigslongroads:block/e2_purple"
+    },
+    "facing=south,type=6": {
+      "model": "thingamajigslongroads:block/e2_purple",
+      "y": 180
+    },
+    "facing=west,type=6": {
+      "model": "thingamajigslongroads:block/e2_purple",
+      "y": 270
+    },
+
+    "facing=east,type=7": {
+      "model": "thingamajigslongroads:block/inverted_n_purple",
+      "y": 90
+    },
+    "facing=north,type=7": {
+      "model": "thingamajigslongroads:block/inverted_n_purple"
+    },
+    "facing=south,type=7": {
+      "model": "thingamajigslongroads:block/inverted_n_purple",
+      "y": 180
+    },
+    "facing=west,type=7": {
+      "model": "thingamajigslongroads:block/inverted_n_purple",
+      "y": 270
+    },
+
+    "facing=east,type=8": {
+      "model": "thingamajigslongroads:block/inverted_triangle_purple",
+      "y": 90
+    },
+    "facing=north,type=8": {
+      "model": "thingamajigslongroads:block/inverted_triangle_purple"
+    },
+    "facing=south,type=8": {
+      "model": "thingamajigslongroads:block/inverted_triangle_purple",
+      "y": 180
+    },
+    "facing=west,type=8": {
+      "model": "thingamajigslongroads:block/inverted_triangle_purple",
+      "y": 270
+    },
+
+    "facing=east,type=9": {
+      "model": "thingamajigslongroads:block/l_purple",
+      "y": 90
+    },
+    "facing=north,type=9": {
+      "model": "thingamajigslongroads:block/l_purple"
+    },
+    "facing=south,type=9": {
+      "model": "thingamajigslongroads:block/l_purple",
+      "y": 180
+    },
+    "facing=west,type=9": {
+      "model": "thingamajigslongroads:block/l_purple",
+      "y": 270
+    },
+
+    "facing=east,type=10": {
+      "model": "thingamajigslongroads:block/left_lane_pass_purple",
+      "y": 90
+    },
+    "facing=north,type=10": {
+      "model": "thingamajigslongroads:block/left_lane_pass_purple"
+    },
+    "facing=south,type=10": {
+      "model": "thingamajigslongroads:block/left_lane_pass_purple",
+      "y": 180
+    },
+    "facing=west,type=10": {
+      "model": "thingamajigslongroads:block/left_lane_pass_purple",
+      "y": 270
+    },
+
+    "facing=east,type=11": {
+      "model": "thingamajigslongroads:block/plus_purple",
+      "y": 90
+    },
+    "facing=north,type=11": {
+      "model": "thingamajigslongroads:block/plus_purple"
+    },
+    "facing=south,type=11": {
+      "model": "thingamajigslongroads:block/plus_purple",
+      "y": 180
+    },
+    "facing=west,type=11": {
+      "model": "thingamajigslongroads:block/plus_purple",
+      "y": 270
+    },
+
+    "facing=east,type=12": {
+      "model": "thingamajigslongroads:block/purple_corner_wide",
+      "y": 90
+    },
+    "facing=north,type=12": {
+      "model": "thingamajigslongroads:block/purple_corner_wide"
+    },
+    "facing=south,type=12": {
+      "model": "thingamajigslongroads:block/purple_corner_wide",
+      "y": 180
+    },
+    "facing=west,type=12": {
+      "model": "thingamajigslongroads:block/purple_corner_wide",
+      "y": 270
+    },
+
+    "facing=east,type=13": {
+      "model": "thingamajigslongroads:block/purple_parking_line",
+      "y": 90
+    },
+    "facing=north,type=13": {
+      "model": "thingamajigslongroads:block/purple_parking_line"
+    },
+    "facing=south,type=13": {
+      "model": "thingamajigslongroads:block/purple_parking_line",
+      "y": 180
+    },
+    "facing=west,type=13": {
+      "model": "thingamajigslongroads:block/purple_parking_line",
+      "y": 270
+    },
+
+    "facing=east,type=14": {
+      "model": "thingamajigslongroads:block/right_lane_pass_purple",
+      "y": 90
+    },
+    "facing=north,type=14": {
+      "model": "thingamajigslongroads:block/right_lane_pass_purple"
+    },
+    "facing=south,type=14": {
+      "model": "thingamajigslongroads:block/right_lane_pass_purple",
+      "y": 180
+    },
+    "facing=west,type=14": {
+      "model": "thingamajigslongroads:block/right_lane_pass_purple",
+      "y": 270
+    },
+
+    "facing=east,type=15": {
+      "model": "thingamajigslongroads:block/sidewalk_purple",
+      "y": 90
+    },
+    "facing=north,type=15": {
+      "model": "thingamajigslongroads:block/sidewalk_purple"
+    },
+    "facing=south,type=15": {
+      "model": "thingamajigslongroads:block/sidewalk_purple",
+      "y": 180
+    },
+    "facing=west,type=15": {
+      "model": "thingamajigslongroads:block/sidewalk_purple",
+      "y": 270
+    },
+
+    "facing=east,type=16": {
+      "model": "thingamajigslongroads:block/single_purple",
+      "y": 90
+    },
+    "facing=north,type=16": {
+      "model": "thingamajigslongroads:block/single_purple"
+    },
+    "facing=south,type=16": {
+      "model": "thingamajigslongroads:block/single_purple",
+      "y": 180
+    },
+    "facing=west,type=16": {
+      "model": "thingamajigslongroads:block/single_purple",
+      "y": 270
+    },
+
+    "facing=east,type=17": {
+      "model": "thingamajigslongroads:block/small_single_purple",
+      "y": 90
+    },
+    "facing=north,type=17": {
+      "model": "thingamajigslongroads:block/small_single_purple"
+    },
+    "facing=south,type=17": {
+      "model": "thingamajigslongroads:block/small_single_purple",
+      "y": 180
+    },
+    "facing=west,type=17": {
+      "model": "thingamajigslongroads:block/small_single_purple",
+      "y": 270
+    },
+
+    "facing=east,type=18": {
+      "model": "thingamajigslongroads:block/square_purple",
+      "y": 90
+    },
+    "facing=north,type=18": {
+      "model": "thingamajigslongroads:block/square_purple"
+    },
+    "facing=south,type=18": {
+      "model": "thingamajigslongroads:block/square_purple",
+      "y": 180
+    },
+    "facing=west,type=18": {
+      "model": "thingamajigslongroads:block/square_purple",
+      "y": 270
+    },
+
+    "facing=east,type=19": {
+      "model": "thingamajigslongroads:block/stop_line_purple",
+      "y": 90
+    },
+    "facing=north,type=19": {
+      "model": "thingamajigslongroads:block/stop_line_purple"
+    },
+    "facing=south,type=19": {
+      "model": "thingamajigslongroads:block/stop_line_purple",
+      "y": 180
+    },
+    "facing=west,type=19": {
+      "model": "thingamajigslongroads:block/stop_line_purple",
+      "y": 270
+    },
+
+    "facing=east,type=20": {
+      "model": "thingamajigslongroads:block/t_purple",
+      "y": 90
+    },
+    "facing=north,type=20": {
+      "model": "thingamajigslongroads:block/t_purple"
+    },
+    "facing=south,type=20": {
+      "model": "thingamajigslongroads:block/t_purple",
+      "y": 180
+    },
+    "facing=west,type=20": {
+      "model": "thingamajigslongroads:block/t_purple",
+      "y": 270
+    },
+
+    "facing=east,type=21": {
+      "model": "thingamajigslongroads:block/t2_purple",
+      "y": 90
+    },
+    "facing=north,type=21": {
+      "model": "thingamajigslongroads:block/t2_purple"
+    },
+    "facing=south,type=21": {
+      "model": "thingamajigslongroads:block/t2_purple",
+      "y": 180
+    },
+    "facing=west,type=21": {
+      "model": "thingamajigslongroads:block/t2_purple",
+      "y": 270
+    },
+
+    "facing=east,type=22": {
+      "model": "thingamajigslongroads:block/thick_purple_pl",
+      "y": 90
+    },
+    "facing=north,type=22": {
+      "model": "thingamajigslongroads:block/thick_purple_pl"
+    },
+    "facing=south,type=22": {
+      "model": "thingamajigslongroads:block/thick_purple_pl",
+      "y": 180
+    },
+    "facing=west,type=22": {
+      "model": "thingamajigslongroads:block/thick_purple_pl",
+      "y": 270
+    },
+
+    "facing=east,type=23": {
+      "model": "thingamajigslongroads:block/triangle_purple",
+      "y": 90
+    },
+    "facing=north,type=23": {
+      "model": "thingamajigslongroads:block/triangle_purple"
+    },
+    "facing=south,type=23": {
+      "model": "thingamajigslongroads:block/triangle_purple",
+      "y": 180
+    },
+    "facing=west,type=23": {
+      "model": "thingamajigslongroads:block/triangle_purple",
+      "y": 270
+    },
+
+    "facing=east,type=24": {
+      "model": "thingamajigslongroads:block/u_turn_connect_purple",
+      "y": 90
+    },
+    "facing=north,type=24": {
+      "model": "thingamajigslongroads:block/u_turn_connect_purple"
+    },
+    "facing=south,type=24": {
+      "model": "thingamajigslongroads:block/u_turn_connect_purple",
+      "y": 180
+    },
+    "facing=west,type=24": {
+      "model": "thingamajigslongroads:block/u_turn_connect_purple",
+      "y": 270
+    },
+
+    "facing=east,type=25": {
+      "model": "thingamajigslongroads:block/all_purple",
+      "y": 90
+    },
+    "facing=north,type=25": {
+      "model": "thingamajigslongroads:block/all_purple"
+    },
+    "facing=south,type=25": {
+      "model": "thingamajigslongroads:block/all_purple",
+      "y": 180
+    },
+    "facing=west,type=25": {
+      "model": "thingamajigslongroads:block/all_purple",
+      "y": 270
+    }
+  }
+}

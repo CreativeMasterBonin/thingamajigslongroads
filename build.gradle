@@ -138,7 +138,7 @@ dependencies {
     implementation "curse.maven:blueys-thingamajigs-404380:7594990"
 
     implementation("maven.modrinth:b1ZV3DIJ:TbNOQ4qu") // athena 4.0.0 neo
-
+    runtimeOnly("maven.modrinth:nvQzSEkH:yd8FKCmx") // jade base neo
 
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

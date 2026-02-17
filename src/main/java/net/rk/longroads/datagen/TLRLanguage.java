@@ -41,7 +41,38 @@ public class TLRLanguage extends LanguageProvider {
         this.add("title.thingamajigs.options.tooltip","Edit config");
 
 
-
+        // multicolored road markings
+        this.add("tooltip.thingamajigs.paintbrush.pattern.multicolored.plaza_purple","Full Purple With Plaza");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.multicolored.toll_purple","Full Purple With Toll");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.multicolored.stop_ahead_purple","Full Purple With Stop");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.multicolored.ahead_purple","Full Purple With Ahead");
+        // road markings
+        this.add("tooltip.thingamajigs.paintbrush.pattern.plaza","Plaza");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.toll","Toll");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.inverted_triangle","Inverted Triangle");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.triangle","Triangle");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.left_lane_pass","Left Lane Pass");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.right_lane_pass","Right Lane Pass");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.disabled_symbol_parking_alt","Disabled Parking Alt");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.disabled_symbol_parking","Disabled Parking");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.full_cover","Full Cover");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.thin_corner_dot","Thin Corner Dot");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.center_double_line_turn","Center Double Line Turn");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.center_double_line","Center Double Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.center_single_corner","Center Single Corner");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.center_single_line","Center Single Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.center_dashed_single_line","Center Dashed Single Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.thick_parking_line","Thick Parking Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.thin_corner","Thin Corner");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.thin_parking_line","Thin Parking Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.left_arrow_center_line","Left Arrow With Center Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.left_arrow_center_arrow","Left Arrow With Center Arrow");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.left_arrow","Left Arrow");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.right_arrow_center_line","Right Arrow With Center Line");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.right_arrow_center_arrow","Right Arrow With Center Arrow");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.right_arrow","Right Arrow");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.u_turn","U-Turn");
+        this.add("tooltip.thingamajigs.paintbrush.pattern.up_arrow","Up Arrow");
         this.add("tooltip.thingamajigs.paintbrush.pattern.disabled_symbol","Disabled Symbol");
         this.add("tooltip.thingamajigs.paintbrush.pattern.ahead","Ahead");
         this.add("tooltip.thingamajigs.paintbrush.pattern.only","Only");
@@ -64,6 +95,8 @@ public class TLRLanguage extends LanguageProvider {
         this.add("tooltip.thingamajigs.paintbrush.pattern.inverted_n","Inverted N");
         this.add("tooltip.thingamajigs.paintbrush.pattern.exit_up_arrow","Exit Up Arrow");
         this.add("tooltip.thingamajigs.paintbrush.pattern.stop_line","Stop Line");
+
+        this.add("item.thingamajigs.multicolor_paint_brush.desc","Places multicolored road marking patterns");
 
         this.addSignType(SignTypeKeys.PlACEHOLDER,"Placeholder For Fun!");
         // asphalt
@@ -161,6 +194,8 @@ public class TLRLanguage extends LanguageProvider {
         this.addItem(TLRItems.WHITE_PAINT_BRUSH,"White Paintbrush");
         this.addItem(TLRItems.YELLOW_PAINT_BRUSH,"Yellow Paintbrush");
         this.addItem(TLRItems.BLUE_PAINT_BRUSH,"Blue Paintbrush");
+        this.addItem(TLRItems.PURPLE_PAINT_BRUSH,"Purple Paintbrush");
+        this.addItem(TLRItems.MULTICOLOR_PAINT_BRUSH,"Multicolor Paintbrush");
         // green roadway sign
         this.addItem(TLRItems.GREEN_ROADWAY_SIGN_ITEM,"Green Roadway Sign");
         // green hanging sign
@@ -175,6 +210,8 @@ public class TLRLanguage extends LanguageProvider {
         this.addBlock(TLRBlocks.WHITE_ROAD_MARKING,"White Road Marking");
         this.addBlock(TLRBlocks.YELLOW_ROAD_MARKING,"Yellow Road Marking");
         this.addBlock(TLRBlocks.BLUE_ROAD_MARKING,"Blue Road Marking");
+        this.addBlock(TLRBlocks.PURPLE_ROAD_MARKING,"Purple Road Marking");
+        this.addBlock(TLRBlocks.MULTICOLORED_ROAD_MARKING,"Multicolored Road Marking");
         //
     }
 }

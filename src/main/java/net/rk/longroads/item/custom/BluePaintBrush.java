@@ -9,7 +9,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -24,36 +23,28 @@ import net.rk.longroads.item.TLRDataComponents;
 import java.util.List;
 
 public class BluePaintBrush extends AbstractPaintbrush{
-    public String currentname = "tooltip.thingamajigs.paintbrush.pattern.undefined";
-
     private final DataComponentType<Integer> road_marking = TLRDataComponents.ROAD_MARKING_PATTERN.get();
 
     public BluePaintBrush(Properties p) {
-        super(p.durability(3000).stacksTo(1));
-    }
-
-    @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BRUSH;
+        super(p);
     }
 
     public void typeToName(int type){
         switch(type){
-            case 0: currentname = "Thin Corner";break;
-            case 1: currentname = "Thin Parking Line";break;
-            case 2: currentname = "Thick Parking Line";break;
-            case 3: currentname = "Sidewalk Line";break;
-            case 4: currentname = "Thin Corner Dot";break;
-            case 5: currentname = "Disabled Parking";break;
-            case 6: currentname = "Disabled Parking (Alt)";break;
-            case 7: currentname = "Short Line";break;
-            case 8: currentname = "Short 'T'";break;
-            case 9: currentname = "Plus";break;
-            case 10: currentname = "Square";break;
-            case 11: currentname = "Center 'T'";break;
-            case 12: currentname = "Long 'T'";break;
-            case 13: currentname = "blue marking";break;
-            default: currentname = "tooltip.thingamajigs.paintbrush.pattern.undefined";break;
+            case 0: currentName = "tooltip.thingamajigs.paintbrush.pattern.thin_corner";break;
+            case 1: currentName = "tooltip.thingamajigs.paintbrush.pattern.thin_parking_line";break;
+            case 2: currentName = "tooltip.thingamajigs.paintbrush.pattern.thick_parking_line";break;
+            case 3: currentName = "tooltip.thingamajigs.paintbrush.pattern.sidewalk_line";break;
+            case 4: currentName = "tooltip.thingamajigs.paintbrush.pattern.thin_corner_dot";break;
+            case 5: currentName = "tooltip.thingamajigs.paintbrush.pattern.disabled_symbol_parking";break;
+            case 6: currentName = "tooltip.thingamajigs.paintbrush.pattern.disabled_symbol_parking_alt";break;
+            case 7: currentName = "tooltip.thingamajigs.paintbrush.pattern.short_line";break;
+            case 8: currentName = "tooltip.thingamajigs.paintbrush.pattern.short_t";break;
+            case 9: currentName = "tooltip.thingamajigs.paintbrush.pattern.plus";break;
+            case 10: currentName = "tooltip.thingamajigs.paintbrush.pattern.square";break;
+            case 11: currentName = "tooltip.thingamajigs.paintbrush.pattern.center_t";break;
+            case 12: currentName = "tooltip.thingamajigs.paintbrush.pattern.long_t";break;
+            default: currentName = "tooltip.thingamajigs.paintbrush.pattern.undefined";break;
         }
     }
 
@@ -265,7 +256,7 @@ public class BluePaintBrush extends AbstractPaintbrush{
         if(stack.has(road_marking)) {
             typeToName(stack.get(road_marking).intValue());
             tooltipComponents.add(Component.translatable("item.paint_brush.data.pattern_type",stack.get(road_marking).intValue(),BlueRoadMarking.getMaxTypes() - 1));
-            tooltipComponents.add(Component.translatable(currentname).withStyle(ChatFormatting.GREEN));
+            tooltipComponents.add(Component.translatable(currentName).withStyle(ChatFormatting.GREEN));
         }
     }
 }

@@ -342,6 +342,8 @@ public class TLRLoot extends VanillaBlockLoot{
         this.add(TLRBlocks.WHITE_ROAD_MARKING.get(),noDrop());
         this.add(TLRBlocks.YELLOW_ROAD_MARKING.get(),noDrop());
         this.add(TLRBlocks.BLUE_ROAD_MARKING.get(),noDrop());
+        this.add(TLRBlocks.PURPLE_ROAD_MARKING.get(),noDrop());
+        this.add(TLRBlocks.MULTICOLORED_ROAD_MARKING.get(),noDrop());
         this.add(TLRBlocks.ASPHALT_LAYER.get(),noDrop());
         this.add(TLRBlocks.OK_ASPHALT_LAYER.get(),noDrop());
         this.add(TLRBlocks.MEDIOCRE_ASPHALT_LAYER.get(),noDrop());

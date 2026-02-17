@@ -18,10 +18,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.rk.longroads.ThingamajigsLongRoads;
 import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.block.custom.*;
+import net.rk.longroads.datagen.TLRTag;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @SuppressWarnings("deprecated")
 public class ScrapeTool extends Item{
@@ -41,7 +44,13 @@ public class ScrapeTool extends Item{
         Level lvl = ctx.getLevel();
         BlockPos bp = ctx.getClickedPos();
 
-        if(blk instanceof WhiteRoadMarking || blk instanceof YellowRoadMarking || blk instanceof BlueRoadMarking){
+        // if an addon (or this mod) adds a PavementMarking and doesn't tag it properly, warn the developer and player of this issue
+        if(blk instanceof PavementMarking && !bs.is(TLRTag.ROAD_MARKING)){
+            String name = "Block: " + blk.getDescriptionId();
+            Logger.getAnonymousLogger().info(name + " is a PavementMarking and should be tagged as thingamajigslongroads:road_marking but is not");
+        }
+
+        if(bs.is(TLRTag.ROAD_MARKING)){
             for(int i = 0; i < 17; ++i) {
                 Vec3 vec3 = Vec3.atCenterOf(bp).add(0.0D, (double)0.75F, 0.0D);
                 lvl.addParticle(new BlockParticleOption(ParticleTypes.BLOCK,bs), vec3.x, vec3.y, vec3.z, 0.0D, 0.0D, 0.0D);

@@ -34,6 +34,16 @@ public class TLRItems{
     public static final DeferredItem<Item> SCRAPE_TOOL = ITEMS.register("scrape_tool",
             () -> new ScrapeTool(new Item.Properties()));
 
+    public static final DeferredItem<Item> PURPLE_PAINT_BRUSH = ITEMS.register("purple_paint_brush",
+            () -> new PurplePaintBrush(new Item.Properties()
+                    .component(TLRDataComponents.ROAD_MARKING_PATTERN,0)
+                    .component(TLRDataComponents.LENGTH,1)));
+
+    public static final DeferredItem<Item> MULTICOLOR_PAINT_BRUSH = ITEMS.register("multicolor_paint_brush",
+            () -> new MulticolorPaintBrush(new Item.Properties()
+                    .component(TLRDataComponents.ROAD_MARKING_PATTERN,0)
+                    .component(TLRDataComponents.LENGTH,1)));
+
 
     // road signs
     public static final DeferredItem<Item> GREEN_ROADWAY_SIGN_ITEM = ITEMS.register("green_roadway_sign",

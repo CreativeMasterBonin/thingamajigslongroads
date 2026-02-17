@@ -17,6 +17,7 @@ public class TLRTag {
     public static final TagKey<Block> SIDEWALK_BLOCKS = thingamajigsLRBlockTag("sidewalk");
     public static final TagKey<Block> SIDEWALK_SLABS_BLOCKS = thingamajigsLRBlockTag("sidewalk_slabs");
     public static final TagKey<Block> HARD_LAYERED_BLOCKS = thingamajigsLRBlockTag("hard_layered_blocks");
+    public static final TagKey<Block> ROAD_MARKING = thingamajigsLRBlockTag("road_marking");
 
     public static final TagKey<Item> ASPHALT_ITEMS = thingamajigsLRItemTag("asphalt");
     public static final TagKey<Item> ASPHALT_SLABS_ITEMS = thingamajigsLRItemTag("asphalt_slabs");

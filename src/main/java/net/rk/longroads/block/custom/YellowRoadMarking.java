@@ -8,8 +8,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class YellowRoadMarking extends PavementMarking{
-    public static final int MIN_TYPES = 0;
-    public static final int MAX_TYPES = 18; // was 10
+    public static final int MAX_TYPES = 20; // was 10
     public static final IntegerProperty TYPE = IntegerProperty.create("type", MIN_TYPES, MAX_TYPES);
 
     public YellowRoadMarking(Properties properties) {

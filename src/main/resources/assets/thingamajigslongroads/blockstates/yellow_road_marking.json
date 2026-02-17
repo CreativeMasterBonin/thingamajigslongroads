@@ -275,17 +275,49 @@
     },
 
     "facing=east,type=18": {
-      "model": "thingamajigslongroads:block/road_markings/all_yellow",
+      "model": "thingamajigslongroads:block/road_markings/triangle_yellow",
       "y": 90
     },
     "facing=north,type=18": {
-      "model": "thingamajigslongroads:block/road_markings/all_yellow"
+      "model": "thingamajigslongroads:block/road_markings/triangle_yellow"
     },
     "facing=south,type=18": {
-      "model": "thingamajigslongroads:block/road_markings/all_yellow",
+      "model": "thingamajigslongroads:block/road_markings/triangle_yellow",
       "y": 180
     },
     "facing=west,type=18": {
+      "model": "thingamajigslongroads:block/road_markings/triangle_yellow",
+      "y": 270
+    },
+
+    "facing=east,type=19": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_yellow",
+      "y": 90
+    },
+    "facing=north,type=19": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_yellow"
+    },
+    "facing=south,type=19": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_yellow",
+      "y": 180
+    },
+    "facing=west,type=19": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_yellow",
+      "y": 270
+    },
+
+    "facing=east,type=20": {
+      "model": "thingamajigslongroads:block/road_markings/all_yellow",
+      "y": 90
+    },
+    "facing=north,type=20": {
+      "model": "thingamajigslongroads:block/road_markings/all_yellow"
+    },
+    "facing=south,type=20": {
+      "model": "thingamajigslongroads:block/road_markings/all_yellow",
+      "y": 180
+    },
+    "facing=west,type=20": {
       "model": "thingamajigslongroads:block/road_markings/all_yellow",
       "y": 270
     }

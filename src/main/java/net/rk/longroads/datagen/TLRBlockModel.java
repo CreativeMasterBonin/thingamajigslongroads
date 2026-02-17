@@ -55,6 +55,99 @@ public class TLRBlockModel extends BlockModelProvider {
         layeredRightFull(TLRBlocks.SIDEWALK_SECTIONED,"sidewalk_new_sectioned");
         layeredLeftFull(TLRBlocks.SIDEWALK_CRACKED,"sidewalk_cracked");
         layeredRightFull(TLRBlocks.SIDEWALK_CRACKED,"sidewalk_cracked");
+
+        roadMarking("all_purple","purple/all_purple");
+        roadMarking("diagonal_left_purple","purple/diagonal_left");
+        roadMarking("dot_purple_corner","purple/dot_purple_corner");
+        roadMarking("double_purple_line_corner","purple/double_purple_line_corner");
+        roadMarking("double_purple","purple/double_purple");
+        roadMarking("e_purple","purple/e_purple");
+        roadMarking("e2_purple","purple/e2_purple");
+        roadMarking("inverted_n_purple","purple/inverted_n");
+        roadMarking("inverted_triangle_purple","purple/inverted_triangle");
+        roadMarking("l_purple","purple/l_purple");
+        roadMarking("left_lane_pass_purple","purple/left_lane_pass");
+        roadMarking("plus_purple","purple/plus_purple");
+        roadMarking("purple_corner_wide","purple/purple_corner_wide");
+        roadMarking("purple_parking_line","purple/purple_parking_line");
+        roadMarking("right_lane_pass_purple","purple/right_lane_pass");
+        roadMarking("sidewalk_purple","purple/sidewalk_purple");
+        roadMarking("single_purple","purple/single_purple");
+        roadMarking("small_single_purple","purple/small_single_purple");
+        roadMarking("square_purple","purple/square_purple");
+        roadMarking("stop_line_purple","purple/stop_line");
+        roadMarking("t_purple","purple/t_purple");
+        roadMarking("t2_purple","purple/t2_purple");
+        roadMarking("thick_purple_pl","purple/thick_purple_pl");
+        roadMarking("triangle_purple","purple/triangle");
+        roadMarking("u_turn_connect_purple","purple/u_turn_connect");
+
+        roadMarking("triangle_white","white/triangle",true);
+        roadMarking("inverted_triangle_white","white/inverted_triangle",true);
+        roadMarking("triangle_yellow","yellow/triangle",true);
+        roadMarking("inverted_triangle_yellow","yellow/inverted_triangle",true);
+
+        roadMarkingWord("toll","worded/toll");
+        roadMarkingWord("plaza","worded/plaza");
+        roadMarkingMulticolored("ahead_purple","multi/ahead_purple");
+        roadMarkingMulticolored("plaza_purple","multi/plaza_purple");
+        roadMarkingMulticolored("stop_purple","multi/stop_purple");
+        roadMarkingMulticolored("toll_purple","multi/toll_purple");
+    }
+
+    public BlockModelBuilder roadMarkingMulticolored(String fileName, String texture){
+        String layerLocationBase = "thingamajigslongroads:bases/road_marking";
+        return withExistingParent("block/road_markings/multicolored/" + fileName,
+                layerLocationBase)
+                .texture("all","thingamajigslongroads:block/pavement_markings/" + texture)
+                .texture("particle","#all");
+    }
+
+    public BlockModelBuilder roadMarkingSymbol(String fileName, String texture){
+        String layerLocationBase = "thingamajigslongroads:bases/road_marking";
+        return withExistingParent("block/road_markings/symbols/" + fileName,
+                layerLocationBase)
+                .texture("all","thingamajigslongroads:block/pavement_markings/" + texture)
+                .texture("particle","#all");
+    }
+
+    public BlockModelBuilder roadMarkingWord(String fileName, String texture){
+        String layerLocationBase = "thingamajigslongroads:bases/road_marking";
+        return withExistingParent("block/road_markings/words/" + fileName,
+                layerLocationBase)
+                .texture("all","thingamajigslongroads:block/pavement_markings/" + texture)
+                .texture("particle","#all");
+    }
+
+    /**
+     * A simple model maker method that creates a road marking model with a file name and texture specification
+     * @param fileName The name of the file that the JSON will take
+     * @param texture The road marking texture location that will replace the texture field in the model
+     * @param useBlockLocation Whether to use the block/road_marking location instead of just the root location
+     * @return The model builder that will assemble the model file
+     */
+    public BlockModelBuilder roadMarking(String fileName, String texture, boolean useBlockLocation){
+        String layerLocationBase = "thingamajigslongroads:bases/road_marking";
+        String addon = "block/road_markings/";
+        addon = useBlockLocation ? "block/road_markings/" : "";
+        return withExistingParent(addon + fileName,
+                layerLocationBase)
+                .texture("all","thingamajigslongroads:block/pavement_markings/" + texture)
+                .texture("particle","#all");
+    }
+
+    /**
+     * A simple model maker method that creates a road marking model with a file name and texture specification
+     * @param fileName The name of the file that the JSON will take
+     * @param texture The road marking texture location that will replace the texture field in the model
+     * @return The model builder that will assemble the model file
+     */
+    public BlockModelBuilder roadMarking(String fileName, String texture){
+        String layerLocationBase = "thingamajigslongroads:bases/road_marking";
+        return withExistingParent(fileName,
+                layerLocationBase)
+                .texture("all","thingamajigslongroads:block/pavement_markings/" + texture)
+                .texture("particle","#all");
     }
 
     public BlockModelBuilder layeredRightFull(DeferredBlock<Block> block,String texture){

@@ -1,0 +1,83 @@
+{
+  "variants": {
+    "facing=east,type=0": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/ahead_purple",
+      "y": 90
+    },
+    "facing=north,type=0": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/ahead_purple"
+    },
+    "facing=south,type=0": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/ahead_purple",
+      "y": 180
+    },
+    "facing=west,type=0": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/ahead_purple",
+      "y": 270
+    },
+
+    "facing=east,type=1": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/stop_purple",
+      "y": 90
+    },
+    "facing=north,type=1": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/stop_purple"
+    },
+    "facing=south,type=1": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/stop_purple",
+      "y": 180
+    },
+    "facing=west,type=1": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/stop_purple",
+      "y": 270
+    },
+
+    "facing=east,type=2": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/toll_purple",
+      "y": 90
+    },
+    "facing=north,type=2": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/toll_purple"
+    },
+    "facing=south,type=2": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/toll_purple",
+      "y": 180
+    },
+    "facing=west,type=2": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/toll_purple",
+      "y": 270
+    },
+
+    "facing=east,type=3": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/plaza_purple",
+      "y": 90
+    },
+    "facing=north,type=3": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/plaza_purple"
+    },
+    "facing=south,type=3": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/plaza_purple",
+      "y": 180
+    },
+    "facing=west,type=3": {
+      "model": "thingamajigslongroads:block/road_markings/multicolored/plaza_purple",
+      "y": 270
+    },
+
+    "facing=east,type=4": {
+      "model": "thingamajigslongroads:block/road_markings/all_white",
+      "y": 90
+    },
+    "facing=north,type=4": {
+      "model": "thingamajigslongroads:block/road_markings/all_white"
+    },
+    "facing=south,type=4": {
+      "model": "thingamajigslongroads:block/road_markings/all_white",
+      "y": 180
+    },
+    "facing=west,type=4": {
+      "model": "thingamajigslongroads:block/road_markings/all_white",
+      "y": 270
+    }
+  }
+}

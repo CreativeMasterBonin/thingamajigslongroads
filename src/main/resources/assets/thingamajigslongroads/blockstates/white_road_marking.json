@@ -609,17 +609,81 @@
     },
 
     "facing=east,type=40": {
-      "model": "thingamajigslongroads:block/road_markings/all_white",
+      "model": "thingamajigslongroads:block/road_markings/triangle_white",
       "y": 90
     },
     "facing=north,type=40": {
-      "model": "thingamajigslongroads:block/road_markings/all_white"
+      "model": "thingamajigslongroads:block/road_markings/triangle_white"
     },
     "facing=south,type=40": {
-      "model": "thingamajigslongroads:block/road_markings/all_white",
+      "model": "thingamajigslongroads:block/road_markings/triangle_white",
       "y": 180
     },
     "facing=west,type=40": {
+      "model": "thingamajigslongroads:block/road_markings/triangle_white",
+      "y": 270
+    },
+
+    "facing=east,type=41": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_white",
+      "y": 90
+    },
+    "facing=north,type=41": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_white"
+    },
+    "facing=south,type=41": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_white",
+      "y": 180
+    },
+    "facing=west,type=41": {
+      "model": "thingamajigslongroads:block/road_markings/inverted_triangle_white",
+      "y": 270
+    },
+
+    "facing=east,type=42": {
+      "model": "thingamajigslongroads:block/road_markings/words/toll",
+      "y": 90
+    },
+    "facing=north,type=42": {
+      "model": "thingamajigslongroads:block/road_markings/words/toll"
+    },
+    "facing=south,type=42": {
+      "model": "thingamajigslongroads:block/road_markings/words/toll",
+      "y": 180
+    },
+    "facing=west,type=42": {
+      "model": "thingamajigslongroads:block/road_markings/words/toll",
+      "y": 270
+    },
+
+    "facing=east,type=43": {
+      "model": "thingamajigslongroads:block/road_markings/words/plaza",
+      "y": 90
+    },
+    "facing=north,type=43": {
+      "model": "thingamajigslongroads:block/road_markings/words/plaza"
+    },
+    "facing=south,type=43": {
+      "model": "thingamajigslongroads:block/road_markings/words/plaza",
+      "y": 180
+    },
+    "facing=west,type=43": {
+      "model": "thingamajigslongroads:block/road_markings/words/plaza",
+      "y": 270
+    },
+
+    "facing=east,type=44": {
+      "model": "thingamajigslongroads:block/road_markings/all_white",
+      "y": 90
+    },
+    "facing=north,type=44": {
+      "model": "thingamajigslongroads:block/road_markings/all_white"
+    },
+    "facing=south,type=44": {
+      "model": "thingamajigslongroads:block/road_markings/all_white",
+      "y": 180
+    },
+    "facing=west,type=44": {
       "model": "thingamajigslongroads:block/road_markings/all_white",
       "y": 270
     }

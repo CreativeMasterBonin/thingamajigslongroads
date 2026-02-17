@@ -8,7 +8,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -26,34 +25,29 @@ public class WhitePaintBrush extends AbstractPaintbrush{
     public String currentName = "tooltip.thingamajigs.paintbrush.pattern.undefined";
 
     public WhitePaintBrush(Properties properties) {
-        super(properties.durability(3000).stacksTo(1));
-    }
-
-    @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BRUSH;
+        super(properties);
     }
 
     public void typeToName(int type) {
         switch(type){
-            case 0: currentName = "Full Cover";break;
-            case 1: currentName = "Thin Corner Dot";break;
-            case 2: currentName = "Center Double Line Turn";break;
-            case 3: currentName = "Center Double Line";break;
-            case 4: currentName = "Center Single Corner";break;
-            case 5: currentName = "Center Single Line";break;
-            case 6: currentName = "Center Dashed Single Line";break;
-            case 7: currentName = "Thick Parking Line";break;
-            case 8: currentName = "Thin Corner";break;
-            case 9: currentName = "Thin Parking Line";break;
-            case 10: currentName = "Left Arrow With Center Line";break;
-            case 11: currentName = "Left Arrow With Center Arrow";break;
-            case 12: currentName = "Left Arrow";break;
-            case 13: currentName = "Right Arrow With Center Line";break;
-            case 14: currentName = "Right Arrow With Center Arrow";break;
-            case 15: currentName = "Right Arrow";break;
-            case 16: currentName = "U-Turn";break;
-            case 17: currentName = "Up Arrow";break;
+            case 0: currentName = "tooltip.thingamajigs.paintbrush.pattern.full_cover";break;
+            case 1: currentName = "tooltip.thingamajigs.paintbrush.pattern.thin_corner_dot";break;
+            case 2: currentName = "tooltip.thingamajigs.paintbrush.pattern.center_double_line_turn";break;
+            case 3: currentName = "tooltip.thingamajigs.paintbrush.pattern.center_double_line";break;
+            case 4: currentName = "tooltip.thingamajigs.paintbrush.pattern.center_single_corner";break;
+            case 5: currentName = "tooltip.thingamajigs.paintbrush.pattern.center_single_line";break;
+            case 6: currentName = "tooltip.thingamajigs.paintbrush.pattern.center_dashed_single_line";break;
+            case 7: currentName = "tooltip.thingamajigs.paintbrush.pattern.thick_parking_line";break;
+            case 8: currentName = "tooltip.thingamajigs.paintbrush.pattern.thin_corner";break;
+            case 9: currentName = "tooltip.thingamajigs.paintbrush.pattern.thin_parking_line";break;
+            case 10: currentName = "tooltip.thingamajigs.paintbrush.pattern.left_arrow_center_line";break;
+            case 11: currentName = "tooltip.thingamajigs.paintbrush.pattern.left_arrow_center_arrow";break;
+            case 12: currentName = "tooltip.thingamajigs.paintbrush.pattern.left_arrow";break;
+            case 13: currentName = "tooltip.thingamajigs.paintbrush.pattern.right_arrow_center_line";break;
+            case 14: currentName = "tooltip.thingamajigs.paintbrush.pattern.right_arrow_center_arrow";break;
+            case 15: currentName = "tooltip.thingamajigs.paintbrush.pattern.right_arrow";break;
+            case 16: currentName = "tooltip.thingamajigs.paintbrush.pattern.u_turn";break;
+            case 17: currentName = "tooltip.thingamajigs.paintbrush.pattern.up_arrow";break;
             case 18: currentName = "tooltip.thingamajigs.paintbrush.pattern.disabled_symbol";break;
             case 19: currentName = "tooltip.thingamajigs.paintbrush.pattern.ahead";break;
             case 20: currentName = "tooltip.thingamajigs.paintbrush.pattern.only";break;
@@ -76,6 +70,10 @@ public class WhitePaintBrush extends AbstractPaintbrush{
             case 37: currentName = "tooltip.thingamajigs.paintbrush.pattern.inverted_n";break;
             case 38: currentName = "tooltip.thingamajigs.paintbrush.pattern.exit_up_arrow";break;
             case 39: currentName = "tooltip.thingamajigs.paintbrush.pattern.stop_line";break;
+            case 40: currentName = "tooltip.thingamajigs.paintbrush.pattern.triangle";break;
+            case 41: currentName = "tooltip.thingamajigs.paintbrush.pattern.inverted_triangle";break;
+            case 42: currentName = "tooltip.thingamajigs.paintbrush.pattern.toll";break;
+            case 43: currentName = "tooltip.thingamajigs.paintbrush.pattern.plaza";break;
             default:
                 currentName = "tooltip.thingamajigs.paintbrush.pattern.undefined";
                 break;

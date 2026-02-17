@@ -18,7 +18,7 @@ import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.block.custom.BlueRoadMarking;
 import net.rk.longroads.item.TLRDataComponents;
 
-@Deprecated
+@Deprecated(forRemoval = true,since = "1.0.0")
 public class ChangeTypeBlue{
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type) {
         double variable = 0;

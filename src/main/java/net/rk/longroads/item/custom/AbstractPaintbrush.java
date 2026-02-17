@@ -3,6 +3,7 @@ package net.rk.longroads.item.custom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,6 +19,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -29,9 +31,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.rk.longroads.block.TLRBlocks;
-import net.rk.longroads.block.custom.BlueRoadMarking;
-import net.rk.longroads.block.custom.WhiteRoadMarking;
-import net.rk.longroads.block.custom.YellowRoadMarking;
+import net.rk.longroads.block.custom.*;
 import net.rk.longroads.config.TLRServerConfig;
 import net.rk.longroads.item.TLRDataComponents;
 import net.rk.thingamajigs.xtras.TCalcStuff;
@@ -42,9 +42,16 @@ import java.util.logging.Logger;
 
 public abstract class AbstractPaintbrush extends Item {
     public static int defaultLength = 1;
+    public String currentName = "tooltip.thingamajigs.paintbrush.pattern.undefined";
+    public final DataComponentType<Integer> roadMarkingComponent = TLRDataComponents.ROAD_MARKING_PATTERN.get();
 
     public AbstractPaintbrush(Properties properties) {
-        super(properties);
+        super(properties.durability(3000).stacksTo(1));
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BRUSH;
     }
 
     @Override
@@ -210,18 +217,27 @@ public abstract class AbstractPaintbrush extends Item {
                     painted = true;
 
                     BlockState stateToManipulate = world.getBlockState(selectedPos);
+                    int minimumPavementTypes = PavementMarking.MIN_TYPES;
 
                     if(blocktype == TLRBlocks.WHITE_ROAD_MARKING.get()){
-                        marking_type = Mth.clamp(marking_type,WhiteRoadMarking.MIN_TYPES,WhiteRoadMarking.MAX_TYPES);
+                        marking_type = Mth.clamp(marking_type,minimumPavementTypes,WhiteRoadMarking.MAX_TYPES);
                         stateToManipulate = world.getBlockState(selectedPos).setValue(WhiteRoadMarking.TYPE,marking_type);
                     }
                     else if (blocktype == TLRBlocks.YELLOW_ROAD_MARKING.get()){
-                        marking_type = Mth.clamp(marking_type,YellowRoadMarking.MIN_TYPES,YellowRoadMarking.MAX_TYPES);
+                        marking_type = Mth.clamp(marking_type,minimumPavementTypes,YellowRoadMarking.MAX_TYPES);
                         stateToManipulate = world.getBlockState(selectedPos).setValue(YellowRoadMarking.TYPE,marking_type);
                     }
                     else if (blocktype == TLRBlocks.BLUE_ROAD_MARKING.get()){
-                        marking_type = Mth.clamp(marking_type,BlueRoadMarking.MIN_TYPES,BlueRoadMarking.MAX_TYPES);
+                        marking_type = Mth.clamp(marking_type,minimumPavementTypes,BlueRoadMarking.MAX_TYPES);
                         stateToManipulate = world.getBlockState(selectedPos).setValue(BlueRoadMarking.TYPE,marking_type);
+                    }
+                    else if (blocktype == TLRBlocks.PURPLE_ROAD_MARKING.get()){
+                        marking_type = Mth.clamp(marking_type,minimumPavementTypes,PurpleRoadMarking.MAX_TYPES);
+                        stateToManipulate = world.getBlockState(selectedPos).setValue(PurpleRoadMarking.TYPE,marking_type);
+                    }
+                    else if (blocktype == TLRBlocks.MULTICOLORED_ROAD_MARKING.get()){
+                        marking_type = Mth.clamp(marking_type,minimumPavementTypes,MulticoloredRoadMarking.MAX_TYPES);
+                        stateToManipulate = world.getBlockState(selectedPos).setValue(MulticoloredRoadMarking.TYPE,marking_type);
                     }
 
                     Direction entityDirection = entity.getDirection().getOpposite();
@@ -252,18 +268,27 @@ public abstract class AbstractPaintbrush extends Item {
                 world.setBlock(selectedPosNoClipping, blocktype.defaultBlockState(), 3);
 
                 BlockState stateToManipulate = world.getBlockState(selectedPosNoClipping);
+                int minimumPavementTypes = PavementMarking.MIN_TYPES;
 
                 if(blocktype == TLRBlocks.WHITE_ROAD_MARKING.get()){
-                    marking_type = Mth.clamp(marking_type,WhiteRoadMarking.MIN_TYPES,WhiteRoadMarking.MAX_TYPES);
+                    marking_type = Mth.clamp(marking_type,minimumPavementTypes,WhiteRoadMarking.MAX_TYPES);
                     stateToManipulate = world.getBlockState(selectedPosNoClipping).setValue(WhiteRoadMarking.TYPE,marking_type);
                 }
                 else if (blocktype == TLRBlocks.YELLOW_ROAD_MARKING.get()){
-                    marking_type = Mth.clamp(marking_type,YellowRoadMarking.MIN_TYPES,YellowRoadMarking.MAX_TYPES);
+                    marking_type = Mth.clamp(marking_type,minimumPavementTypes,YellowRoadMarking.MAX_TYPES);
                     stateToManipulate = world.getBlockState(selectedPosNoClipping).setValue(YellowRoadMarking.TYPE,marking_type);
                 }
                 else if (blocktype == TLRBlocks.BLUE_ROAD_MARKING.get()){
-                    marking_type = Mth.clamp(marking_type, BlueRoadMarking.MIN_TYPES,BlueRoadMarking.MAX_TYPES);
+                    marking_type = Mth.clamp(marking_type,minimumPavementTypes,BlueRoadMarking.MAX_TYPES);
                     stateToManipulate = world.getBlockState(selectedPosNoClipping).setValue(BlueRoadMarking.TYPE,marking_type);
+                }
+                else if (blocktype == TLRBlocks.PURPLE_ROAD_MARKING.get()){
+                    marking_type = Mth.clamp(marking_type,minimumPavementTypes,PurpleRoadMarking.MAX_TYPES);
+                    stateToManipulate = world.getBlockState(selectedPosNoClipping).setValue(PurpleRoadMarking.TYPE,marking_type);
+                }
+                else if (blocktype == TLRBlocks.MULTICOLORED_ROAD_MARKING.get()){
+                    marking_type = Mth.clamp(marking_type,minimumPavementTypes,MulticoloredRoadMarking.MAX_TYPES);
+                    stateToManipulate = world.getBlockState(selectedPosNoClipping).setValue(MulticoloredRoadMarking.TYPE,marking_type);
                 }
 
                 Direction _dir = ((entity.getDirection()).getOpposite());

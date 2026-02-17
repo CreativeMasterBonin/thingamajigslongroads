@@ -18,7 +18,7 @@ import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.block.custom.WhiteRoadMarking;
 import net.rk.longroads.item.TLRDataComponents;
 
-@Deprecated
+@Deprecated(forRemoval = true,since = "1.0.0")
 public class ChangeTypeWhite{
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type, int length) {
         double variable = 0;

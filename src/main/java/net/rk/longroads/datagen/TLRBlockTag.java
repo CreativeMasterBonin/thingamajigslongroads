@@ -29,6 +29,14 @@ public class TLRBlockTag extends BlockTagsProvider{
                 .add(TLRBlocks.VERTICAL_REDSTONE_ROAD_SIGN.get())
         ;
 
+        this.tag(TLRTag.ROAD_MARKING)
+                .add(TLRBlocks.WHITE_ROAD_MARKING.get())
+                .add(TLRBlocks.YELLOW_ROAD_MARKING.get())
+                .add(TLRBlocks.BLUE_ROAD_MARKING.get())
+                .add(TLRBlocks.PURPLE_ROAD_MARKING.get())
+                .add(TLRBlocks.MULTICOLORED_ROAD_MARKING.get())
+        ;
+
         this.tag(TLRTag.SUPPORTS_ROAD_HANGING_SIGNS)
                 .addTag(BlockTags.FENCES)
                 .addTag(BlockTags.WALLS)
@@ -106,6 +114,7 @@ public class TLRBlockTag extends BlockTagsProvider{
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addTag(TLRTag.ROAD_MARKING)
                 .addTag(TLRTag.ROAD_SIGNS)
                 .add(TLRBlocks.VERTICAL_REDSTONE_SIDEWALK.get())
                 .addTag(TLRTag.ASPHALT_BLOCKS)
@@ -161,6 +170,22 @@ public class TLRBlockTag extends BlockTagsProvider{
                 .add(TLRBlocks.GREEN_WALL_HANGING_SIGN.get())
         ;
 
+        this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(TLRTag.ROAD_MARKING)
+        ;
+
+        this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .addTag(TLRTag.ROAD_MARKING)
+        ;
+
+        this.tag(BlockTags.MINEABLE_WITH_HOE)
+                .addTag(TLRTag.ROAD_MARKING)
+        ;
+
+        this.tag(BlockTags.REPLACEABLE)
+                .addTag(TLRTag.ROAD_MARKING)
+        ;
+
         this.tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED)
                 .add(TLRBlocks.VERTICAL_REDSTONE_SIDEWALK.get())
                 .add(TLRBlocks.VERTICAL_REDSTONE_ROAD_SIGN.get())
@@ -169,11 +194,13 @@ public class TLRBlockTag extends BlockTagsProvider{
         this.tag(BlockTags.DRAGON_TRANSPARENT)
                 .add(TLRBlocks.VERTICAL_REDSTONE_SIDEWALK.get())
                 .addTag(TLRTag.ROAD_SIGNS)
+                .addTag(TLRTag.ROAD_MARKING)
         ;
 
         this.tag(BlockTags.WITHER_IMMUNE)
                 .add(TLRBlocks.VERTICAL_REDSTONE_SIDEWALK.get())
                 .addTag(TLRTag.ROAD_SIGNS)
+                .addTag(TLRTag.ROAD_MARKING)
         ;
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
