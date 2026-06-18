@@ -12,9 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.ticks.TickPriority;
-import net.rk.thingamajigs.block.TBlocks;
-import net.rk.thingamajigs.block.custom.VerticalPoleRedstone;
-import net.rk.thingamajigs.datagen.TTag;
+import net.rk.longroads.datagen.TLRTag;
 import org.jetbrains.annotations.Nullable;
 
 public class DynamicVerticalRedstoneSignBlock extends DynamicRoadSignBlock{
@@ -56,9 +54,9 @@ public class DynamicVerticalRedstoneSignBlock extends DynamicRoadSignBlock{
 
     public void neighborChangedOld(BlockState bs, Level lvl, BlockPos bp) {
         if (!lvl.isClientSide) {
-            boolean allverticalredstoneblocks = lvl.getBlockState(bp.below()).is(TTag.VERTICAL_REDSTONE_BLOCKS);
-            boolean allrrbells = lvl.getBlockState(bp.below()).is(TTag.RAILROAD_CROSSING_BELLS);
-            boolean allrrbellsabove = lvl.getBlockState(bp.above()).is(TTag.RAILROAD_CROSSING_BELLS);
+            boolean allverticalredstoneblocks = lvl.getBlockState(bp.below()).is(TLRTag.VERTICAL_REDSTONE_BLOCKS);
+            boolean allrrbells = lvl.getBlockState(bp.below()).is(TLRTag.RAILROAD_CROSSING_BELLS);
+            boolean allrrbellsabove = lvl.getBlockState(bp.above()).is(TLRTag.RAILROAD_CROSSING_BELLS);
             if (allrrbellsabove) {
                 if (allverticalredstoneblocks) {
                     if (lvl.getBlockState(bp.below()).getValue(POWERED)) {
@@ -73,7 +71,7 @@ public class DynamicVerticalRedstoneSignBlock extends DynamicRoadSignBlock{
                 return;
             }
 
-            boolean cant4 = lvl.getBlockState(bp.above()).is(TTag.RR_CANTILEVERS);
+            boolean cant4 = lvl.getBlockState(bp.above()).is(TLRTag.RR_CANTILEVERS);
             if (cant4) {
                 if (allverticalredstoneblocks) {
                     if (lvl.getBlockState(bp.below()).getValue(POWERED)) {
@@ -81,7 +79,7 @@ public class DynamicVerticalRedstoneSignBlock extends DynamicRoadSignBlock{
                     } else if (!(Boolean)lvl.getBlockState(bp.below()).getValue(POWERED)) {
                         lvl.setBlock(bp, bs.setValue(POWERED, false), 3);
                     }
-                } else if (lvl.getBlockState(bp.below()).is((Block) TBlocks.CROSSWALK_BUTTON.get())) {
+                } else if (lvl.getBlockState(bp.below()).is(TLRTag.CROSSWALK_BUTTONS)) {
                     if (lvl.getBlockState(bp.below()).getValue(POWERED)) {
                         lvl.setBlock(bp, bs.setValue(POWERED, true), 3);
                     } else {

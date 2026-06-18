@@ -34,7 +34,7 @@ import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.block.custom.*;
 import net.rk.longroads.config.TLRServerConfig;
 import net.rk.longroads.item.TLRDataComponents;
-import net.rk.thingamajigs.xtras.TCalcStuff;
+import net.rk.longroads.util.LongRoadsCalcs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +56,7 @@ public abstract class AbstractPaintbrush extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("tooltip.thingamajigs.paintbrush").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.long_roads.paintbrush").withStyle(ChatFormatting.GRAY));
         int value = defaultLength;
         if(stack.getComponents().has(TLRDataComponents.LENGTH.get())){
             value = stack.getComponents().get(TLRDataComponents.LENGTH.get()).intValue();
@@ -88,7 +88,7 @@ public abstract class AbstractPaintbrush extends Item {
                     stack.set(TLRDataComponents.LENGTH.get(),1);
                 }
 
-                player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_OFF,0.75f, TCalcStuff.nextFloatBetweenInclusive(0.95f,1.0f));
+                player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_OFF,0.75f, LongRoadsCalcs.nextFloatBetweenInclusive(0.95f,1.0f));
                 return true;
             }
             else{
@@ -105,7 +105,7 @@ public abstract class AbstractPaintbrush extends Item {
      */
     public static void placeMarkingSound(Level level, BlockPos pos){
         level.playSound(null,pos,SoundEvents.HONEYCOMB_WAX_ON,
-                SoundSource.BLOCKS,1f, TCalcStuff.nextFloatBetweenInclusive(0.97f,1.0f));
+                SoundSource.BLOCKS,1f, LongRoadsCalcs.nextFloatBetweenInclusive(0.97f,1.0f));
     }
 
     /**
@@ -115,7 +115,7 @@ public abstract class AbstractPaintbrush extends Item {
      */
     public static void setupMarkingBrush(Level level, BlockPos pos){
         level.playSound(null,pos,SoundEvents.AXE_STRIP,
-                SoundSource.BLOCKS,1f, TCalcStuff.nextFloatBetweenInclusive(0.97f,1.0f));
+                SoundSource.BLOCKS,1f, LongRoadsCalcs.nextFloatBetweenInclusive(0.97f,1.0f));
     }
 
     // https://github.com/Tutorials-By-Kaupenjoe/NeoForge-Tutorial-1.21.X/blob/main/src/main/java/net/kaupenjoe/tutorialmod/item/custom/HammerItem.java

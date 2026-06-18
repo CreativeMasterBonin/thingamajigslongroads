@@ -135,14 +135,10 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     runtimeOnly "mezz.jei:jei-1.21-neoforge:19.5.3.67"
     // 173 was 404380:5611582
-    implementation "curse.maven:blueys-thingamajigs-404380:7594990"
+    //implementation "curse.maven:blueys-thingamajigs-404380:7594990"
 
     implementation("maven.modrinth:b1ZV3DIJ:TbNOQ4qu") // athena 4.0.0 neo
     runtimeOnly("maven.modrinth:nvQzSEkH:yd8FKCmx") // jade base neo
-
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

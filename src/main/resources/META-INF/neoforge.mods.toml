@@ -29,10 +29,3 @@ type = "required"
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
-
-[[dependencies."${mod_id}"]]
-modId = "thingamajigs"
-type = "required"
-versionRange = "[1.7.3,)"
-ordering = "NONE"
-side = "BOTH"

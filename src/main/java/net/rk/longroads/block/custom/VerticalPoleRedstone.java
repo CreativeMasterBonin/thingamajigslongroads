@@ -13,31 +13,35 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
 import net.rk.longroads.datagen.TLRTag;
+import net.rk.longroads.util.Utilities;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-@SuppressWarnings("deprecated,unused")
-public class VerticalBlockRedstone extends Block{
-    public static final BooleanProperty POWERED = VerticalPoleRedstone.POWERED;
-
-    public VerticalBlockRedstone(Properties p) {
-        super(p.strength(1F,5F).requiresCorrectToolForDrops()
-                .pushReaction(PushReaction.BLOCK).sound(SoundType.TUFF));
+@SuppressWarnings("deprecated")
+public class VerticalPoleRedstone extends Block{
+    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public VerticalPoleRedstone(Properties properties) {
+        super(properties.strength(1F,5F));
         this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false));
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("block.thingamajigs.vertical_pole_redstone.desc")
-                .withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack p_49816_, Item.TooltipContext p_339606_, List<Component> list, TooltipFlag p_49819_) {
+        list.add(Component.translatable("block.thingamajigs.vertical_pole_redstone.desc").withStyle(ChatFormatting.GRAY));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
+        return Utilities.VERTICAL_ALL;
     }
 
     @Override
@@ -53,6 +57,7 @@ public class VerticalBlockRedstone extends Block{
 
             boolean allrrbellsabove = lvl.getBlockState(bp.above()).is(TLRTag.RAILROAD_CROSSING_BELLS);
 
+            // Bells and this block hate each other, so it's disabled.
             if(allrrbellsabove){
                 if(allverticalredstoneblocks){
                     if(lvl.getBlockState(bp.below()).getValue(POWERED) == true){
@@ -68,9 +73,12 @@ public class VerticalBlockRedstone extends Block{
                 return;
             }
 
-            boolean cantilevers = lvl.getBlockState(bp.above()).is(TLRTag.RR_CANTILEVERS);
+            //boolean cant = lvl.getBlockState(bp.above()).is(TBlocks.RR_CANTILEVER.get());
+            //boolean cant2 = lvl.getBlockState(bp.above()).is(TBlocks.RR_CANTILEVER_END.get());
+            //boolean cant3 = lvl.getBlockState(bp.above()).is(TBlocks.RR_CANTILEVER_LIGHTS.get());
+            boolean cant4 = lvl.getBlockState(bp.above()).is(TLRTag.RR_CANTILEVERS);
 
-            if(cantilevers){
+            if(cant4){
                 if(allverticalredstoneblocks){
                     if(lvl.getBlockState(bp.below()).getValue(POWERED)){
                         lvl.setBlock(bp,bs.setValue(POWERED,true),3);

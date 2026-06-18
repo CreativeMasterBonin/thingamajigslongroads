@@ -20,7 +20,7 @@ public class TLRLanguage extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        this.add("itemGroup.thingamajigslongroads","Thingamajigs Long Roads");
+        this.add("itemGroup.thingamajigslongroads","Long Roads");
         this.add("item.paint_brush.data.pattern_type", "Type: %s / %s");
         this.add("item.thingamajigslongroads.scrape_tool.desc", "Scrapes paint off of asphalt and other blocks");
         this.add("container.thingamajigslongroads.dynamic_sign.sign_type", "Type: ");
@@ -39,6 +39,8 @@ public class TLRLanguage extends LanguageProvider {
         this.add("title.thingamajigs.options.button","Edit");
         this.add("config.thingamajigs.max_amount_marking_per_paint.tooltip","The maximum amount of patterns placeable in one action");
         this.add("title.thingamajigs.options.tooltip","Edit config");
+
+        this.add("tooltip.long_roads.paintbrush","Shift-right click once on a block to activate. Shift-right click again to change type, and right click to place. Right clicking in gui changes length.");
 
 
         // multicolored road markings

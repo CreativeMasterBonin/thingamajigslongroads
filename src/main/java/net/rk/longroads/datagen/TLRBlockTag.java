@@ -2,15 +2,13 @@ package net.rk.longroads.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.rk.longroads.ThingamajigsLongRoads;
 import net.rk.longroads.block.TLRBlocks;
-import net.rk.thingamajigs.Thingamajigs;
-import net.rk.thingamajigs.block.TBlocks;
-import net.rk.thingamajigs.datagen.TTag;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -40,21 +38,22 @@ public class TLRBlockTag extends BlockTagsProvider{
         this.tag(TLRTag.SUPPORTS_ROAD_HANGING_SIGNS)
                 .addTag(BlockTags.FENCES)
                 .addTag(BlockTags.WALLS)
-                .add(TBlocks.ALL_WAY_POLE.get())
-                .add(TBlocks.STRAIGHT_POLE.get())
-                .add(TBlocks.STRAIGHT_HORIZONTAL_POLE.get())
-                .add(TBlocks.THREE_WAY_POLE.get())
-                .add(TBlocks.VERTICAL_AXIS_POLE.get())
-                .add(TBlocks.AXIS_POLE.get())
-                .add(TBlocks.TRI_POLE.get())
-                .add(TBlocks.LIGHT_POLE.get())
-                .add(TBlocks.PLUS_POLE.get())
-                .add(TBlocks.T_HORZ_ONLY_POLE.get())
-                .add(TBlocks.T_POLE.get())
-                .add(TBlocks.T_POLE_B.get())
-                .add(TBlocks.T_POLE_C.get())
-                .add(TBlocks.VERTICAL_T_POLE.get())
-                .addTag(TTag.VERTICAL_REDSTONE_BLOCKS)
+                .addOptional(ResourceLocation.parse("thingamajigs:vertical_t_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:all_way_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:straight_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:straight_horizontal_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:vertical_t_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:three_way_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:vertical_axis_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:axis_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:tri_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:light_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:plus_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:t_horz_only_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:t_pole"))
+                .addOptional(ResourceLocation.parse("thingamajigs:t_pole_b"))
+                .addOptional(ResourceLocation.parse("thingamajigs:t_pole_c"))
+                .addOptionalTag(ResourceLocation.parse("thingamajigs:vertical_redstone_blocks"))
         ;
 
         this.tag(TLRTag.ASPHALT_BLOCKS)
@@ -75,7 +74,11 @@ public class TLRBlockTag extends BlockTagsProvider{
                 .add(TLRBlocks.ASPHALT_OLD_SLAB.get())
         ;
 
-        this.tag(TTag.VERTICAL_REDSTONE_BLOCKS)
+        this.tag(TLRTag.CROSSWALK_BUTTONS)
+                .addOptional(ResourceLocation.parse("thingamajigs:crosswalk_button"))
+        ;
+
+        this.tag(TLRTag.VERTICAL_REDSTONE_BLOCKS)
                 .add(TLRBlocks.VERTICAL_REDSTONE_SIDEWALK.get())
                 .add(TLRBlocks.VERTICAL_REDSTONE_ROAD_SIGN.get())
         ;

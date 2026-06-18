@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -28,7 +29,6 @@ import net.rk.longroads.network.TLRHandler;
 import net.rk.longroads.registries.SignType;
 import net.rk.longroads.registries.SignTypeBootstrap;
 import net.rk.longroads.registries.TLRRegistries;
-import net.rk.thingamajigs.Thingamajigs;
 import org.slf4j.Logger;
 
 import java.util.Set;
@@ -42,23 +42,26 @@ public class ThingamajigsLongRoads {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TLR_TAB = CMT_TLR.register(
             "trr_main_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.thingamajigslongroads"))
-                    .withTabsBefore(Thingamajigs.MAIN_CTAB.getKey())
+                    .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .icon(() -> TLRItems.GREEN_HANGING_ROADWAY_SIGN_ITEM.get().getDefaultInstance())
                     .build()
     );
 
-    public static boolean werok = false;
+    public static boolean thingamajigsWasLoaded = false;
+    public static boolean railroadwaysWasLoaded = false;
 
     public ThingamajigsLongRoads(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
         if(ModList.get().isLoaded("thingamajigs")){
-            werok = true;
+            thingamajigsWasLoaded = true;
+        }
+        if(ModList.get().isLoaded("thingamajigsrailroadways")){
+            railroadwaysWasLoaded = true;
         }
 
         modEventBus.addListener(TLRHandler::register);
         modEventBus.addListener(this::registerDatapackRegistries);
-        modEventBus.addListener(this::onGatherData);
 
         TLRMenu.MENU_TYPES.register(modEventBus);
 
@@ -76,20 +79,7 @@ public class ThingamajigsLongRoads {
     }
 
     // datapack registries don't use streamcodecs
-    @SubscribeEvent
     public void registerDatapackRegistries(DataPackRegistryEvent.NewRegistry event){
         event.dataPackRegistry(TLRRegistries.SIGN_TYPE,SignType.CODEC,SignType.CODEC);
-    }
-
-    @SubscribeEvent
-    public void onGatherData(GatherDataEvent event){
-        PackOutput packOutput = event.getGenerator().getPackOutput();
-        event.getGenerator().addProvider(event.includeServer(),
-                new DatapackBuiltinEntriesProvider(
-                        packOutput,
-                        event.getLookupProvider(),
-                        new RegistrySetBuilder()
-                                .add(TLRRegistries.SIGN_TYPE, SignTypeBootstrap::bootstrap
-                        ),Set.of(ThingamajigsLongRoads.MODID)));
     }
 }

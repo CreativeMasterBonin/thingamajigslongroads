@@ -1,17 +1,22 @@
 package net.rk.longroads.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.rk.longroads.ThingamajigsLongRoads;
+import net.rk.longroads.registries.SignTypeBootstrap;
+import net.rk.longroads.registries.TLRRegistries;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = ThingamajigsLongRoads.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -38,5 +43,14 @@ public class DataGenerators{
                 event.getExistingFileHelper()));
 
         generator.addProvider(event.includeServer(),new TLRRecipe(packOutput,lookupProvider));
+
+        // sign types
+        event.getGenerator().addProvider(event.includeServer(),
+                new DatapackBuiltinEntriesProvider(
+                        packOutput,
+                        event.getLookupProvider(),
+                        new RegistrySetBuilder()
+                                .add(TLRRegistries.SIGN_TYPE, SignTypeBootstrap::bootstrap
+                                ), Set.of(ThingamajigsLongRoads.MODID)));
     }
 }

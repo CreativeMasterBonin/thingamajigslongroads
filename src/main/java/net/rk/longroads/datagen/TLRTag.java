@@ -1,5 +1,6 @@
 package net.rk.longroads.datagen;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -25,6 +26,12 @@ public class TLRTag {
     public static final TagKey<Item> ROAD_SIGN_CRAFTING_GLOBS = thingamajigsLRItemTag("road_sign_crafting_globs");
     public static final TagKey<Item> ROADWAY_SIGN_CRAFTING_SIGNS = thingamajigsLRItemTag("roadway_sign_crafting_signs");
     public static final TagKey<Item> ROADWAY_SIGN_EDIT_TOOLS = thingamajigsLRItemTag("roadway_sign_edit_tools");
+
+    public static final TagKey<Block> VERTICAL_REDSTONE_BLOCKS = BlockTags.create(ResourceLocation.fromNamespaceAndPath("thingamajigs","vertical_redstone_blocks"));
+    public static final TagKey<Block> RAILROAD_CROSSING_BELLS = TagKey.create(Registries.BLOCK, ResourceLocation.parse("thingamajigs:railroad_crossing_bells"));
+    public static final TagKey<Block> RR_CANTILEVERS = TagKey.create(Registries.BLOCK, ResourceLocation.parse("thingamajigs:rr_cantilevers"));
+    public static final TagKey<Block> CROSSWALK_BUTTONS = TagKey.create(Registries.BLOCK, ResourceLocation.parse("thingamajigslongroads:crosswalk_buttons"));
+
 
     private static TagKey<Block> thingamajigsLRBlockTag(String name){
         return BlockTags.create(ResourceLocation.fromNamespaceAndPath("thingamajigslongroads", name));

@@ -6,6 +6,8 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -13,6 +15,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
@@ -35,11 +38,32 @@ import net.rk.longroads.util.Utilities;
 public class TLRClient {
     public TLRClient(IEventBus modEventBus, ModContainer modContainer){
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(this::registerModels);
         modEventBus.addListener(this::layerSetup);
         modEventBus.addListener(this::setupMenuTypes);
         modEventBus.addListener(this::clientExtensions);
         modEventBus.addListener(this::addCreative);
         modContainer.registerExtensionPoint(IConfigScreenFactory.class,ConfigurationScreen::new);
+    }
+
+    public static final ModelResourceLocation baseVerticalPole = new ModelResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(ThingamajigsLongRoads.MODID,"bases/pole_vertical"),"standalone");
+    public static final ModelResourceLocation basePlusPole = new ModelResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(ThingamajigsLongRoads.MODID,"bases/pole_plus"),"standalone");
+    public static final ModelResourceLocation baseThreeWayPole = new ModelResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(ThingamajigsLongRoads.MODID,"bases/pole_three_way"),"standalone");
+    public static final ModelResourceLocation baseVerticalRedstonePoleOff = new ModelResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(ThingamajigsLongRoads.MODID,"bases/pole_vertical_redstone"),"standalone");
+    public static final ModelResourceLocation baseVerticalRedstonePoleOn = new ModelResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(ThingamajigsLongRoads.MODID,"bases/pole_vertical_redstone_powered"),"standalone");
+
+
+    public void registerModels(ModelEvent.RegisterAdditional event){
+        event.register(baseVerticalPole);
+        event.register(basePlusPole);
+        event.register(baseThreeWayPole);
+        event.register(baseVerticalRedstonePoleOff);
+        event.register(baseVerticalRedstonePoleOn);
     }
 
     public void clientSetup(FMLClientSetupEvent event) {

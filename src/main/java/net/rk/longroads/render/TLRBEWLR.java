@@ -9,7 +9,10 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.ModelManager;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -18,12 +21,13 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.model.data.ModelData;
+import net.rk.longroads.TLRClient;
 import net.rk.longroads.entity.blockentity.custom.DynamicRoadSignBE;
 import net.rk.longroads.entity.blockentity.model.DynamicDoubleTallSignModel;
 import net.rk.longroads.entity.blockentity.model.DynamicRectangleSignModel;
 import net.rk.longroads.entity.blockentity.model.DynamicSignModel;
 import net.rk.longroads.item.TLRItems;
-import net.rk.thingamajigs.block.TBlocks;
 import org.joml.Vector3f;
 
 @OnlyIn(Dist.CLIENT)
@@ -58,6 +62,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
     @Override
     public void renderByItem(ItemStack stack, ItemDisplayContext displayContext, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         VertexConsumer vc;
+        ModelManager manager = Minecraft.getInstance().getModelManager();
         if(stack.is(TLRItems.DYNAMIC_ROAD_SIGN.asItem())){
             poseStack.pushPose();
             if(stack.has(DataComponents.BLOCK_ENTITY_DATA)){
@@ -363,9 +368,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             if(displayContext == ItemDisplayContext.GUI){
                 poseStack.translate(0D,0D,-2.5D);
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.PLUS_POLE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.basePlusPole), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             else if(displayContext.firstPerson()){
                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
@@ -376,9 +382,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                     poseStack.mulPose(Axis.YP.rotationDegrees(90));
                     poseStack.translate(-0.2D,0.1D,1D);
                 }
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.PLUS_POLE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.basePlusPole), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             poseStack.popPose();
         }
@@ -687,9 +694,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             if(displayContext == ItemDisplayContext.GUI){
                 poseStack.translate(0D,0D,-2.5D);
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.STRAIGHT_POLE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.baseVerticalPole), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             else if(displayContext.firstPerson()){
                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
@@ -700,9 +708,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                     poseStack.mulPose(Axis.YP.rotationDegrees(90));
                     poseStack.translate(-0.2D,0.1D,1D);
                 }
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.STRAIGHT_POLE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.baseVerticalPole), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             poseStack.popPose();
         }
@@ -1011,9 +1020,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             if(displayContext == ItemDisplayContext.GUI){
                 poseStack.translate(0D,0D,-2.5D);
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.THREE_WAY_POLE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.baseThreeWayPole), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             else if(displayContext.firstPerson()){
                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
@@ -1024,9 +1034,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                     poseStack.mulPose(Axis.YP.rotationDegrees(90));
                     poseStack.translate(-0.2D,0.1D,1D);
                 }
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.THREE_WAY_POLE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.baseThreeWayPole), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             poseStack.popPose();
         }
@@ -1335,9 +1346,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             if(displayContext == ItemDisplayContext.GUI){
                 poseStack.translate(0D,0D,-2.5D);
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.VERTICAL_POLE_REDSTONE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.baseVerticalRedstonePoleOff), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             else if(displayContext.firstPerson()){
                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
@@ -1348,9 +1360,10 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                     poseStack.mulPose(Axis.YP.rotationDegrees(90));
                     poseStack.translate(-0.2D,0.1D,1D);
                 }
-                Minecraft.getInstance().getBlockRenderer()
-                        .renderSingleBlock(TBlocks.VERTICAL_POLE_REDSTONE.get().defaultBlockState()
-                                ,poseStack,buffer,packedLight,packedOverlay);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()), null,
+                        manager.getModel(TLRClient.baseVerticalRedstonePoleOff), 1.0f, 1.0f, 1.0f,
+                        packedLight,
+                        OverlayTexture.NO_OVERLAY, ModelData.EMPTY,RenderType.SOLID);
             }
             poseStack.popPose();
         }

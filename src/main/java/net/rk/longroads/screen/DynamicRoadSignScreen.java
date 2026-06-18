@@ -22,9 +22,9 @@ import net.rk.longroads.menu.DynamicSignMenu;
 import net.rk.longroads.network.record.DynamicSignPayload;
 import net.rk.longroads.registries.SignType;
 import net.rk.longroads.screen.widget.DynamicEditBox;
+import net.rk.longroads.screen.widget.RevertedButton;
+import net.rk.longroads.util.LongRoadsCalcs;
 import net.rk.longroads.util.Utilities;
-import net.rk.thingamajigs.screen.widget.RevertedButton;
-import net.rk.thingamajigs.xtras.TColors;
 
 import java.util.List;
 
@@ -99,11 +99,11 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         // this is the part that renders the sign preview (very-hacky, but works)
         if(ResourceLocation.tryParse(this.menu.be.signTexture) == null){
             BeaconRenderer.renderBeaconBeam(guiGraphics.pose(), guiGraphics.bufferSource(),ResourceLocation.parse(this.menu.be.fallbackSignTexture),
-                    0,2,0,0,1, TColors.getWhite(),1,0);
+                    0,2,0,0,1, LongRoadsCalcs.Colors.getWhite(),1,0);
         }
         else{
             BeaconRenderer.renderBeaconBeam(guiGraphics.pose(), guiGraphics.bufferSource(),ResourceLocation.parse(this.menu.be.signTexture),
-                    0,2,0,0,1, TColors.getWhite(),1,0);
+                    0,2,0,0,1, LongRoadsCalcs.Colors.getWhite(),1,0);
         }
         guiGraphics.pose().popPose();
 
@@ -197,7 +197,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         guiGraphics.drawString(this.font,Component.translatable("container.thingamajigslongroads.dynamic_sign.sign_type")
                         .append(Component.translatable(translationKey)),
                 this.titleLabelX + 9,this.titleLabelY + 98,
-                TColors.getWhite(),true);
+                LongRoadsCalcs.Colors.getWhite(),true);
     }
 
 
@@ -210,6 +210,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
     public boolean keyPressed(int key, int b, int c) {
         return this.customTextureEdit.keyPressed(key,b,c) || (this.customTextureEdit.isFocused() && key != 256) || super.keyPressed(key,b,c);
     }
+
 
 
     private void setup(){

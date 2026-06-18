@@ -11,8 +11,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.rk.longroads.block.TLRBlocks;
 import net.rk.longroads.item.TLRItems;
-import net.rk.thingamajigs.block.TBlocks;
-import net.rk.thingamajigs.item.TItems;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -23,64 +21,49 @@ public class TLRRecipe extends RecipeProvider{
 
     @Override
     protected void buildRecipes(RecipeOutput output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TLRItems.PAINT_BRUSH,1)
-                .define('t', TItems.THINGAMAJIG)
-                .define('f', Items.FEATHER)
-                .define('s',Items.STICK)
-                .pattern("ftf")
-                .pattern(" s ")
-                .pattern(" s ")
-                .unlockedBy("has_ingredient",has(TItems.THINGAMAJIG))
-                .save(output);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,TLRItems.PAINT_BRUSH,1)
-                .define('t',TItems.THINGAMAJIG)
-                .define('b',Items.BRUSH)
-                .pattern("t")
-                .pattern("b")
-                .unlockedBy("has_ingredient",has(TItems.THINGAMAJIG))
-                .save(output,"alternative_paint_brush");
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.WHITE_PAINT_BRUSH,1)
-                .requires(TLRItems.PAINT_BRUSH)
+                .requires(Items.MILK_BUCKET)
+                .requires(Items.BRUSH)
                 .requires(Items.WHITE_DYE)
-                .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
+                .unlockedBy("has_ingredient",has(Items.MILK_BUCKET))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.YELLOW_PAINT_BRUSH,1)
-                .requires(TLRItems.PAINT_BRUSH)
+                .requires(Items.MILK_BUCKET)
+                .requires(Items.BRUSH)
                 .requires(Items.YELLOW_DYE)
-                .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
+                .unlockedBy("has_ingredient",has(Items.MILK_BUCKET))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.BLUE_PAINT_BRUSH,1)
-                .requires(TLRItems.PAINT_BRUSH)
+                .requires(Items.MILK_BUCKET)
+                .requires(Items.BRUSH)
                 .requires(Items.BLUE_DYE)
-                .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
+                .unlockedBy("has_ingredient",has(Items.MILK_BUCKET))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.PURPLE_PAINT_BRUSH,1)
-                .requires(TLRItems.PAINT_BRUSH)
+                .requires(Items.MILK_BUCKET)
+                .requires(Items.BRUSH)
                 .requires(Items.PURPLE_DYE)
-                .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
+                .unlockedBy("has_ingredient",has(Items.MILK_BUCKET))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.MULTICOLOR_PAINT_BRUSH,1)
-                .requires(TLRItems.PAINT_BRUSH)
-                .requires(Items.RED_DYE)
-                .requires(Items.YELLOW_DYE)
-                .requires(Items.BLUE_DYE)
-                .unlockedBy("has_ingredient",has(TLRItems.PAINT_BRUSH))
+                .requires(Items.MILK_BUCKET)
+                .requires(TLRItems.YELLOW_PAINT_BRUSH)
+                .requires(TLRItems.BLUE_PAINT_BRUSH)
+                .unlockedBy("has_ingredient",has(Items.MILK_BUCKET))
                 .save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,TLRItems.SCRAPE_TOOL,1)
-                .define('t',TItems.THINGAMAJIG)
+                .define('t',TLRItems.PAINT_BRUSH)
                 .define('f',Items.FLINT)
                 .define('s',Items.STICK)
                 .pattern("ftf")
                 .pattern(" s ")
                 .pattern(" s ")
-                .unlockedBy("has_ingredient",has(TItems.THINGAMAJIG))
+                .unlockedBy("has_ingredient",has(Items.FLINT))
                 .save(output);
 
         // colored roadway signs
@@ -117,10 +100,10 @@ public class TLRRecipe extends RecipeProvider{
 
         // sidewalk
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, TLRBlocks.SIDEWALK.asItem(),3)
-                .requires(TBlocks.CONCRETE.asItem())
+                .requires(Items.LIGHT_GRAY_CONCRETE_POWDER)
                 .requires(Items.CLAY_BALL)
                 .requires(Items.GRAVEL)
-                .unlockedBy("has_ingredient",has(TBlocks.CONCRETE.asItem()))
+                .unlockedBy("has_ingredient",has(Items.LIGHT_GRAY_CONCRETE_POWDER))
                 .save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,TLRBlocks.SIDEWALK_SLAB,6)
@@ -209,10 +192,10 @@ public class TLRRecipe extends RecipeProvider{
 
         // asphalt
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS,TLRBlocks.ASPHALT.asItem(),2)
-                .requires(TItems.INFRASTRUCTURE_COMPONENT)
+                .requires(Items.POLISHED_BLACKSTONE)
                 .requires(Items.BLACKSTONE)
                 .requires(Items.STONE)
-                .unlockedBy("has_ingredient",has(TItems.INFRASTRUCTURE_COMPONENT))
+                .unlockedBy("has_ingredient",has(Items.POLISHED_BLACKSTONE))
                 .save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,TLRBlocks.ASPHALT_SLAB,6)
@@ -283,23 +266,23 @@ public class TLRRecipe extends RecipeProvider{
 
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.DYNAMIC_ROAD_SIGN.asItem(),1)
-                .requires(TItems.INFRASTRUCTURE_COMPONENT)
+                .requires(ItemTags.HANGING_SIGNS)
                 .requires(Items.IRON_BARS)
-                .requires(TBlocks.PLUS_POLE.asItem())
+                .requires(TLRItems.MULTICOLOR_PAINT_BRUSH)
                 .requires(TLRTag.ROAD_SIGN_CRAFTING_GLOBS)
-                .unlockedBy("has_ingredient",has(TItems.INFRASTRUCTURE_COMPONENT))
+                .unlockedBy("has_ingredient",has(ItemTags.HANGING_SIGNS))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.DYNAMIC_STRAIGHT_ROAD_SIGN,1)
                 .requires(TLRItems.DYNAMIC_ROAD_SIGN.asItem())
-                .requires(TBlocks.STRAIGHT_POLE.asItem())
-                .unlockedBy("has_ingredient",has(TBlocks.STRAIGHT_POLE.asItem()))
+                .requires(Items.TRIPWIRE_HOOK)
+                .unlockedBy("has_ingredient",has(Items.TRIPWIRE_HOOK))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,TLRItems.DYNAMIC_THREE_WAY_ROAD_SIGN,1)
                 .requires(TLRItems.DYNAMIC_ROAD_SIGN.asItem())
-                .requires(TBlocks.THREE_WAY_POLE.asItem())
-                .unlockedBy("has_ingredient",has(TBlocks.THREE_WAY_POLE.asItem()))
+                .requires(Items.PISTON)
+                .unlockedBy("has_ingredient",has(Items.PISTON))
                 .save(output);
 
 
