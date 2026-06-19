@@ -111,9 +111,9 @@ public class Utilities{
 
     // sign type related stuff
     public static final boolean verboseLogging = false;
-    public static final String missingLocation = "thingamajigslongroads:textures/entity/signs/sign_error.png";
-    public static final String missingLocationBig = "thingamajigslongroads:textures/entity/signs/big_sign_error.png";
-    public static final String missingLocationRect = "thingamajigslongroads:textures/entity/signs/rect_sign_error.png";
+    public static final String missingLocation = "thingamajigslongroads:textures/signs/sign_error.png";
+    public static final String missingLocationBig = "thingamajigslongroads:textures/signs/big_sign_error.png";
+    public static final String missingLocationRect = "thingamajigslongroads:textures/signs/rect_sign_error.png";
 
     // single parts
     public static final VoxelShape HORIZONTAL_NORTHSOUTH = Optional.of(Block.box(0, 7, 7, 16, 9, 9)).get();
@@ -146,7 +146,7 @@ public class Utilities{
     public static final VoxelShape PLUS_EASTWEST = Stream.of(VERTICAL_ALL, HORIZONTAL_EASTWEST).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
     //
 
-    // Sign Model Types are hardcoded because models CANNOT be generated on the fly
+    // Sign Model Types are hardcoded (custom is a placeholder for a possible custom sign model)
     // these can be picked by specifying the type in the SignType definition file
     public enum SignModelTypes{
         SQUARE("square",0),

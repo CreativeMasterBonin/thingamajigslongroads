@@ -21,10 +21,12 @@ import net.rk.longroads.ThingamajigsLongRoads;
 import net.rk.longroads.menu.DynamicSignMenu;
 import net.rk.longroads.network.record.DynamicSignPayload;
 import net.rk.longroads.registries.SignType;
+import net.rk.longroads.screen.widget.ActionCheckboxLongRoads;
 import net.rk.longroads.screen.widget.DynamicEditBox;
 import net.rk.longroads.screen.widget.RevertedButton;
 import net.rk.longroads.util.LongRoadsCalcs;
 import net.rk.longroads.util.Utilities;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.List;
 
@@ -38,6 +40,14 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
     private RevertedButton decreaseRotation;
     private RevertedButton increaseRotation;
     private RevertedButton roundRotation;
+
+    public RevertedButton decreaseZRotation;
+    public RevertedButton increaseZRotation;
+
+    private ActionCheckboxLongRoads flipModelX;
+    private ActionCheckboxLongRoads flipModelY;
+
+    public RevertedButton updateSign;
 
     private EditBox customTextureEdit;
 
@@ -57,6 +67,8 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
     private int buttonSizeX = 14;
     private int buttonSizeY = 14;
 
+    public boolean isShifting = false;
+
 
     public DynamicRoadSignScreen(DynamicSignMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -71,6 +83,11 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         addRenderableWidget(decreaseRotation);
         addRenderableWidget(increaseRotation);
         addRenderableWidget(roundRotation);
+        addRenderableWidget(decreaseZRotation);
+        addRenderableWidget(increaseZRotation);
+        addRenderableWidget(flipModelX);
+        addRenderableWidget(flipModelY);
+        addRenderableWidget(updateSign);
     }
 
     @Override
@@ -146,7 +163,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
                 if(DynamicSignMenu.signTypes != null){
                     ResourceLocation res = ResourceLocation.parse(
                             ThingamajigsLongRoads.MODID +
-                                    ":textures/entity/signs/" +
+                                    ":" +
                                     DynamicSignMenu.signTypes.get(k1).assetId().getPath() + ".png");
                     if(res == null){
                         res = ResourceLocation.parse(Utilities.missingLocation);
@@ -194,10 +211,19 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
 
         String translationKey = this.menu.be.holderList.typesHolderObjectList().get(0).getSignType().translationKey();
 
-        guiGraphics.drawString(this.font,Component.translatable("container.thingamajigslongroads.dynamic_sign.sign_type")
-                        .append(Component.translatable(translationKey)),
-                this.titleLabelX + 9,this.titleLabelY + 98,
-                LongRoadsCalcs.Colors.getWhite(),true);
+        Component testComponent = Component.translatable(translationKey);
+        if(testComponent.getString().length() > 16){
+            guiGraphics.drawString(this.font,Component.translatable("container.thingamajigslongroads.dynamic_sign.sign_type")
+                            .append(Component.literal(testComponent.getString(16)).append("...")),
+                    this.titleLabelX + 9,this.titleLabelY + 102,
+                    LongRoadsCalcs.Colors.getWhite(),true);
+        }
+        else{
+            guiGraphics.drawString(this.font,Component.translatable("container.thingamajigslongroads.dynamic_sign.sign_type")
+                            .append(Component.translatable(translationKey)),
+                    this.titleLabelX + 9,this.titleLabelY + 98,
+                    LongRoadsCalcs.Colors.getWhite(),true);
+        }
     }
 
 
@@ -207,14 +233,25 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
     }
 
     @Override
-    public boolean keyPressed(int key, int b, int c) {
-        return this.customTextureEdit.keyPressed(key,b,c) || (this.customTextureEdit.isFocused() && key != 256) || super.keyPressed(key,b,c);
+    public boolean keyPressed(int key, int scanCode, int modifiers) {
+        if(key == GLFW.GLFW_KEY_LEFT_SHIFT || key == GLFW.GLFW_KEY_RIGHT_SHIFT){
+            isShifting = true;
+            return true;
+        }
+        return this.customTextureEdit.keyPressed(key,scanCode,modifiers) || (this.customTextureEdit.isFocused() && key != 256) || super.keyPressed(key,scanCode,modifiers);
     }
 
-
+    @Override
+    public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
+        if(keyCode == GLFW.GLFW_KEY_LEFT_SHIFT || keyCode == GLFW.GLFW_KEY_RIGHT_SHIFT){
+            isShifting = false;
+            return true;
+        }
+        return super.keyReleased(keyCode, scanCode, modifiers);
+    }
 
     private void setup(){
-        int horzLeftButtonPos = leftPos + 100;
+        int horzLeftButtonPos = leftPos + 32;
         int topRowButtonY = topPos + 68;
         int spacingButtonWidth = 2;
         int spacingButtonHeight = spacingButtonWidth;
@@ -237,14 +274,33 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
             LogUtils.getLogger().error("DynamicSignMenu SELECT_SIGN_TYPE did not return data to DynamicRoadSignScreen properly. ERR: {}", e.getMessage());
         }
 
+        byte flipState = 0;
+
+        if(this.menu.be.flipX && this.menu.be.flipY){
+            flipState = 127;
+        }
+        else if(!this.menu.be.flipX && this.menu.be.flipY){
+            flipState = 64;
+        }
+        else if(this.menu.be.flipX && !this.menu.be.flipY){
+            flipState = 16;
+        }
+        else {
+            flipState = 0;
+        }
+
+
+        final byte finalFlipState = flipState;
 
         decreaseRotation = new RevertedButton(horzLeftButtonPos,topRowButtonY,64,16,
                 Component.translatable("button.thingamajigslongroads.rotation_left"),(handler) -> {
             PacketDistributor.sendToServer(new DynamicSignPayload(
                     this.menu.pos,
-                    this.menu.be.yAngle - 0.05f,
+                    isShifting ? this.menu.be.yAngle - 1.0f : this.menu.be.yAngle - 0.5f,
                     this.menu.be.indexId,
-                    false
+                    false,
+                    finalFlipState,
+                    this.menu.be.zAngle
             ));
             Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.ITEM_PICKUP,lowPitch));
         }){};
@@ -255,9 +311,11 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
                 Component.translatable("button.thingamajigslongroads.rotation_right"),(handler) -> {
             PacketDistributor.sendToServer(new DynamicSignPayload(
                     this.menu.pos,
-                    this.menu.be.yAngle + 0.05f,
+                    isShifting ? this.menu.be.yAngle + 1.0f : this.menu.be.yAngle + 0.5f,
                     this.menu.be.indexId,
-                    false
+                    false,
+                    finalFlipState,
+                    this.menu.be.zAngle
             ));
             Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.ITEM_PICKUP,normalPitch));
         }){};
@@ -268,9 +326,90 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
                     this.menu.pos,
                     Math.round(this.menu.be.yAngle),
                     this.menu.be.indexId,
-                    false
+                    false,
+                    finalFlipState,
+                    this.menu.be.zAngle
             ));
         });
+
+        decreaseZRotation = new RevertedButton(decreaseRotation.getX(),decreaseRotation.getY() + 20,64,16,
+                Component.translatable("button.longroads.z_rotation_left"),(handler) -> {
+            PacketDistributor.sendToServer(new DynamicSignPayload(
+                    this.menu.pos,
+                    this.menu.be.yAngle,
+                    this.menu.be.indexId,
+                    false,
+                    finalFlipState,
+                    isShifting ? this.menu.be.zAngle - 1.0f : this.menu.be.zAngle - 0.5f
+            ));
+            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.ITEM_PICKUP,lowPitch));
+        }){};
+
+        increaseZRotation = new RevertedButton(increaseRotation.getX(),increaseRotation.getY() + 20,64,16,
+                Component.translatable("button.longroads.z_rotation_right"),(handler) -> {
+            PacketDistributor.sendToServer(new DynamicSignPayload(
+                    this.menu.pos,
+                    this.menu.be.yAngle,
+                    this.menu.be.indexId,
+                    false,
+                    finalFlipState,
+                    isShifting ? this.menu.be.zAngle + 1.0f : this.menu.be.zAngle + 0.5f
+            ));
+            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.ITEM_PICKUP,normalPitch));
+        }){};
+
+        flipModelX = new ActionCheckboxLongRoads(decreaseZRotation.getX(),increaseZRotation.getY() + 32,64,Component.translatable("checkbox.longroads.flip_x")
+                .withStyle(ChatFormatting.WHITE),this.font,this.menu.be.flipX){
+            @Override
+            public void onClick(double mouseX, double mouseY, int button) {
+                this.onPress();
+                if(this.selected()){
+                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON,1.0f));
+                }
+                else{
+                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_OFF,1.0f));
+                }
+            }
+        };
+
+        flipModelY = new ActionCheckboxLongRoads(increaseZRotation.getX(),increaseZRotation.getY() + 32,64,Component.translatable("checkbox.longroads.flip_y")
+                .withStyle(ChatFormatting.WHITE),this.font,this.menu.be.flipY){
+            @Override
+            public void onClick(double mouseX, double mouseY, int button) {
+                this.onPress();
+                if(this.selected()){
+                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON,1.0f));
+                }
+                else{
+                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_OFF,1.0f));
+                }
+            }
+        };
+
+        updateSign = new RevertedButton(flipModelY.getX(),flipModelY.getY() + 32,64,24,Component.translatable("button.longroads.generic.update"),
+                (handler) -> {
+                    byte atomicFlipState = 0;
+                    if(flipModelX.selected() && flipModelY.selected()){
+                        atomicFlipState = 127;
+                    }
+                    else if(!flipModelX.selected() && flipModelY.selected()){
+                        atomicFlipState = 64;
+                    }
+                    else if(flipModelX.selected() && !flipModelY.selected()){
+                        atomicFlipState = 16;
+                    }
+
+                    final byte finalizedFlipState = atomicFlipState;
+
+                    PacketDistributor.sendToServer(new DynamicSignPayload(
+                            menu.pos,
+                            menu.be.yAngle,
+                            menu.be.indexId,
+                            false,
+                            finalizedFlipState,
+                            menu.be.zAngle
+                    ));
+                });
     }
 
 
@@ -291,12 +430,26 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
                 if (d0 >= 0.0 && d1 >= 0.0 && d0 < 14.0 && d1 < 14.0 && this.menu.clickedSignTypeSelectorButton(this.minecraft.player, buttonIndex)) {
                     Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                     this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, buttonIndex);
+                    byte flipState = 0;
+                    if(this.menu.be.flipX && this.menu.be.flipY){
+                        flipState = 127;
+                    }
+                    else if(!this.menu.be.flipX && this.menu.be.flipY){
+                        flipState = 64;
+                    }
+                    else if(this.menu.be.flipX && !this.menu.be.flipY){
+                        flipState = 16;
+                    }
+                    else {
+                        flipState = 0;
+                    }
                     PacketDistributor.sendToServer(new DynamicSignPayload(
                             this.menu.pos,
                             this.menu.be.yAngle,
                             buttonIndex,
-                            true
-
+                            true,
+                            flipState,
+                            menu.be.zAngle
                     ));
                     return true;
                 }

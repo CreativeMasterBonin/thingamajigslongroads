@@ -29,6 +29,11 @@ public class TLRLanguage extends LanguageProvider {
         this.add("button.thingamajigslongroads.rotation_left","<- Rotation");
         this.add("button.thingamajigslongroads.rotation_right","Rotation ->");
         this.add("button.thingamajigslongroads.round_rotation","Round ↺");
+        this.add("button.longroads.z_rotation_left","<- Z Rotation");
+        this.add("button.longroads.z_rotation_right","Z Rotation ->");
+        this.add("checkbox.longroads.flip_x","Flip X");
+        this.add("checkbox.longroads.flip_y","Flip Y");
+        this.add("button.longroads.generic.update","Update");
         this.add("tooltip.thingamajigs.length","Length: %s");
         this.add("tooltip.thingamajigs.paintbrush.pattern.undefined","No Pattern Selected");
         this.add("thingamajigslongroads.configuration.title","Thingamajigs Long Roads Config");

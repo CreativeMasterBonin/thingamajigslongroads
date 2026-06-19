@@ -8,7 +8,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.rk.longroads.ThingamajigsLongRoads;
 
-public record DynamicSignPayload(BlockPos bp, float rotation, int id, boolean updateSelf) implements CustomPacketPayload{
+public record DynamicSignPayload(BlockPos bp, float rotation, int id, boolean updateSelf, byte flipState, float zRotation) implements CustomPacketPayload{
     public static final CustomPacketPayload.Type<DynamicSignPayload> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(ThingamajigsLongRoads.MODID,"dynamic_sign_update"));
 
     public static final StreamCodec<FriendlyByteBuf, DynamicSignPayload> STREAM_CODEC = StreamCodec.composite(
@@ -16,6 +16,8 @@ public record DynamicSignPayload(BlockPos bp, float rotation, int id, boolean up
             ByteBufCodecs.FLOAT, DynamicSignPayload::rotation,
             ByteBufCodecs.INT, DynamicSignPayload::id,
             ByteBufCodecs.BOOL,DynamicSignPayload::updateSelf,
+            ByteBufCodecs.BYTE,DynamicSignPayload::flipState,
+            ByteBufCodecs.FLOAT,DynamicSignPayload::zRotation,
             DynamicSignPayload::new
     );
 

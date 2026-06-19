@@ -1,6 +1,7 @@
 package net.rk.longroads.entity.blockentity.custom;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -23,7 +24,11 @@ import java.util.List;
 public class DynamicRoadSignBE extends BlockEntity{
     BlockPos bp;
     public float yAngle = 0.0f;
+    public float zAngle = 0.0f;
     public int ticks;
+    public boolean flipX = false;
+    public boolean flipY = false;
+    public float yOffset = 0.0f;
 
     public String signTexture = Utilities.missingLocation;
     public String modelType = "square";
@@ -51,8 +56,8 @@ public class DynamicRoadSignBE extends BlockEntity{
             holderList = SignTypeHolderObject.makeDefaultSign(level);
         }
 
-        String tempTexture = "thingamajigslongroads:textures/entity/signs/" + holderList.typesHolderObjectList().get(0).getSignType().assetId().getPath() + ".png";
-        signTexture = tempTexture;
+        //String tempTexture = "thingamajigslongroads:textures/entity/signs/" + holderList.typesHolderObjectList().get(0).getSignType().assetId().getPath() + ".png";
+        signTexture = holderList.typesHolderObjectList().get(0).getSignType().assetId().toString() + ".png";
         modelType = holderList.typesHolderObjectList().get(0).getSignType().signModeltype();
     }
 
@@ -116,24 +121,35 @@ public class DynamicRoadSignBE extends BlockEntity{
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider slp) {
+    public void saveAdditional(CompoundTag pTag, HolderLookup.Provider slp) {
         super.saveAdditional(pTag, slp);
         pTag.putFloat("y_angle",yAngle);
+        pTag.putFloat("z_angle",zAngle);
         pTag.putString("sign_texture",signTexture);
         pTag.putString("model_type",modelType);
 
-        if (!(this.holderList == null)) {
+        /*if (!(this.holderList == null)) {
             pTag.put("sign_types", SignTypeHolderObject.CODEC.encodeStart(slp.createSerializationContext(NbtOps.INSTANCE),this.holderList).getOrThrow());
         }
         else{
             holderList = SignTypeHolderObject.makeDefaultSign(this.level);
             pTag.put("sign_types", SignTypeHolderObject.CODEC.encodeStart(slp.createSerializationContext(NbtOps.INSTANCE),this.holderList).getOrThrow());
-        }
+        }*/
+
+        pTag.putBoolean("flip_x",flipX);
+        pTag.putBoolean("flip_y",flipY);
+        pTag.putFloat("y_offset",yOffset);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider lp) {
-        yAngle = pTag.getFloat("y_angle");
+    public void loadAdditional(CompoundTag pTag, HolderLookup.Provider lp) {
+        if(pTag.contains("y_angle")){
+            yAngle = pTag.getFloat("y_angle");
+        }
+
+        if(pTag.contains("z_angle")){
+            zAngle = pTag.getFloat("z_angle");
+        }
 
         if(pTag.contains("sign_texture")){
             signTexture = pTag.getString("sign_texture");
@@ -143,11 +159,21 @@ public class DynamicRoadSignBE extends BlockEntity{
             modelType = pTag.getString("model_type");
         }
 
-        if (pTag.contains("sign_types")) {
+        /*if (pTag.contains("sign_types")) {
             SignTypeHolderObject.CODEC
                     .parse(lp.createSerializationContext(NbtOps.INSTANCE), pTag.get("sign_types"))
                     .resultOrPartial(str -> LogUtils.getLogger().error("Failed to parse sign types: '{}'", str))
                     .ifPresent(str -> this.holderList = str);
+        }*/
+
+        if(pTag.contains("flip_x")){
+            flipX = pTag.getBoolean("flip_x");
+        }
+        if(pTag.contains("flip_y")){
+            flipY = pTag.getBoolean("flip_y");
+        }
+        if(pTag.contains("y_offset")){
+            yOffset = pTag.getFloat("y_offset");
         }
     }
 

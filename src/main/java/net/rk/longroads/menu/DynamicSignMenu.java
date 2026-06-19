@@ -1,6 +1,7 @@
 package net.rk.longroads.menu;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -24,9 +25,15 @@ public class DynamicSignMenu extends AbstractContainerMenu{
     public final DataSlot signTypeData = DataSlot.standalone();
     public static List<SignType> signTypes;
     public int indexSelected;
+    private final HolderGetter<SignType> signTypeGetter;
 
     protected DynamicSignMenu(@Nullable MenuType<?> menuType, int containerId) {
         super(menuType, containerId);
+        signTypeGetter = null;
+    }
+
+    public static List<SignType> getSignTypes() {
+        return signTypes;
     }
 
     public int getIndex(){
@@ -34,9 +41,12 @@ public class DynamicSignMenu extends AbstractContainerMenu{
     }
 
     public DynamicSignMenu(int id, Inventory inv, FriendlyByteBuf extraData){
-        this(TLRMenu.SIGN_MENU.get(),id);
+        super(TLRMenu.SIGN_MENU.get(),id);
         this.player = inv.player;
         this.level = player.level();
+
+        this.signTypeGetter = player.registryAccess().lookupOrThrow(TLRRegistries.SIGN_TYPE);
+
         if(extraData != null) {
             BlockPos pos1 = extraData.readBlockPos();
             this.pos = pos1;
@@ -61,13 +71,11 @@ public class DynamicSignMenu extends AbstractContainerMenu{
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int i) {
-        return null;
-    }
+    public ItemStack quickMoveStack(Player player, int i){return null;}
 
     @Override
     public boolean stillValid(Player player) {
-        return player.level().getBlockEntity(be.getBlockPos()) instanceof DynamicRoadSignBE;
+        return player.canInteractWithBlock(be.getBlockPos(),7) && player.level().getBlockEntity(be.getBlockPos()) instanceof DynamicRoadSignBE;
     }
 
     public boolean clickedSignTypeSelectorButton(Player player, int id) {

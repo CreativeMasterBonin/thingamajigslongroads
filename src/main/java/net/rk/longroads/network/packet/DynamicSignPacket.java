@@ -41,6 +41,28 @@ public class DynamicSignPacket{
         }
         else{
             dsbe.yAngle = payload.rotation();
+            dsbe.zAngle = payload.zRotation();
+            switch(payload.flipState()){
+                case 127 -> {
+                    dsbe.flipX = true;
+                    dsbe.flipY = true;
+                    break;
+                }
+                case 64 -> {
+                    dsbe.flipX = false;
+                    dsbe.flipY = true;
+                    break;
+                }
+                case 16 -> {
+                    dsbe.flipX = true;
+                    dsbe.flipY = false;
+                    break;
+                }
+                default -> {
+                    dsbe.flipX = false;
+                    dsbe.flipY = false;
+                }
+            }
             dsbe.updateBlock();
         }
         return;

@@ -45,7 +45,68 @@ public class DynamicRoadSignBERenderer implements BlockEntityRenderer<DynamicRoa
         }
 
         VertexConsumer vc = multiBufferSource.getBuffer(RenderType.entityTranslucent(ResourceLocation.parse(str)));
-        poseStack.translate(0.5f, -0.5f, 0.5f);
+
+
+        switch(dynamicSignBE.modelType){
+            case "square" -> {
+                if(dynamicSignBE.flipX && !dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, -0.5f, 0.5f);
+                    poseStack.scale(-1.0f,1.0f,1.0f);
+                }
+                else if(!dynamicSignBE.flipX && dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, 1.5f, 0.5f);
+                    poseStack.scale(1.0f,-1.0f,1.0f);
+                }
+                else if(dynamicSignBE.flipX && dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, 1.5f, 0.5f);
+                    poseStack.scale(-1.0f,-1.0f,1.0f);
+                }
+                else{
+                    poseStack.translate(0.5f, -0.5f, 0.5f);
+                    poseStack.scale(1.0f,1.0f,1.0f);
+                }
+            }
+            case "rectangle" -> {
+                if(dynamicSignBE.flipX && !dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, -0.5f, 0.5f);
+                    poseStack.scale(-1.0f,1.0f,1.0f);
+                }
+                else if(!dynamicSignBE.flipX && dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, 1.5f, 0.5f);
+                    poseStack.scale(1.0f,-1.0f,1.0f);
+                }
+                else if(dynamicSignBE.flipX && dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, 1.5f, 0.5f);
+                    poseStack.scale(-1.0f,-1.0f,1.0f);
+                }
+                else{
+                    poseStack.translate(0.5f, -0.5f, 0.5f);
+                    poseStack.scale(1.0f,1.0f,1.0f);
+                }
+            }
+            case "double_square" -> {
+                if(dynamicSignBE.flipX && !dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, -0.5f, 0.5f);
+                    poseStack.scale(-1.0f,1.0f,1.0f);
+                }
+                else if(!dynamicSignBE.flipX && dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, 2.5f, 0.5f);
+                    poseStack.scale(1.0f,-1.0f,1.0f);
+                }
+                else if(dynamicSignBE.flipX && dynamicSignBE.flipY){
+                    poseStack.translate(0.5f, 2.5f, 0.5f);
+                    poseStack.scale(-1.0f,-1.0f,1.0f);
+                }
+                else{
+                    poseStack.translate(0.5f, -0.5f, 0.5f);
+                    poseStack.scale(1.0f,1.0f,1.0f);
+                }
+            }
+            case null, default -> {
+                poseStack.translate(0.5f, -0.5f, 0.5f);
+                poseStack.scale(1.0f,1.0f,1.0f);
+            }
+        }
 
         if(Objects.equals(dynamicSignBE.modelType, Utilities.SignModelTypes.SQUARE.getModelTypeName())){
             this.dsmodel.setupAnim(dynamicSignBE);

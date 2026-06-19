@@ -36,7 +36,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
     private DynamicRoadSignBE dynamicRoadSignBEDoubleTall;
     private DynamicRoadSignBE dynamicRoadSignBERectangle;
     public static final ModelLayerLocation DYNAMIC_ROAD_SIGN_LOC = new ModelLayerLocation(
-            ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png"), "main");
+            ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png"), "main");
 
     public DynamicSignModel roadSignModel;
     public DynamicDoubleTallSignModel doubleTallRoadSignModel;
@@ -73,15 +73,13 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         String modelType = tag.getString("model_type");
                         float yAngle = tag.getFloat("y_angle");
 
-                        poseStack.mulPose(Axis.YP.rotationDegrees(yAngle));
-
                         if(modelType.equals("square")){
                             if(ResourceLocation.read(textureLocation).hasResultOrPartial()){
                                 vc = buffer.getBuffer(RenderType.entityCutout(ResourceLocation.parse(textureLocation)));
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             }
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
@@ -150,7 +148,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/big_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/big_sign_error.png")));
                             }
                             doubleTallRoadSignModel.setupAnim(dynamicRoadSignBEDoubleTall);
                             if(displayContext.firstPerson()){
@@ -222,7 +220,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/rect_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/rect_sign_error.png")));
                             }
                             rectangleRoadSignModel.setupAnim(dynamicRoadSignBERectangle);
                             if(displayContext.firstPerson()){
@@ -290,14 +288,14 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         }
                         else{
                             vc = buffer.getBuffer(RenderType.entityCutout(
-                                    ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                    ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                         }
                     }
                     else{
                         vc = buffer.getBuffer(RenderType.entityCutout(
-                                ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                         roadSignModel.setupAnim(dynamicRoadSignBE);
                         roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                     }
@@ -305,7 +303,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
@@ -407,7 +405,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             }
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
@@ -476,7 +474,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/big_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/big_sign_error.png")));
                             }
                             doubleTallRoadSignModel.setupAnim(dynamicRoadSignBEDoubleTall);
                             if(displayContext.firstPerson()){
@@ -548,7 +546,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/rect_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/rect_sign_error.png")));
                             }
                             rectangleRoadSignModel.setupAnim(dynamicRoadSignBERectangle);
                             if(displayContext.firstPerson()){
@@ -616,14 +614,14 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         }
                         else{
                             vc = buffer.getBuffer(RenderType.entityCutout(
-                                    ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                    ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                         }
                     }
                     else{
                         vc = buffer.getBuffer(RenderType.entityCutout(
-                                ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                         roadSignModel.setupAnim(dynamicRoadSignBE);
                         roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                     }
@@ -631,7 +629,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
@@ -733,7 +731,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             }
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
@@ -802,7 +800,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/big_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/big_sign_error.png")));
                             }
                             doubleTallRoadSignModel.setupAnim(dynamicRoadSignBEDoubleTall);
                             if(displayContext.firstPerson()){
@@ -874,7 +872,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/rect_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/rect_sign_error.png")));
                             }
                             rectangleRoadSignModel.setupAnim(dynamicRoadSignBERectangle);
                             if(displayContext.firstPerson()){
@@ -942,14 +940,14 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         }
                         else{
                             vc = buffer.getBuffer(RenderType.entityCutout(
-                                    ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                    ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                         }
                     }
                     else{
                         vc = buffer.getBuffer(RenderType.entityCutout(
-                                ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                         roadSignModel.setupAnim(dynamicRoadSignBE);
                         roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                     }
@@ -957,7 +955,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
@@ -1059,7 +1057,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             }
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             if(displayContext.firstPerson()){
@@ -1128,7 +1126,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/big_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/big_sign_error.png")));
                             }
                             doubleTallRoadSignModel.setupAnim(dynamicRoadSignBEDoubleTall);
                             if(displayContext.firstPerson()){
@@ -1200,7 +1198,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             }
                             else{
                                 vc = buffer.getBuffer(RenderType.entityCutout(
-                                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/rect_sign_error.png")));
+                                        ResourceLocation.parse("thingamajigslongroads:textures/signs/rect_sign_error.png")));
                             }
                             rectangleRoadSignModel.setupAnim(dynamicRoadSignBERectangle);
                             if(displayContext.firstPerson()){
@@ -1268,14 +1266,14 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         }
                         else{
                             vc = buffer.getBuffer(RenderType.entityCutout(
-                                    ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                    ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                             roadSignModel.setupAnim(dynamicRoadSignBE);
                             roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                         }
                     }
                     else{
                         vc = buffer.getBuffer(RenderType.entityCutout(
-                                ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/sign_error.png")));
+                                ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error.png")));
                         roadSignModel.setupAnim(dynamicRoadSignBE);
                         roadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
                     }
@@ -1283,7 +1281,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
             }
             else{
                 vc = buffer.getBuffer(RenderType.entityCutout(
-                        ResourceLocation.parse("thingamajigslongroads:textures/entity/signs/default.png")));
+                        ResourceLocation.parse("thingamajigslongroads:textures/signs/default.png")));
                 roadSignModel.setupAnim(dynamicRoadSignBE);
                 if(displayContext.firstPerson()){
                     if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){

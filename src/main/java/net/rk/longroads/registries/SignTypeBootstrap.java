@@ -12,7 +12,7 @@ public class SignTypeBootstrap {
     public static void bootstrap(BootstrapContext<SignType> bootstrapContext){
         LOGGER.info("Long Roads' Bootstrap is adding internal data driven sign types");
         bootstrapContext.register(SignTypeKeys.PlACEHOLDER,
-                new SignType(ResourceLocation.parse("thingamajigslongroads:sign_error"),
+                new SignType(ResourceLocation.parse("thingamajigslongroads:textures/signs/sign_error"),
                         "sign_type.placeholder.name",
                         "square"));
     }

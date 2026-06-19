@@ -9,7 +9,9 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.rk.longroads.entity.blockentity.custom.DynamicRoadSignBE;
+import net.rk.longroads.util.LongRoadsCalcs;
 import net.rk.longroads.util.Utilities;
 
 public class DynamicDoubleTallSignModel extends Model {
@@ -39,10 +41,10 @@ public class DynamicDoubleTallSignModel extends Model {
     }
 
     public void setupAnim(DynamicRoadSignBE be){
-        main.yRot = be.yAngle;
+        main.yRot = LongRoadsCalcs.degreesToRadians(be.yAngle);
         main.zRot = 0;
-        main.xRot = 3.14555111f;
-        main.y = 16.0f;
+        main.xRot = Mth.PI + LongRoadsCalcs.degreesToRadians(be.zAngle);
+        main.y = 16.0f + be.yOffset;
     }
 
     @Override
