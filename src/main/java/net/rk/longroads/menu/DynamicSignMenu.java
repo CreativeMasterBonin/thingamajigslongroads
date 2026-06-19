@@ -79,7 +79,7 @@ public class DynamicSignMenu extends AbstractContainerMenu{
     }
 
     public boolean clickedSignTypeSelectorButton(Player player, int id) {
-        if (id >= 0 && id < this.signTypes.size()) {
+        if (id >= 0 && id < DynamicSignMenu.signTypes.size()) {
             return true;
         }
         else {

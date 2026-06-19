@@ -33,6 +33,7 @@ public class DynamicRoadSignBE extends BlockEntity{
     public String signTexture = Utilities.missingLocation;
     public String modelType = "square";
     public final String fallbackSignTexture = Utilities.missingLocation;
+    public String translationKey = "sign_type.placeholder.name";
 
     public SignTypeHolderObject holderList;
     public int indexId;
@@ -59,6 +60,7 @@ public class DynamicRoadSignBE extends BlockEntity{
         //String tempTexture = "thingamajigslongroads:textures/entity/signs/" + holderList.typesHolderObjectList().get(0).getSignType().assetId().getPath() + ".png";
         signTexture = holderList.typesHolderObjectList().get(0).getSignType().assetId().toString() + ".png";
         modelType = holderList.typesHolderObjectList().get(0).getSignType().signModeltype();
+        translationKey = holderList.typesHolderObjectList().getFirst().getSignType().translationKey();
     }
 
     public DynamicRoadSignBE(BlockPos pos, BlockState blockState){
@@ -127,6 +129,7 @@ public class DynamicRoadSignBE extends BlockEntity{
         pTag.putFloat("z_angle",zAngle);
         pTag.putString("sign_texture",signTexture);
         pTag.putString("model_type",modelType);
+        pTag.putString("translation_key",translationKey);
 
         /*if (!(this.holderList == null)) {
             pTag.put("sign_types", SignTypeHolderObject.CODEC.encodeStart(slp.createSerializationContext(NbtOps.INSTANCE),this.holderList).getOrThrow());
@@ -157,6 +160,9 @@ public class DynamicRoadSignBE extends BlockEntity{
 
         if(pTag.contains("model_type")){
             modelType = pTag.getString("model_type");
+        }
+        if(pTag.contains("translation_key")){
+            translationKey = pTag.getString("translation_key");
         }
 
         /*if (pTag.contains("sign_types")) {

@@ -21,6 +21,7 @@ import net.rk.longroads.ThingamajigsLongRoads;
 import net.rk.longroads.menu.DynamicSignMenu;
 import net.rk.longroads.network.record.DynamicSignPayload;
 import net.rk.longroads.registries.SignType;
+import net.rk.longroads.registries.TLRRegistries;
 import net.rk.longroads.screen.widget.ActionCheckboxLongRoads;
 import net.rk.longroads.screen.widget.DynamicEditBox;
 import net.rk.longroads.screen.widget.RevertedButton;
@@ -55,17 +56,17 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
     public float scrollOffs = 0;
     public int startRow = 0;
 
-    public int listButtonStartX = 184;
-    public int listButtonStartY = 96;
+    public int listButtonStartX = 184; // 184
+    public int listButtonStartY = 96; // 96
 
-    public int listBGX = 183;
-    public int listBGY = 94;
+    public int listBGX = 183; // 183
+    public int listBGY = 94; // 94
 
-    public int scrollerStartX = 241;
-    public int scrollerStartY = 95;
+    public int scrollerStartX = 275; // 241
+    public int scrollerStartY = 95; // 95
 
-    private int buttonSizeX = 14;
-    private int buttonSizeY = 14;
+    private int buttonSizeX = 18; // 14 for both
+    private int buttonSizeY = 18;
 
     public boolean isShifting = false;
 
@@ -106,7 +107,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShaderTexture(0, BG_TEXTURE);
         guiGraphics.blit(LIST_BG, this.leftPos + listBGX, this.topPos + listBGY, 0.0F, 0.0F,
-                71, 60, 71, 60);
+                107, 78, 107, 78);
         RenderSystem.disableBlend();
 
         guiGraphics.pose().pushPose();
@@ -136,10 +137,12 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
 
         // sign type preview 'buttons'
         label64:
-        for (int l = 0; l < 4; l++) {
-            for (int i1 = 0; i1 < 4; i1++) {
+        for (int l = 0; l < 4; l++) { // was 4
+            for (int i1 = 0; i1 < 4; i1++) { // was 4
+                int offset = 4;
+
                 int j1 = l + startRow;
-                int k1 = j1 * 4 + i1;
+                int k1 = j1 * offset + i1;
                 if (k1 >= list.size()) {
                     break label64;
                 }
@@ -169,29 +172,29 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
                         res = ResourceLocation.parse(Utilities.missingLocation);
                     }
                     //
-                    double delta = Math.sin(0.75 * Math.cos(6.32 * Util.getMillis() / 3800.0 / Math.max((double)l * 0.5, 3.0))) / 2.5;
-                    double deltaY = Math.sin(0.75 * Math.cos(6.28 * Util.getMillis() / 3200.0 / Math.max((double)l * 0.5, 3.0))) / 2.5;
+                    /*double delta = Math.sin(0.75 * Math.cos(6.32 * Util.getMillis() / 3800.0 / Math.max((double)l * 0.5, 3.0))) / 2.5;
+                    double deltaY = Math.sin(0.75 * Math.cos(6.28 * Util.getMillis() / 3200.0 / Math.max((double)l * 0.5, 3.0))) / 2.5;*/
 
                     if(DynamicSignMenu.signTypes.get(k1).signModeltype().equals(Utilities.SignModelTypes.SQUARE.getModelTypeName())){
                         guiGraphics.blit(res, x,y,
-                                5.75f,1.75f,
-                                14,14,
-                                32,32);
+                                6.5f,-1f,
+                                buttonSizeX,buttonSizeY,
+                                38,16);
                     }
                     else if(DynamicSignMenu.signTypes.get(k1).signModeltype().equals(Utilities.SignModelTypes.DOUBLE_SQUARE.getModelTypeName())){
-                        double rangeLarge = Mth.lerp(delta,20,90);
-                        double rangeLargeY = Mth.lerp(deltaY,1,48);
+                        //double rangeLarge = Mth.lerp(delta,20,90);
+                        //double rangeLargeY = Mth.lerp(deltaY,1,48);
                         guiGraphics.blit(res, x,y,
-                                (float)rangeLarge + 2f,(float)rangeLargeY + 16f,
-                                14,14,
-                                128,128);
+                                (float)0f,(float)0f,
+                                buttonSizeX,buttonSizeY,
+                                32,32);
                     }
                     else if(DynamicSignMenu.signTypes.get(k1).signModeltype().equals(Utilities.SignModelTypes.RECTANGLE.getModelTypeName())){
-                        double rangeRect = Mth.lerp(delta,16,64);
+                        //double rangeRect = Mth.lerp(delta,16,64);
                         guiGraphics.blit(res, x,y,
-                                (float)rangeRect,0,
-                                14,14,
-                                128,64);
+                                (float)7,(float)-1,
+                                buttonSizeX,buttonSizeY,
+                                64,32);
                     }
                 }
             }
@@ -209,19 +212,29 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
 
-        String translationKey = this.menu.be.holderList.typesHolderObjectList().get(0).getSignType().translationKey();
+        String translationKey = this.menu.be.translationKey;
+
+        if(translationKey == null || translationKey.isEmpty()){
+            translationKey = "sign_type.placeholder.name";
+        }
+
+        // this will change how many characters are shown on the translated string
+        int maxCharLengthAllowed = 22;
+        if(maxCharLengthAllowed <= 0){
+            maxCharLengthAllowed = 22;
+        }
 
         Component testComponent = Component.translatable(translationKey);
-        if(testComponent.getString().length() > 16){
+        if(testComponent.getString().length() > maxCharLengthAllowed){
             guiGraphics.drawString(this.font,Component.translatable("container.thingamajigslongroads.dynamic_sign.sign_type")
-                            .append(Component.literal(testComponent.getString(16)).append("...")),
+                            .append(Component.literal(testComponent.getString(maxCharLengthAllowed)).append("...")),
                     this.titleLabelX + 9,this.titleLabelY + 102,
                     LongRoadsCalcs.Colors.getWhite(),true);
         }
         else{
             guiGraphics.drawString(this.font,Component.translatable("container.thingamajigslongroads.dynamic_sign.sign_type")
                             .append(Component.translatable(translationKey)),
-                    this.titleLabelX + 9,this.titleLabelY + 98,
+                    this.titleLabelX + 9,this.titleLabelY + 102,
                     LongRoadsCalcs.Colors.getWhite(),true);
         }
     }
@@ -386,7 +399,7 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
             }
         };
 
-        updateSign = new RevertedButton(flipModelY.getX(),flipModelY.getY() + 32,64,24,Component.translatable("button.longroads.generic.update"),
+        updateSign = new RevertedButton(flipModelY.getX(),flipModelY.getY() + 20,64,24,Component.translatable("button.longroads.generic.update"),
                 (handler) -> {
                     byte atomicFlipState = 0;
                     if(flipModelX.selected() && flipModelY.selected()){
@@ -423,11 +436,12 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
         // math and server data for list of buttons when clicked
         for (int k = 0; k < 4; k++) { // was k < 4
             for (int l = 0; l < 4; l++) { // was l < 4
-                double d0 = mouseX - (double)(i + l * 14);
-                double d1 = mouseY - (double)(j + k * 14);
+                double d0 = mouseX - (double)(i + l * buttonSizeX); //was 14
+                double d1 = mouseY - (double)(j + k * buttonSizeY); //was 14
                 int i1 = k + this.startRow;
                 int buttonIndex = i1 * 4 + l;
-                if (d0 >= 0.0 && d1 >= 0.0 && d0 < 14.0 && d1 < 14.0 && this.menu.clickedSignTypeSelectorButton(this.minecraft.player, buttonIndex)) {
+                // was d0 >= 0.0 && d1 >= 0.0 && d0 < 14.0 && d1 < 14.0
+                if (d0 >= 0.0 && d1 >= 0.0 && d0 < (float)buttonSizeX && d1 < (float)buttonSizeY && this.menu.clickedSignTypeSelectorButton(this.minecraft.player, buttonIndex)) {
                     Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                     this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, buttonIndex);
                     byte flipState = 0;
@@ -483,11 +497,12 @@ public class DynamicRoadSignScreen extends AbstractContainerScreen<DynamicSignMe
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
-        int i = this.menu.signTypes.size() - 4;
+        int i = this.menu.signTypes.size() - 16;
+
         if (i > 0) {
             float f = (float)scrollY / (float)i;
             this.scrollOffs = Mth.clamp(this.scrollOffs - f, 0.0F, 1.0F);
-            this.startRow = Math.max((int)(this.scrollOffs * (float)i + 0.5F), 0);
+            this.startRow = Math.max((int)(this.scrollOffs * (float)i + 0.5F), -16);
         }
 
         return true;
