@@ -18,9 +18,4 @@ public class Paintbrush extends Item{
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BRUSH;
     }
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("tooltip.thingamajigs.blankpaintbrush").withStyle(ChatFormatting.GRAY));
-    }
 }

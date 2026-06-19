@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"render_type": "cutout",
 	"textures": {
-		"all": "block/blast_furnace_top"
+		"all": "block/blast_furnace_top",
+		"particle": "#all"
 	},
 	"elements": [
 		{

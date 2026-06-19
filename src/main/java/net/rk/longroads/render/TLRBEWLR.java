@@ -28,6 +28,8 @@ import net.rk.longroads.entity.blockentity.model.DynamicDoubleTallSignModel;
 import net.rk.longroads.entity.blockentity.model.DynamicRectangleSignModel;
 import net.rk.longroads.entity.blockentity.model.DynamicSignModel;
 import net.rk.longroads.item.TLRItems;
+import net.rk.longroads.util.LongRoadsCalcs;
+import net.rk.longroads.util.Utilities;
 import org.joml.Vector3f;
 
 @OnlyIn(Dist.CLIENT)
@@ -72,6 +74,8 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         String textureLocation = tag.getString("sign_texture");
                         String modelType = tag.getString("model_type");
                         float yAngle = tag.getFloat("y_angle");
+
+
 
                         if(modelType.equals("square")){
                             if(ResourceLocation.read(textureLocation).hasResultOrPartial()){
@@ -153,13 +157,9 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                             doubleTallRoadSignModel.setupAnim(dynamicRoadSignBEDoubleTall);
                             if(displayContext.firstPerson()){
                                 if(displayContext == ItemDisplayContext.FIRST_PERSON_LEFT_HAND){
-                                    doubleTallRoadSignModel.getMain().yRot = 1.4f;
-                                    doubleTallRoadSignModel.getMain().x = -8.0f;
                                     doubleTallRoadSignModel.getMain().y = 4.0f;
                                 }
                                 else{
-                                    doubleTallRoadSignModel.getMain().yRot = -1.4f;
-                                    doubleTallRoadSignModel.getMain().x = 24.0f;
                                     doubleTallRoadSignModel.getMain().y = 4.0f;
                                 }
                                 doubleTallRoadSignModel.getMain().render(poseStack,vc,packedLight,packedOverlay);
@@ -721,9 +721,6 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                     if(tag.get("sign_texture") != null && tag.get("model_type") != null && tag.get("y_angle") != null){
                         String textureLocation = tag.getString("sign_texture");
                         String modelType = tag.getString("model_type");
-                        float yAngle = tag.getFloat("y_angle");
-
-                        poseStack.mulPose(Axis.YP.rotationDegrees(yAngle));
 
                         if(modelType.equals("square")){
                             if(ResourceLocation.read(textureLocation).hasResultOrPartial()){
