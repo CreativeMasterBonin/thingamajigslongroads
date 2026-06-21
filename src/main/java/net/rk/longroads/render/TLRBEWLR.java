@@ -397,7 +397,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         String modelType = tag.getString("model_type");
                         float yAngle = tag.getFloat("y_angle");
 
-                        poseStack.mulPose(Axis.YP.rotationDegrees(yAngle));
+                        //poseStack.mulPose(Axis.YP.rotationDegrees(yAngle));
 
                         if(modelType.equals("square")){
                             if(ResourceLocation.read(textureLocation).hasResultOrPartial()){
@@ -1046,7 +1046,7 @@ public class TLRBEWLR extends BlockEntityWithoutLevelRenderer {
                         String modelType = tag.getString("model_type");
                         float yAngle = tag.getFloat("y_angle");
 
-                        poseStack.mulPose(Axis.YP.rotationDegrees(yAngle));
+                        //poseStack.mulPose(Axis.YP.rotationDegrees(yAngle));
 
                         if(modelType.equals("square")){
                             if(ResourceLocation.read(textureLocation).hasResultOrPartial()){
